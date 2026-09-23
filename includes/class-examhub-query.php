@@ -559,15 +559,14 @@ class Examhub_Query {
 		$ids    = array();
 
 		foreach ( $values as $item ) {
-			$item = is_scalar( $item ) ? $item : 0;
-			$id   = absint( $item );
+			$term_id = absint( $item );
 
-			if ( $id > 0 ) {
-				$ids[ $id ] = $id;
+			if ( $term_id ) {
+				$ids[] = $term_id;
 			}
 		}
 
-		return array_values( $ids );
+		return array_values( array_unique( $ids ) );
 	}
 
 	/**
@@ -593,18 +592,7 @@ class Examhub_Query {
 			return false;
 		}
 
-		static $parent_cache = array();
-
-		$parent_cache_key = $taxonomy . ':' . (int) $term_id;
-
-		if ( isset( $parent_cache[ $parent_cache_key ] ) ) {
-			$parent_ids = $parent_cache[ $parent_cache_key ];
-		} else {
-			$parent_ids = self::normalize_term_ids(
-				get_term_meta( $term_id, self::STRUCTURE_PARENT_META[ $taxonomy ] )
-			);
-			$parent_cache[ $parent_cache_key ] = $parent_ids;
-		}
+		$parent_ids = self::normalize_term_ids( get_term_meta( $term_id, self::STRUCTURE_PARENT_META[ $taxonomy ] ) );
 
 		if ( empty( $parent_ids ) ) {
 			return false;
@@ -644,16 +632,6 @@ class Examhub_Query {
 			return array();
 		}
 
-		// Request-local cache prevents repeated child lookups while building
-		// cascading structure queries for the same request.
-		static $request_cache = array();
-
-		$cache_key = $taxonomy . ':' . implode( ',', $parent_ids );
-
-		if ( isset( $request_cache[ $cache_key ] ) ) {
-			return $request_cache[ $cache_key ];
-		}
-
 		$terms = get_terms(
 			array(
 				'taxonomy'   => $taxonomy,
@@ -670,13 +648,10 @@ class Examhub_Query {
 		);
 
 		if ( ! is_array( $terms ) ) {
-			$request_cache[ $cache_key ] = array();
 			return array();
 		}
 
-		$request_cache[ $cache_key ] = self::normalize_term_ids( $terms );
-
-		return $request_cache[ $cache_key ];
+		return self::normalize_term_ids( $terms );
 	}
 
 	/**
@@ -692,8 +667,6 @@ class Examhub_Query {
 	 * @param string $orderby    One of latest|popular|random|title.
 	 */
 	private static function apply_orderby( array &$query_args, $orderby ) {
-
-		$orderby = strtolower( trim( (string) $orderby ) );
 
 		switch ( $orderby ) {
 
@@ -1066,28 +1039,13 @@ class Examhub_Query {
 
 		$post_id = $post->ID;
 
-		static $meta_cache = array();
+		$questions_id   = (int) get_post_meta( $post_id, '_examhub_questions_file', true );
+		$answers_id     = (int) get_post_meta( $post_id, '_examhub_answers_file', true );
+		$questions_url  = (string) get_post_meta( $post_id, '_examhub_questions_url', true );
+		$answers_url    = (string) get_post_meta( $post_id, '_examhub_answers_url', true );
 
-		if ( ! isset( $meta_cache[ $post_id ] ) ) {
-			$meta_cache[ $post_id ] = array(
-				'questions_id'        => (int) get_post_meta( $post_id, '_examhub_questions_file', true ),
-				'answers_id'          => (int) get_post_meta( $post_id, '_examhub_answers_file', true ),
-				'questions_url'       => (string) get_post_meta( $post_id, '_examhub_questions_url', true ),
-				'answers_url'         => (string) get_post_meta( $post_id, '_examhub_answers_url', true ),
-				'questions_downloads' => (int) get_post_meta( $post_id, '_examhub_questions_downloads', true ),
-				'answers_downloads'   => (int) get_post_meta( $post_id, '_examhub_answers_downloads', true ),
-				'featured'            => (bool) get_post_meta( $post_id, '_examhub_featured', true ),
-			);
-		}
-
-		$meta = $meta_cache[ $post_id ];
-
-		$questions_id        = $meta['questions_id'];
-		$answers_id          = $meta['answers_id'];
-		$questions_url       = $meta['questions_url'];
-		$answers_url         = $meta['answers_url'];
-		$questions_downloads = $meta['questions_downloads'];
-		$answers_downloads   = $meta['answers_downloads'];
+		$questions_downloads = (int) get_post_meta( $post_id, '_examhub_questions_downloads', true );
+		$answers_downloads   = (int) get_post_meta( $post_id, '_examhub_answers_downloads', true );
 
 		$structure = self::get_inline_structure_label( $post_id );
 		$year      = self::get_single_term_name( $post_id, 'examhub_year' );
@@ -1104,7 +1062,7 @@ class Examhub_Query {
 			'id'              => $post_id,
 			'title'           => get_the_title( $post_id ),
 			'thumbnail'       => get_the_post_thumbnail_url( $post_id, 'medium' ),
-			'featured'        => $meta['featured'],
+			'featured'        => (bool) get_post_meta( $post_id, '_examhub_featured', true ),
 			'structure'       => $structure,
 			'year'            => $year,
 			'term'            => $term,
@@ -1139,28 +1097,9 @@ class Examhub_Query {
 	 */
 	private static function get_single_term_name( $post_id, $taxonomy ) {
 
-		static $cache = array();
-
-		$post_id  = (int) $post_id;
-		$taxonomy = (string) $taxonomy;
-
-		if ( isset( $cache[ $post_id ][ $taxonomy ] ) ) {
-			return $cache[ $post_id ][ $taxonomy ];
-		}
-
 		$terms = get_the_terms( $post_id, $taxonomy );
 
-		$name = ( is_array( $terms ) && ! empty( $terms ) )
-			? (string) $terms[0]->name
-			: '';
-
-		if ( ! isset( $cache[ $post_id ] ) ) {
-			$cache[ $post_id ] = array();
-		}
-
-		$cache[ $post_id ][ $taxonomy ] = $name;
-
-		return $name;
+		return ( is_array( $terms ) && ! empty( $terms ) ) ? $terms[0]->name : '';
 	}
 
 	/**
@@ -1194,9 +1133,34 @@ class Examhub_Query {
 	 */
 	public static function get_term_options( $taxonomy ) {
 
-		return self::get_cached_term_options( $taxonomy, 'options' );
-	}
+		$cache_key = 'examhub_opts_' . $taxonomy . '_' . self::get_terms_cache_version();
+		$cached    = wp_cache_get( $cache_key, 'examhub' );
 
+		if ( false !== $cached ) {
+			return $cached;
+		}
+
+		$terms = get_terms(
+			array(
+				'taxonomy'   => $taxonomy,
+				'hide_empty' => false,
+				'orderby'    => 'term_id',
+				'order'      => 'ASC',
+			)
+		);
+
+		$options = array();
+
+		if ( is_array( $terms ) ) {
+			foreach ( $terms as $term ) {
+				$options[ (int) $term->term_id ] = $term->name;
+			}
+		}
+
+		wp_cache_set( $cache_key, $options, 'examhub', HOUR_IN_SECONDS );
+
+		return $options;
+	}
 
 	/**
 	 * Fetch the terms of a taxonomy as a term_id => name map. Used by admin
@@ -1212,34 +1176,11 @@ class Examhub_Query {
 	 */
 	public static function get_term_choices( $taxonomy ) {
 
-		return self::get_cached_term_options( $taxonomy, 'choices' );
-	}
-
-	/**
-	 * Fetch and cache a taxonomy's term_id => name map.
-	 *
-	 * The public methods get_term_options() and get_term_choices() intentionally
-	 * retain separate cache namespaces for backward compatibility, while sharing
-	 * the actual retrieval logic.
-	 *
-	 * @since 1.0.0
-	 * @param string $taxonomy     Taxonomy slug.
-	 * @param string $cache_prefix Cache namespace.
-	 * @return array<int,string>
-	 */
-	private static function get_cached_term_options( $taxonomy, $cache_prefix ) {
-
-		$taxonomy = (string) $taxonomy;
-
-		if ( ! taxonomy_exists( $taxonomy ) ) {
-			return array();
-		}
-
-		$cache_key = 'examhub_' . $cache_prefix . '_' . $taxonomy . '_' . self::get_terms_cache_version();
+		$cache_key = 'examhub_choices_' . $taxonomy . '_' . self::get_terms_cache_version();
 		$cached    = wp_cache_get( $cache_key, 'examhub' );
 
 		if ( false !== $cached ) {
-			return is_array( $cached ) ? $cached : array();
+			return $cached;
 		}
 
 		$terms = get_terms(
@@ -1248,23 +1189,21 @@ class Examhub_Query {
 				'hide_empty' => false,
 				'orderby'    => 'term_id',
 				'order'      => 'ASC',
-				'fields'     => 'all',
 			)
 		);
 
-		$options = array();
+		$choices = array();
 
 		if ( is_array( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$options[ (int) $term->term_id ] = (string) $term->name;
+				$choices[ (int) $term->term_id ] = $term->name;
 			}
 		}
 
-		wp_cache_set( $cache_key, $options, 'examhub', HOUR_IN_SECONDS );
+		wp_cache_set( $cache_key, $choices, 'examhub', HOUR_IN_SECONDS );
 
-		return $options;
+		return $choices;
 	}
-
 
 	/* =========================================================================
 	   HELPER: MAP FILTER KEY TO TAXONOMY
