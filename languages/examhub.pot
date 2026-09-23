@@ -1,0 +1,1646 @@
+# Copyright (C) 2026 Tamland Dev
+# This file is distributed under the GPL-2.0+.
+msgid ""
+msgstr ""
+"Project-Id-Version: ExamHub 1.0.10\n"
+"Report-Msgid-Bugs-To: https://github.com/hoseinrza/final-exam-bank\n"
+"POT-Creation-Date: 2026-06-21T00:00:00+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: examhub-build-pot\n"
+"X-Domain: examhub\n"
+#: examhub/admin/class-examhub-admin.php:110
+#: examhub/admin/partials/metabox-exam-details.php:71
+msgid "انتخاب فایل"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:111
+msgid "استفاده از این فایل"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:112
+#: examhub/admin/partials/metabox-exam-details.php:70
+msgid "فایلی انتخاب نشده است."
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:113
+msgid "برای هر بخش (سوالات/پاسخنامه) باید یا فایل آپلود کنید یا آدرس خارجی وارد کنید."
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:128
+#: examhub/admin/partials/metabox-exam-taxonomies.php:72
+#: examhub/includes/class-examhub-post-types.php:297
+#: examhub/includes/class-examhub-post-types.php:329
+msgid "— انتخاب نشده —"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:143
+msgid "جزئیات آزمون"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:152
+msgid "دسته‌بندی آزمون"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:285
+#: examhub/admin/class-examhub-admin.php:313
+#: examhub/public/partials/card-exam.php:26
+#: examhub/public/partials/card-exam.php:30
+msgid "ویژه"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:286
+#: examhub/public/partials/card-exam.php:69
+msgid "دانلود سوالات"
+msgstr ""
+
+#: examhub/admin/class-examhub-admin.php:287
+#: examhub/public/partials/card-exam.php:80
+msgid "دانلود پاسخنامه"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:28
+msgid "سوالات"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:36
+msgid "پاسخنامه"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:60
+msgid "آپلود فایل"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:63
+msgid "آدرس خارجی"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:72
+msgid "حذف"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:78
+msgid "آدرس مستقیم فایل یا درایو ابری (Google Drive، Dropbox، وغیره)"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:87
+#. translators: %s: number of times this file has been downloaded.
+msgid "تعداد دانلود تاکنون: %s"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:97
+msgid "نمایش ویژه"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-details.php:101
+msgid "این آزمون در ویجت «آزمون‌های پیشنهادی» و با نشان «ویژه» نمایش داده شود."
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:20
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:57
+#: examhub/elementor/widgets/class-widget-category-showcase.php:80
+#: examhub/elementor/widgets/class-widget-download-library.php:133
+#: examhub/elementor/widgets/class-widget-exam-section.php:94
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:85
+#: examhub/elementor/widgets/class-widget-search-filter.php:132
+#: examhub/includes/class-examhub-post-types.php:92
+msgid "مقطع"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:21
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:58
+#: examhub/elementor/widgets/class-widget-category-showcase.php:81
+#: examhub/elementor/widgets/class-widget-download-library.php:135
+#: examhub/elementor/widgets/class-widget-exam-section.php:96
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:96
+#: examhub/elementor/widgets/class-widget-search-filter.php:134
+#: examhub/includes/class-examhub-post-types.php:98
+msgid "پایه"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:22
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:59
+#: examhub/elementor/widgets/class-widget-category-showcase.php:82
+#: examhub/elementor/widgets/class-widget-download-library.php:137
+#: examhub/elementor/widgets/class-widget-exam-section.php:98
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:106
+#: examhub/elementor/widgets/class-widget-search-filter.php:136
+#: examhub/includes/class-examhub-post-types.php:104
+msgid "رشته"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:23
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:60
+#: examhub/elementor/widgets/class-widget-category-showcase.php:83
+#: examhub/elementor/widgets/class-widget-download-library.php:139
+#: examhub/elementor/widgets/class-widget-exam-section.php:100
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:116
+#: examhub/elementor/widgets/class-widget-search-filter.php:138
+#: examhub/includes/class-examhub-post-types.php:110
+msgid "درس"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:24
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:61
+#: examhub/elementor/widgets/class-widget-category-showcase.php:85
+#: examhub/elementor/widgets/class-widget-download-library.php:141
+#: examhub/elementor/widgets/class-widget-exam-section.php:102
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:126
+#: examhub/elementor/widgets/class-widget-search-filter.php:140
+msgid "سال"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:25
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:62
+#: examhub/elementor/widgets/class-widget-download-library.php:143
+#: examhub/elementor/widgets/class-widget-exam-section.php:104
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:136
+#: examhub/elementor/widgets/class-widget-search-filter.php:142
+msgid "نوبت"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:26
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:63
+#: examhub/elementor/widgets/class-widget-category-showcase.php:84
+#: examhub/elementor/widgets/class-widget-download-library.php:145
+#: examhub/elementor/widgets/class-widget-exam-section.php:106
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:146
+#: examhub/elementor/widgets/class-widget-search-filter.php:144
+#: examhub/includes/class-examhub-post-types.php:128
+msgid "نوع آزمون"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:84
+#. translators: %s: link to the taxonomy management screen.
+msgid "هنوز موردی اضافه نشده‌است. %s"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:85
+msgid "افزودن"
+msgstr ""
+
+#: examhub/admin/partials/metabox-exam-taxonomies.php:94
+msgid "برای افزودن یا ویرایش دسته‌ها از زیرمنوهای ExamHub (مقطع، پایه، رشته، درس، سال، نوبت، نوع آزمون) استفاده کنید. انتخاب مقطع گزینه‌های پایه را محدود می‌کند و به همین ترتیب تا درس."
+msgstr ""
+
+#: examhub/elementor/class-examhub-elementor-loader.php:56
+#: examhub/elementor/class-examhub-elementor-loader.php:129
+#: examhub/includes/class-examhub-post-types.php:37
+msgid "ExamHub"
+msgstr ""
+
+#: examhub/elementor/class-examhub-elementor-loader.php:164
+#: examhub/elementor/widgets/class-widget-download-library.php:420
+#: examhub/elementor/widgets/class-widget-exam-section.php:572
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:87
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:98
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:108
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:118
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:128
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:138
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:148
+#: examhub/elementor/widgets/class-widget-search-filter.php:1377
+msgid "همه"
+msgstr ""
+
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-download-count.php:27
+msgid "تعداد دانلود آزمون"
+msgstr ""
+
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-featured-image.php:26
+msgid "تصویر شاخص آزمون"
+msgstr ""
+
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-structure.php:28
+msgid "ساختار تحصیلی (مقطع | پایه | رشته | درس)"
+msgstr ""
+
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:27
+msgid "نام دسته‌بندی آزمون"
+msgstr ""
+
+#: examhub/elementor/dynamic-tags/class-dynamic-tag-term-name.php:54
+msgid "دسته‌بندی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:34
+msgid "ظاهر کارت"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:48
+msgid "نشان «ویژه»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:57
+msgid "رنگ پس‌زمینه نشان"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:68
+msgid "رنگ متن نشان"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:79
+msgid "دکمه «دانلود سوالات»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:90
+msgid "دکمه «دانلود پاسخنامه»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:101
+msgid "دکمه «نمایش» (پیش‌نمایش)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:109
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:354
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:586
+#: examhub/elementor/widgets/class-widget-category-showcase.php:151
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:156
+#: examhub/elementor/widgets/class-widget-exam-section.php:324
+#: examhub/elementor/widgets/class-widget-exam-section.php:381
+#: examhub/elementor/widgets/class-widget-featured-exams.php:204
+#: examhub/elementor/widgets/class-widget-search-filter.php:578
+#: examhub/elementor/widgets/class-widget-search-filter.php:643
+#: examhub/elementor/widgets/class-widget-search-filter.php:708
+#: examhub/elementor/widgets/class-widget-search-filter.php:834
+#: examhub/elementor/widgets/class-widget-search-filter.php:1057
+msgid "عادی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:114
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:129
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:371
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:400
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:592
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:617
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:273
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:318
+#: examhub/elementor/widgets/class-widget-category-showcase.php:167
+#: examhub/elementor/widgets/class-widget-category-showcase.php:193
+#: examhub/elementor/widgets/class-widget-download-library.php:313
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:168
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:187
+#: examhub/elementor/widgets/class-widget-exam-section.php:336
+#: examhub/elementor/widgets/class-widget-exam-section.php:355
+#: examhub/elementor/widgets/class-widget-exam-section.php:393
+#: examhub/elementor/widgets/class-widget-exam-section.php:412
+#: examhub/elementor/widgets/class-widget-featured-exams.php:208
+#: examhub/elementor/widgets/class-widget-featured-exams.php:219
+#: examhub/elementor/widgets/class-widget-search-filter.php:594
+#: examhub/elementor/widgets/class-widget-search-filter.php:659
+#: examhub/elementor/widgets/class-widget-search-filter.php:685
+#: examhub/elementor/widgets/class-widget-search-filter.php:848
+#: examhub/elementor/widgets/class-widget-search-filter.php:923
+#: examhub/elementor/widgets/class-widget-search-filter.php:968
+msgid "رنگ متن"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:124
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:383
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:611
+#: examhub/elementor/widgets/class-widget-category-showcase.php:177
+#: examhub/elementor/widgets/class-widget-exam-section.php:400
+#: examhub/elementor/widgets/class-widget-search-filter.php:669
+#: examhub/elementor/widgets/class-widget-search-filter.php:723
+#: examhub/elementor/widgets/class-widget-search-filter.php:865
+#: examhub/elementor/widgets/class-widget-search-filter.php:1079
+msgid "هاور"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:195
+msgid "تعداد ستون"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:210
+msgid "فاصله"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:232
+msgid "گردی گوشه‌ها (Radius)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:255
+msgid "سایه (Shadow)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:264
+msgid "تایپوگرافی عنوان"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:272
+msgid "افکت Hover"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:275
+msgid "هیچ‌کدام"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:276
+msgid "بالا آمدن"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:277
+msgid "بزرگ‌نمایی تصویر"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:278
+msgid "تشدید سایه"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:300
+msgid "حالت تیره (Dark Mode)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:309
+msgid "پس‌زمینه (تیره)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:320
+msgid "متن (تیره)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:331
+msgid "حاشیه (تیره)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:360
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:389
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:601
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:626
+#: examhub/elementor/widgets/class-widget-category-showcase.php:156
+#: examhub/elementor/widgets/class-widget-category-showcase.php:182
+#: examhub/elementor/widgets/class-widget-download-library.php:304
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:160
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:179
+#: examhub/elementor/widgets/class-widget-exam-section.php:328
+#: examhub/elementor/widgets/class-widget-exam-section.php:347
+#: examhub/elementor/widgets/class-widget-exam-section.php:385
+#: examhub/elementor/widgets/class-widget-exam-section.php:404
+#: examhub/elementor/widgets/class-widget-search-filter.php:583
+#: examhub/elementor/widgets/class-widget-search-filter.php:648
+#: examhub/elementor/widgets/class-widget-search-filter.php:674
+msgid "رنگ پس‌زمینه"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:442
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:513
+msgid "دکمه «نمایش بیشتر / نمایش کمتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:451
+msgid "تبدیل به «نمایش کمتر» در پایان لیست"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:453
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:421
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:434
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:448
+#: examhub/elementor/widgets/class-widget-category-showcase.php:107
+#: examhub/elementor/widgets/class-widget-download-library.php:174
+#: examhub/elementor/widgets/class-widget-download-library.php:201
+#: examhub/elementor/widgets/class-widget-download-library.php:236
+#: examhub/elementor/widgets/class-widget-download-library.php:248
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:116
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:128
+#: examhub/elementor/widgets/class-widget-exam-section.php:204
+#: examhub/elementor/widgets/class-widget-exam-section.php:242
+#: examhub/elementor/widgets/class-widget-exam-section.php:254
+#: examhub/elementor/widgets/class-widget-exam-section.php:280
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:194
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:206
+#: examhub/elementor/widgets/class-widget-featured-exams.php:149
+#: examhub/elementor/widgets/class-widget-featured-exams.php:173
+#: examhub/elementor/widgets/class-widget-featured-exams.php:185
+#: examhub/elementor/widgets/class-widget-search-filter.php:190
+#: examhub/elementor/widgets/class-widget-search-filter.php:203
+#: examhub/elementor/widgets/class-widget-search-filter.php:258
+#: examhub/elementor/widgets/class-widget-search-filter.php:270
+#: examhub/elementor/widgets/class-widget-search-filter.php:282
+#: examhub/elementor/widgets/class-widget-search-filter.php:319
+#: examhub/elementor/widgets/class-widget-search-filter.php:331
+#: examhub/elementor/widgets/class-widget-search-filter.php:372
+#: examhub/elementor/widgets/class-widget-search-filter.php:472
+msgid "بله"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:454
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:422
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:435
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:449
+#: examhub/elementor/widgets/class-widget-category-showcase.php:108
+#: examhub/elementor/widgets/class-widget-download-library.php:175
+#: examhub/elementor/widgets/class-widget-download-library.php:202
+#: examhub/elementor/widgets/class-widget-download-library.php:237
+#: examhub/elementor/widgets/class-widget-download-library.php:249
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:117
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:129
+#: examhub/elementor/widgets/class-widget-exam-section.php:205
+#: examhub/elementor/widgets/class-widget-exam-section.php:243
+#: examhub/elementor/widgets/class-widget-exam-section.php:255
+#: examhub/elementor/widgets/class-widget-exam-section.php:281
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:195
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:207
+#: examhub/elementor/widgets/class-widget-featured-exams.php:150
+#: examhub/elementor/widgets/class-widget-featured-exams.php:174
+#: examhub/elementor/widgets/class-widget-featured-exams.php:186
+#: examhub/elementor/widgets/class-widget-search-filter.php:191
+#: examhub/elementor/widgets/class-widget-search-filter.php:204
+#: examhub/elementor/widgets/class-widget-search-filter.php:259
+#: examhub/elementor/widgets/class-widget-search-filter.php:271
+#: examhub/elementor/widgets/class-widget-search-filter.php:283
+#: examhub/elementor/widgets/class-widget-search-filter.php:320
+#: examhub/elementor/widgets/class-widget-search-filter.php:332
+#: examhub/elementor/widgets/class-widget-search-filter.php:373
+#: examhub/elementor/widgets/class-widget-search-filter.php:473
+msgid "خیر"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:457
+msgid "در صورت خاموش بودن، دکمه پس از نمایش همه نتایج به‌سادگی پنهان می‌شود (رفتار قبلی)."
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:464
+msgid "متن دکمه «نمایش بیشتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:466
+msgid "نمایش بیشتر"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:473
+msgid "آیکون دکمه «نمایش بیشتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:481
+msgid "متن دکمه «نمایش کمتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:483
+msgid "نمایش کمتر"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:491
+msgid "آیکون دکمه «نمایش کمتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:521
+msgid "ترازبندی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:525
+#: examhub/elementor/widgets/class-widget-search-filter.php:542
+msgid "ابتدا"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:529
+#: examhub/elementor/widgets/class-widget-search-filter.php:543
+msgid "وسط"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:533
+#: examhub/elementor/widgets/class-widget-search-filter.php:544
+msgid "انتها"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:544
+msgid "حالت «نمایش بیشتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:545
+msgid "حالت «نمایش کمتر»"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:647
+#: examhub/elementor/widgets/class-widget-search-filter.php:566
+msgid "گردی گوشه‌ها"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-card-style-controls.php:659
+msgid "فاصله داخلی (Padding)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:122
+#: examhub/elementor/widgets/class-widget-dark-mode-tokens.php:106
+msgid "تنظیمات حالت تیره (Dark Mode Settings)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:130
+msgid "حالت تیره (کلاسیک)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:145
+msgid "پس‌زمینه (گسترده)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:154
+msgid "پس‌زمینه ثانویه"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:165
+msgid "پس‌زمینه هاور"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:176
+msgid "متن (گسترده)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:185
+msgid "متن ثانویه"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:196
+msgid "متن کم‌رنگ (Muted)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:207
+msgid "متن عنوان (Heading)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:218
+msgid "حاشیه (گسترده)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:227
+#: examhub/elementor/widgets/class-widget-search-filter.php:883
+msgid "حاشیه فعال"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:238
+msgid "رنگ خط جداکننده (Divider)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:249
+msgid "دکمه‌ها (گسترده)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:257
+msgid "دکمه اصلی - عادی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:262
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:288
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:307
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:333
+#: examhub/elementor/widgets/class-widget-search-filter.php:839
+#: examhub/elementor/widgets/class-widget-search-filter.php:870
+#: examhub/elementor/widgets/class-widget-search-filter.php:905
+#: examhub/elementor/widgets/class-widget-search-filter.php:950
+#: examhub/elementor/widgets/class-widget-search-filter.php:995
+#: examhub/elementor/widgets/class-widget-search-filter.php:1071
+msgid "پس‌زمینه"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:283
+msgid "دکمه اصلی - هاور"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:302
+msgid "دکمه فرعی - عادی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:328
+msgid "دکمه فرعی - هاور"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:348
+msgid "وضعیت‌ها (Active / Selected / Hover / Focus)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:357
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:508
+msgid "رنگ وضعیت Active"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:368
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:509
+msgid "رنگ وضعیت Selected"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:379
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:510
+msgid "رنگ وضعیت Hover"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:390
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:511
+msgid "رنگ وضعیت Focus"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:419
+msgid "فعال‌سازی استایل‌دهی حالت تیره"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:425
+msgid "در صورت خاموش بودن، این ویجت هیچ توکن یا اسکریپتی منتشر نمی‌کند."
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:432
+msgid "تشخیص خودکار تم (Auto Detect Theme)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:439
+msgid "فقط زمانی فعال می‌شود که تم سایت خودش کلاس body.dark-mode را تنظیم نکرده باشد؛ بر اساس prefers-color-scheme مرورگر کاربر تصمیم می‌گیرد."
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:446
+msgid "اجبار حالت تیره (Force Dark Mode)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:453
+msgid "در صورت فعال بودن تم سایت همچنان در اولویت است؛ این گزینه فقط زمانی اعمال می‌شود که تم خودش body.dark-mode را تنظیم نکرده باشد. در صورت تداخل با «تشخیص خودکار»، این گزینه برتری دارد."
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:457
+msgid "سفارشی (Custom)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:466
+msgid "پیش‌تنظیم (Preset)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:471
+msgid "انتخاب یک پیش‌تنظیم، پالت رنگی را برای کل سایت تعیین می‌کند. برای تنظیم دستی تک‌تک رنگ‌ها، «سفارشی» را انتخاب کنید."
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:478
+msgid "نشانه‌های سراسری سفارشی (Global Dark Mode Tokens)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:489
+msgid "پس‌زمینه صفحه (Page Background)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:490
+msgid "پس‌زمینه ظرف (Container Background)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:491
+msgid "پس‌زمینه کارت (Card Background)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:492
+msgid "پس‌زمینه پاپ‌آپ (Popup Background)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:493
+msgid "پس‌زمینه کشویی (Dropdown Background)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:494
+msgid "متن اصلی (Primary Text)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:495
+msgid "متن ثانویه (Secondary Text)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:496
+msgid "متن کم‌رنگ (Muted Text)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:497
+msgid "متن عنوان (Heading Text)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:498
+msgid "حاشیه کارت (Card Border)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:499
+msgid "حاشیه ورودی (Input Border)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:500
+msgid "حاشیه فعال (Active Border)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:501
+msgid "رنگ جداکننده (Divider Color)"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:502
+msgid "پس‌زمینه دکمه اصلی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:503
+msgid "متن دکمه اصلی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:504
+msgid "هاور دکمه اصلی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:505
+msgid "پس‌زمینه دکمه فرعی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:506
+msgid "متن دکمه فرعی"
+msgstr ""
+
+#: examhub/elementor/traits/trait-examhub-dark-mode-settings.php:507
+msgid "هاور دکمه فرعی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:28
+msgid "ویترین دسته‌بندی‌ها (Category Showcase)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:69
+#: examhub/elementor/widgets/class-widget-download-library.php:161
+msgid "محتوا"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:77
+msgid "منبع دسته‌بندی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:94
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:166
+msgid "تعداد نمایش"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:105
+msgid "نمایش تعداد فایل‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:117
+msgid "آیکون پیش‌فرض (در صورت نبود آیکون اختصاصی)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:120
+msgid "برای دسته‌بندی‌هایی که آیکون اختصاصی ندارند نمایش داده می‌شود."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:127
+msgid "متن حالت خالی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:129
+msgid "دسته‌بندی‌ای یافت نشد."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:138
+msgid "ظاهر کاشی‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-category-showcase.php:253
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:269
+#. translators: %s: number of exam files in this branch.
+msgid "%s فایل"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-dark-mode-tokens.php:41
+msgid "ExamHub – نشانه‌های حالت تیره (سراسری)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-dark-mode-tokens.php:87
+msgid "راهنما"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-dark-mode-tokens.php:96
+msgid "این ویجت چیزی روی صفحه نمایش نمی‌دهد. کافی است یک‌بار آن را در هر بخشی از سایت (مثلاً قالب فوتر) قرار دهید تا تنظیمات حالت تیره برای همهٔ ویجت‌های ExamHub در سراسر سایت اعمال شود."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-dark-mode-tokens.php:132
+msgid "استایل‌دهی حالت تیره غیرفعال است."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:81
+msgid "کتابخانه دانلود (Download Library)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:172
+#: examhub/elementor/widgets/class-widget-search-filter.php:188
+msgid "نمایش فیلتر «%s»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:185
+msgid "دسته‌های «%s»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:190
+#: examhub/elementor/widgets/class-widget-exam-section.php:193
+msgid "خالی بگذارید تا همه‌ی دسته‌ها نمایش داده شوند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:199
+#: examhub/elementor/widgets/class-widget-search-filter.php:280
+msgid "نمایش جعبه جستجو"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:211
+#: examhub/elementor/widgets/class-widget-search-filter.php:292
+msgid "متن راهنمای جستجو"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:213
+#: examhub/elementor/widgets/class-widget-search-filter.php:294
+msgid "جستجوی نام آزمون…"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:221
+msgid "تعداد در هر بارگذاری"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:234
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:114
+#: examhub/elementor/widgets/class-widget-exam-section.php:240
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:192
+#: examhub/elementor/widgets/class-widget-featured-exams.php:171
+#: examhub/elementor/widgets/class-widget-search-filter.php:317
+msgid "نمایش تصویر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:246
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:126
+#: examhub/elementor/widgets/class-widget-exam-section.php:252
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:204
+#: examhub/elementor/widgets/class-widget-featured-exams.php:183
+#: examhub/elementor/widgets/class-widget-search-filter.php:329
+msgid "نمایش آمار دانلود"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:260
+msgid "ظاهر سایدبار"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:268
+msgid "محل سایدبار"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:271
+msgid "ابتدا (سمت راست در RTL)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:272
+msgid "انتها (سمت چپ در RTL)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:282
+msgid "عرض سایدبار"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:322
+msgid "گردی گوشه سایدبار"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-download-library.php:430
+msgid "جستجو"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:38
+msgid "کتابخانه جامع آزمون‌ها (Exam Mega Library)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:86
+msgid "ساختار درخت"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:95
+msgid "این ویجت درختِ «ساختار تحصیلی» را نمایش می‌دهد: شاخه‌های سطح‌بالا، زیرشاخه‌ها، و آزمون‌های هر زیرشاخه به‌صورت تنبل بارگذاری می‌شوند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:103
+msgid "تعداد آزمون در هر زیرشاخه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:140
+msgid "ظاهر درخت"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:149
+msgid "تایپوگرافی عنوان شاخه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:175
+msgid "باز"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:199
+msgid "گردی گوشه شاخه‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-mega-library.php:240
+msgid "محتوایی برای نمایش وجود ندارد."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:45
+msgid "بخش آزمون‌ها با تب (Exam Section)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:143
+msgid "تب‌ها و کارت‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:151
+msgid "منبع تب‌ها (دسته‌بندی)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:173
+msgid "محدود به والد (%s) — اختیاری"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:176
+msgid "— بدون محدودیت (همه) —"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:178
+msgid "اگر انتخاب شود، فقط زیرمجموعه‌های همین والد به‌عنوان تب نمایش داده می‌شوند و آزمون‌های هر تب هم به همان والد محدود می‌شوند — مطابق همان وابستگی سلسله‌مراتبی مقطع›پایه›رشته›درس که در بقیه ویجت‌ها استفاده می‌شود."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:188
+msgid "دسته‌های نمایشی (%s)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:202
+msgid "نمایش تب «همه»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:214
+msgid "تعداد کارت"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:225
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:177
+msgid "مرتب‌سازی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:228
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:180
+msgid "جدیدترین"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:229
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:181
+msgid "پربازدیدترین"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:230
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:182
+msgid "تصادفی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:231
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:183
+msgid "الفبایی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:270
+msgid "دکمه مشاهده همه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:278
+msgid "نمایش دکمه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:290
+msgid "متن دکمه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:292
+msgid "مشاهده همه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:300
+msgid "لینک دکمه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:317
+#: examhub/elementor/widgets/class-widget-featured-exams.php:197
+msgid "ظاهر تب‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:343
+#: examhub/elementor/widgets/class-widget-featured-exams.php:215
+#: examhub/elementor/widgets/class-widget-search-filter.php:878
+msgid "فعال"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-section.php:373
+msgid "ظاهر دکمه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:36
+msgid "ویترین آزمون‌ها (Exam Showcase)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:77
+msgid "فیلتر آزمون‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:89
+msgid "انتخاب مقطع گزینه‌های پایه را در پنل ادیتور محدود می‌کند و به همین ترتیب تا درس."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-exam-showcase.php:158
+msgid "نمایش"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:63
+msgid "آزمون‌های پیشنهادی (Featured Exams)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:116
+msgid "آزمون‌های پیشنهادی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:118
+msgid "آزمون‌های جدید"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:120
+msgid "پربازدیدترین‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:136
+msgid "تب‌ها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:147
+msgid "نمایش تب «%s»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:160
+msgid "تعداد نمایش در هر تب"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:227
+msgid "رنگ خط زیر تب"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-featured-exams.php:261
+msgid "حداقل یک تب را فعال کنید."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:83
+msgid "جستجو و فیلتر (Search & Filter)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:177
+msgid "فیلدهای فیلتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:201
+msgid "چندانتخابی «%s»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:215
+msgid "برچسب «%s»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:226
+msgid "مقدار پیش‌فرض «%s»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:233
+msgid "این مقدار در بار اول بارگذاری صفحه از پیش انتخاب می‌شود؛ کاربر همچنان می‌تواند آن را تغییر دهد."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:241
+msgid "نحوه ترکیب فیلترها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:244
+msgid "AND — همه فیلترهای انتخابی باید هم‌زمان صدق کنند"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:245
+msgid "OR — کافی است یکی از فیلترها صدق کند (حالت پیشرفته)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:249
+msgid "این گزینه فقط رابطه بین فیلدهای مختلف را تعیین می‌کند؛ مقادیر متعدد درون یک فیلد چندانتخابی همیشه با OR ترکیب می‌شوند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:256
+msgid "نمایش ردیف فیلترهای فعال (Chips)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:268
+msgid "نمایش تعداد نتایج"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:295
+msgid "فیلتر جستجو نیز مانند بقیه فیلدها فقط با کلیک «اعمال فیلتر» یا Enter اعمال می‌شود."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:303
+msgid "تعداد نتایج (نمایش اول و هر بار «نمایش بیشتر»)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:308
+msgid "وقتی نتایج بیشتری وجود داشته باشد، دکمه «نمایش بیشتر» همین تعداد را هر بار اضافه می‌کند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:343
+msgid "دکمه‌های اعمال / حذف فیلتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:351
+msgid "متن دکمه «اعمال فیلتر»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:353
+msgid "اعمال فیلتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:354
+msgid "این دکمه روی دسکتاپ و موبایل یکسان است — تنها نقطه‌ای که نتایج را واکشی می‌کند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:361
+msgid "متن دکمه «حذف فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:363
+msgid "حذف فیلترها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:370
+msgid "فیلتر با AJAX (بدون رفرش صفحه)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:376
+msgid "این ویجت فقط با AJAX کار می‌کند؛ این کنترل برای حالت‌های آینده رزرو شده و در حال حاضر خاموش کردن آن رفتاری تغییر نمی‌دهد."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:385
+msgid "پاپ‌آپ فیلتر موبایل"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:393
+msgid "حالت چیدمان (Layout Mode)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:396
+msgid "ترکیبی — دسکتاپ درون‌خطی، موبایل پاپ‌آپ (پیش‌فرض)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:397
+msgid "همیشه درون‌خطی — حتی در موبایل بدون پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:398
+msgid "همیشه پاپ‌آپ — حتی در دسکتاپ پشت دکمه «فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:401
+msgid "این کنترل به‌تنهایی تعیین می‌کند فیلترها در چه دستگاهی درون‌خطی و در چه دستگاهی پشت پاپ‌آپ باشند؛ بدون وابستگی به حالت تیره یا استایل‌های سراسری."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:408
+msgid "متن دکمه «فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:410
+#: examhub/elementor/widgets/class-widget-search-filter.php:433
+msgid "فیلترها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:418
+msgid "آیکون دکمه «فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:431
+msgid "عنوان پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:441
+msgid "نوع پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:444
+msgid "ورقه پایین (Bottom Sheet)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:445
+msgid "مودال مرکزی (Center Modal)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:455
+msgid "چیدمان فیلدها در پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:458
+msgid "ساده — همه فیلدها زیر هم (پیش‌فرض)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:459
+msgid "آکاردئونی — هر فیلد در یک بخش جمع‌شونده"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:463
+msgid "این گزینه فقط روی پاپ‌آپ موبایل اثر دارد؛ نوار دسکتاپ همیشه درون‌خطی و ساده می‌ماند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:470
+msgid "نمایش رشته‌های پیشنهادی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:476
+msgid "این ردیف همیشه در صفحهٔ اصلی نمایش داده می‌شود — مستقل از پاپ‌آپ و هرگز داخل آن نیست (طبق قانون «Popup Isolation»)."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:483
+msgid "محل قرارگیری رشته‌های پیشنهادی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:486
+msgid "بالای دکمه/نوار فیلتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:487
+msgid "پایین دکمه/نوار فیلتر (بالای نتایج)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:500
+msgid "رشته پیشنهادی %d"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:514
+msgid "ظاهر نوار جستجو و فیلتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:522
+msgid "فاصله بین فیلدها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:539
+msgid "چیدمان نوار"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:545
+msgid "بین فیلدها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:557
+msgid "فیلدهای ورودی (انتخاب‌گرها و جستجو)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:605
+msgid "رنگ حاشیه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:615
+msgid "فوکوس"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:620
+msgid "رنگ حاشیه (فوکوس)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:635
+msgid "دکمه اعمال فیلتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:700
+msgid "دکمه حذف فیلترها"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:713
+#: examhub/elementor/widgets/class-widget-search-filter.php:728
+msgid "رنگ متن و حاشیه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:745
+msgid "ظاهر پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:754
+#: examhub/elementor/widgets/class-widget-search-filter.php:1022
+msgid "رنگ پوشش پس‌زمینه (Overlay)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:765
+msgid "رنگ پس‌زمینه پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:776
+msgid "رنگ فیلتر فعال"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:778
+msgid "رنگ حاشیه/پس‌زمینه فیلدهایی که مقدار انتخاب‌شده دارند و دکمه‌های رشته پیشنهادی فعال."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:819
+msgid "حالت تیره — فیلترها، پاپ‌آپ و موبایل"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:827
+msgid "نوار فیلتر و ورودی‌ها (Dropdowns)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:857
+#: examhub/elementor/widgets/class-widget-search-filter.php:932
+msgid "حاشیه"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:896
+msgid "فیلترهای فعال (Chips)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:914
+#: examhub/elementor/widgets/class-widget-search-filter.php:959
+msgid "پس‌زمینه فعال"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:941
+msgid "رشته‌های پیشنهادی (Suggested Subjects)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:977
+msgid "رنگ هاور"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:986
+msgid "پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1004
+msgid "پس‌زمینه هدر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1013
+msgid "پس‌زمینه فوتر"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1031
+msgid "شفافیت پوشش (Overlay Opacity)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1049
+msgid "دکمه بستن پاپ‌آپ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1062
+#: examhub/elementor/widgets/class-widget-search-filter.php:1084
+msgid "رنگ"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1097
+msgid "موبایل (پاپ‌آپ/دکمه فیلترها)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1100
+msgid "این رنگ‌ها فقط در عرض موبایل (زیر ۷۶۸ پیکسل) اعمال می‌شوند و هیچ‌گاه با مقادیر دسکتاپ تداخل ندارند."
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1107
+msgid "پس‌زمینه دکمه «فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1116
+msgid "رنگ متن/آیکون دکمه «فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1125
+msgid "حاشیه دکمه «فیلترها»"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1134
+msgid "پس‌زمینه ردیف رشته‌های پیشنهادی"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1143
+msgid "پس‌زمینه ورقه پایین (Bottom Sheet)"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1318
+msgid "بستن"
+msgstr ""
+
+#: examhub/elementor/widgets/class-widget-search-filter.php:1419
+#. translators: %s: filter field label, e.g. "پایه". */ 'label' => sprintf( __( 'نمایش فیلتر «%s»', 'examhub' ), $this->get_field_label( $key ) ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', ) ); $this->add_control( "examhub_multiselect_{$key}", array( /* translators: %s: filter field label, e.g. "پایه". */ 'label' => sprintf( __( 'چندانتخابی «%s»', 'examhub' ), $this->get_field_label( $key ) ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => '', 'condition' => array( $field['switch'] => 'yes' ), ) ); $this->add_control( "examhub_label_{$key}", array( /* translators: %s: filter field label, e.g. "پایه". */ 'label' => sprintf( __( 'برچسب «%s»', 'examhub' ), $this->get_field_label( $key ) ), 'type' => \Elementor\Controls_Manager::TEXT, 'placeholder' => $this->get_field_label( $key ), 'condition' => array( $field['switch'] => 'yes' ), ) ); $this->add_control( "examhub_default_{$key}", array( /* translators: %s: filter field label, e.g. "پایه". */ 'label' => sprintf( __( 'مقدار پیش‌فرض «%s»', 'examhub' ), $this->get_field_label( $key ) ), 'type' => \Elementor\Controls_Manager::SELECT2, 'label_block' => true, 'options' => array_key_exists( $field['taxonomy'], Examhub_Query::STRUCTURE_TAXONOMIES ) ? Examhub_Query::get_term_choices( $field['taxonomy'] ) : Examhub_Query::get_term_options( $field['taxonomy'] ), 'condition' => array( $field['switch'] => 'yes' ), 'description' => __( 'این مقدار در بار اول بارگذاری صفحه از پیش انتخاب می‌شود؛ کاربر همچنان می‌تواند آن را تغییر دهد.', 'examhub' ), ) ); } $this->add_control( 'examhub_match_type', array( 'label' => __( 'نحوه ترکیب فیلترها', 'examhub' ), 'type' => \Elementor\Controls_Manager::SELECT, 'options' => array( 'AND' => __( 'AND — همه فیلترهای انتخابی باید هم‌زمان صدق کنند', 'examhub' ), 'OR' => __( 'OR — کافی است یکی از فیلترها صدق کند (حالت پیشرفته)', 'examhub' ), ), 'default' => 'AND', 'separator' => 'before', 'description' => __( 'این گزینه فقط رابطه بین فیلدهای مختلف را تعیین می‌کند؛ مقادیر متعدد درون یک فیلد چندانتخابی همیشه با OR ترکیب می‌شوند.', 'examhub' ), ) ); $this->add_control( 'examhub_show_chips', array( 'label' => __( 'نمایش ردیف فیلترهای فعال (Chips)', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', ) ); $this->add_control( 'examhub_show_result_count', array( 'label' => __( 'نمایش تعداد نتایج', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', ) ); $this->add_control( 'examhub_show_search', array( 'label' => __( 'نمایش جعبه جستجو', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', ) ); $this->add_control( 'examhub_search_placeholder', array( 'label' => __( 'متن راهنمای جستجو', 'examhub' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __( 'جستجوی نام آزمون…', 'examhub' ), 'description' => __( 'فیلتر جستجو نیز مانند بقیه فیلدها فقط با کلیک «اعمال فیلتر» یا Enter اعمال می‌شود.', 'examhub' ), 'condition' => array( 'examhub_show_search' => 'yes' ), ) ); $this->add_control( 'examhub_count', array( 'label' => __( 'تعداد نتایج (نمایش اول و هر بار «نمایش بیشتر»)', 'examhub' ), 'type' => \Elementor\Controls_Manager::NUMBER, 'min' => 1, 'max' => 48, 'default' => 12, 'description' => __( 'وقتی نتایج بیشتری وجود داشته باشد، دکمه «نمایش بیشتر» همین تعداد را هر بار اضافه می‌کند.', 'examhub' ), ) ); $this->register_examhub_toggle_button_content_controls(); $this->add_control( 'examhub_show_image', array( 'label' => __( 'نمایش تصویر', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', ) ); $this->add_control( 'examhub_show_stats', array( 'label' => __( 'نمایش آمار دانلود', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', ) ); $this->end_controls_section(); $this->start_controls_section( 'examhub_actions_content_section', array( 'label' => __( 'دکمه‌های اعمال / حذف فیلتر', 'examhub' ), 'tab' => \Elementor\Controls_Manager::TAB_CONTENT, ) ); $this->add_control( 'examhub_apply_text', array( 'label' => __( 'متن دکمه «اعمال فیلتر»', 'examhub' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __( 'اعمال فیلتر', 'examhub' ), 'description' => __( 'این دکمه روی دسکتاپ و موبایل یکسان است — تنها نقطه‌ای که نتایج را واکشی می‌کند.', 'examhub' ), ) ); $this->add_control( 'examhub_reset_text', array( 'label' => __( 'متن دکمه «حذف فیلترها»', 'examhub' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __( 'حذف فیلترها', 'examhub' ), ) ); $this->add_control( 'examhub_ajax_enabled', array( 'label' => __( 'فیلتر با AJAX (بدون رفرش صفحه)', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', 'description' => __( 'این ویجت فقط با AJAX کار می‌کند؛ این کنترل برای حالت‌های آینده رزرو شده و در حال حاضر خاموش کردن آن رفتاری تغییر نمی‌دهد.', 'examhub' ), ) ); $this->end_controls_section(); $this->start_controls_section( 'examhub_popup_content_section', array( 'label' => __( 'پاپ‌آپ فیلتر موبایل', 'examhub' ), 'tab' => \Elementor\Controls_Manager::TAB_CONTENT, ) ); $this->add_control( 'examhub_layout_mode', array( 'label' => __( 'حالت چیدمان (Layout Mode)', 'examhub' ), 'type' => \Elementor\Controls_Manager::SELECT, 'options' => array( 'hybrid' => __( 'ترکیبی — دسکتاپ درون‌خطی، موبایل پاپ‌آپ (پیش‌فرض)', 'examhub' ), 'inline_always' => __( 'همیشه درون‌خطی — حتی در موبایل بدون پاپ‌آپ', 'examhub' ), 'popup_always' => __( 'همیشه پاپ‌آپ — حتی در دسکتاپ پشت دکمه «فیلترها»', 'examhub' ), ), 'default' => 'hybrid', 'description' => __( 'این کنترل به‌تنهایی تعیین می‌کند فیلترها در چه دستگاهی درون‌خطی و در چه دستگاهی پشت پاپ‌آپ باشند؛ بدون وابستگی به حالت تیره یا استایل‌های سراسری.', 'examhub' ), ) ); $this->add_control( 'examhub_filters_button_text', array( 'label' => __( 'متن دکمه «فیلترها»', 'examhub' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __( 'فیلترها', 'examhub' ), 'condition' => array( 'examhub_layout_mode' => array( 'hybrid', 'popup_always' ) ), ) ); $this->add_control( 'examhub_filters_button_icon', array( 'label' => __( 'آیکون دکمه «فیلترها»', 'examhub' ), 'type' => \Elementor\Controls_Manager::ICONS, 'default' => array( 'value' => 'eicon-filter', 'library' => 'eicons', ), 'condition' => array( 'examhub_layout_mode' => array( 'hybrid', 'popup_always' ) ), ) ); $this->add_control( 'examhub_popup_title', array( 'label' => __( 'عنوان پاپ‌آپ', 'examhub' ), 'type' => \Elementor\Controls_Manager::TEXT, 'default' => __( 'فیلترها', 'examhub' ), 'condition' => array( 'examhub_layout_mode' => array( 'hybrid', 'popup_always' ) ), ) ); $this->add_control( 'examhub_popup_animation', array( 'label' => __( 'نوع پاپ‌آپ', 'examhub' ), 'type' => \Elementor\Controls_Manager::SELECT, 'options' => array( 'slide-up' => __( 'ورقه پایین (Bottom Sheet)', 'examhub' ), 'fade' => __( 'مودال مرکزی (Center Modal)', 'examhub' ), ), 'default' => 'slide-up', 'condition' => array( 'examhub_layout_mode' => array( 'hybrid', 'popup_always' ) ), ) ); $this->add_control( 'examhub_popup_field_style', array( 'label' => __( 'چیدمان فیلدها در پاپ‌آپ', 'examhub' ), 'type' => \Elementor\Controls_Manager::SELECT, 'options' => array( 'flat' => __( 'ساده — همه فیلدها زیر هم (پیش‌فرض)', 'examhub' ), 'accordion' => __( 'آکاردئونی — هر فیلد در یک بخش جمع‌شونده', 'examhub' ), ), 'default' => 'flat', 'condition' => array( 'examhub_layout_mode' => array( 'hybrid', 'popup_always' ) ), 'description' => __( 'این گزینه فقط روی پاپ‌آپ موبایل اثر دارد؛ نوار دسکتاپ همیشه درون‌خطی و ساده می‌ماند.', 'examhub' ), ) ); $this->add_control( 'examhub_show_featured_majors', array( 'label' => __( 'نمایش رشته‌های پیشنهادی', 'examhub' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'label_on' => __( 'بله', 'examhub' ), 'label_off' => __( 'خیر', 'examhub' ), 'return_value' => 'yes', 'default' => 'yes', 'description' => __( 'این ردیف همیشه در صفحهٔ اصلی نمایش داده می‌شود — مستقل از پاپ‌آپ و هرگز داخل آن نیست (طبق قانون «Popup Isolation»).', 'examhub' ), ) ); $this->add_control( 'examhub_featured_majors_position', array( 'label' => __( 'محل قرارگیری رشته‌های پیشنهادی', 'examhub' ), 'type' => \Elementor\Controls_Manager::SELECT, 'options' => array( 'above' => __( 'بالای دکمه/نوار فیلتر', 'examhub' ), 'below' => __( 'پایین دکمه/نوار فیلتر (بالای نتایج)', 'examhub' ), ), 'default' => 'above', 'condition' => array( 'examhub_show_featured_majors' => 'yes' ), ) ); for ( $i = 1; $i <= 4; $i++ ) { $this->add_control( "examhub_featured_major_{$i}", array( /* translators: %d: featured major slot number, 1-4. */ 'label' => sprintf( __( 'رشته پیشنهادی %d', 'examhub' ), $i ), 'type' => \Elementor\Controls_Manager::SELECT2, 'label_block' => true, 'options' => Examhub_Query::get_term_choices( 'examhub_field' ), 'condition' => array( 'examhub_show_featured_majors' => 'yes' ), ) ); } $this->end_controls_section(); $this->start_controls_section( 'examhub_bar_style_section', array( 'label' => __( 'ظاهر نوار جستجو و فیلتر', 'examhub' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE, ) ); $this->add_responsive_control( 'examhub_bar_gap', array( 'label' => __( 'فاصله بین فیلدها', 'examhub' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => array( 'px' ), 'range' => array( 'px' => array( 'min' => 0, 'max' => 40 ) ), 'default' => array( 'size' => 10, 'unit' => 'px', ), 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-bar-gap: {{SIZE}}{{UNIT}};', ), ) ); $this->add_control( 'examhub_bar_align', array( 'label' => __( 'چیدمان نوار', 'examhub' ), 'type' => \Elementor\Controls_Manager::SELECT, 'options' => array( 'flex-start' => __( 'ابتدا', 'examhub' ), 'center' => __( 'وسط', 'examhub' ), 'flex-end' => __( 'انتها', 'examhub' ), 'space-between' => __( 'بین فیلدها', 'examhub' ), ), 'default' => 'flex-start', 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-bar-justify: {{VALUE}};', ), ) ); $this->add_control( 'examhub_field_heading', array( 'label' => __( 'فیلدهای ورودی (انتخاب‌گرها و جستجو)', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->add_responsive_control( 'examhub_field_radius', array( 'label' => __( 'گردی گوشه‌ها', 'examhub' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'size_units' => array( 'px', '%' ), 'range' => array( 'px' => array( 'min' => 0, 'max' => 40 ) ), 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-field-radius: {{SIZE}}{{UNIT}};', ), ) ); $this->start_controls_tabs( 'examhub_field_color_tabs' ); $this->start_controls_tab( 'examhub_field_color_tab_normal', array( 'label' => __( 'عادی', 'examhub' ) ) ); $this->add_control( 'examhub_field_bg', array( 'label' => __( 'رنگ پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-field-bg: {{VALUE}};', ), ) ); $this->add_control( 'examhub_field_color', array( 'label' => __( 'رنگ متن', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-field-color: {{VALUE}};', ), ) ); $this->add_control( 'examhub_field_border', array( 'label' => __( 'رنگ حاشیه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-field-border: {{VALUE}};', ), ) ); $this->end_controls_tab(); $this->start_controls_tab( 'examhub_field_color_tab_focus', array( 'label' => __( 'فوکوس', 'examhub' ) ) ); $this->add_control( 'examhub_field_border_focus', array( 'label' => __( 'رنگ حاشیه (فوکوس)', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-field-border-focus: {{VALUE}};', ), ) ); $this->end_controls_tab(); $this->end_controls_tabs(); $this->add_control( 'examhub_apply_heading', array( 'label' => __( 'دکمه اعمال فیلتر', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->start_controls_tabs( 'examhub_apply_color_tabs' ); $this->start_controls_tab( 'examhub_apply_color_tab_normal', array( 'label' => __( 'عادی', 'examhub' ) ) ); $this->add_control( 'examhub_submit_bg', array( 'label' => __( 'رنگ پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-apply-bg: {{VALUE}};', ), ) ); $this->add_control( 'examhub_submit_color', array( 'label' => __( 'رنگ متن', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-apply-color: {{VALUE}};', ), ) ); $this->end_controls_tab(); $this->start_controls_tab( 'examhub_apply_color_tab_hover', array( 'label' => __( 'هاور', 'examhub' ) ) ); $this->add_control( 'examhub_submit_bg_hover', array( 'label' => __( 'رنگ پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-apply-bg-hover: {{VALUE}};', ), ) ); $this->add_control( 'examhub_submit_color_hover', array( 'label' => __( 'رنگ متن', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-apply-color-hover: {{VALUE}};', ), ) ); $this->end_controls_tab(); $this->end_controls_tabs(); $this->add_control( 'examhub_reset_heading', array( 'label' => __( 'دکمه حذف فیلترها', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->start_controls_tabs( 'examhub_reset_color_tabs' ); $this->start_controls_tab( 'examhub_reset_color_tab_normal', array( 'label' => __( 'عادی', 'examhub' ) ) ); $this->add_control( 'examhub_reset_color', array( 'label' => __( 'رنگ متن و حاشیه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-reset-color: {{VALUE}};', ), ) ); $this->end_controls_tab(); $this->start_controls_tab( 'examhub_reset_color_tab_hover', array( 'label' => __( 'هاور', 'examhub' ) ) ); $this->add_control( 'examhub_reset_color_hover', array( 'label' => __( 'رنگ متن و حاشیه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter__bar' => '--examhub-sf-reset-color-hover: {{VALUE}};', ), ) ); $this->end_controls_tab(); $this->end_controls_tabs(); $this->end_controls_section(); $this->start_controls_section( 'examhub_popup_style_section', array( 'label' => __( 'ظاهر پاپ‌آپ', 'examhub' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE, 'condition' => array( 'examhub_layout_mode' => array( 'hybrid', 'popup_always' ) ), ) ); $this->add_control( 'examhub_overlay_color', array( 'label' => __( 'رنگ پوشش پس‌زمینه (Overlay)', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter' => '--examhub-sf-overlay-bg: {{VALUE}};', ), ) ); $this->add_control( 'examhub_panel_bg', array( 'label' => __( 'رنگ پس‌زمینه پاپ‌آپ', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( '{{WRAPPER}} .examhub-search-filter' => '--examhub-sf-panel-bg: {{VALUE}};', ), ) ); $this->add_control( 'examhub_active_filter_color', array( 'label' => __( 'رنگ فیلتر فعال', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'description' => __( 'رنگ حاشیه/پس‌زمینه فیلدهایی که مقدار انتخاب‌شده دارند و دکمه‌های رشته پیشنهادی فعال.', 'examhub' ), 'selectors' => array( '{{WRAPPER}} .examhub-search-filter' => '--examhub-sf-active-color: {{VALUE}};', ), ) ); $this->end_controls_section(); $this->register_examhub_dark_mode_settings_section( '{{WRAPPER}} .examhub-search-filter' ); $this->register_examhub_sf_dark_mode_style_controls(); $this->register_examhub_toggle_button_style_controls( '.examhub-search-filter__footer' ); $this->register_examhub_card_style_controls(); } /** * Register the bespoke dark-mode Style controls specific to this widget's * filters bar/dropdowns, chips, suggested subjects, popup, and mobile * bottom-sheet — none of which exist in the generic card trait, since no * other ExamHub widget has a popup or a suggested-subjects carousel. * * Every control here writes a NEW CSS variable (the `--examhub-sf-dark-*` * namespace); none of them touch the existing `--examhub-sf-*` vars set * by this widget's "ظاهر نوار جستجو و فیلتر"/"ظاهر پاپ‌آپ" sections above, * which keep applying identically in both light and dark mode as before. * In examhub-dark-mode.css, each new var sits as the most-specific tier * in its fallback chain, ahead of the existing `--examhub-sf-*` value. * * @since 2.0.0 */ private function register_examhub_sf_dark_mode_style_controls() { $wrapper = '{{WRAPPER}} .examhub-search-filter'; $dark = "body.dark-mode {$wrapper}, [data-examhub-theme=\"dark\"] {$wrapper}"; $this->start_controls_section( 'examhub_sf_dark_mode_style_section', array( 'label' => __( 'حالت تیره — فیلترها، پاپ‌آپ و موبایل', 'examhub' ), 'tab' => \Elementor\Controls_Manager::TAB_STYLE, ) ); $this->add_control( 'examhub_sf_dark_bar_heading', array( 'label' => __( 'نوار فیلتر و ورودی‌ها (Dropdowns)', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, ) ); $this->start_controls_tabs( 'examhub_sf_dark_field_tabs' ); $this->start_controls_tab( 'examhub_sf_dark_field_tab_normal', array( 'label' => __( 'عادی', 'examhub' ) ) ); $this->add_control( 'examhub_sf_dark_field_bg', array( 'label' => __( 'پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-field-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_field_color', array( 'label' => __( 'رنگ متن', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-field-color: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_field_border', array( 'label' => __( 'حاشیه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-field-border: {{VALUE}};' ), ) ); $this->end_controls_tab(); $this->start_controls_tab( 'examhub_sf_dark_field_tab_hover', array( 'label' => __( 'هاور', 'examhub' ) ) ); $this->add_control( 'examhub_sf_dark_field_bg_hover', array( 'label' => __( 'پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-field-bg-hover: {{VALUE}};' ), ) ); $this->end_controls_tab(); $this->start_controls_tab( 'examhub_sf_dark_field_tab_active', array( 'label' => __( 'فعال', 'examhub' ) ) ); $this->add_control( 'examhub_sf_dark_field_border_active', array( 'label' => __( 'حاشیه فعال', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-field-border-active: {{VALUE}};' ), ) ); $this->end_controls_tab(); $this->end_controls_tabs(); $this->add_control( 'examhub_sf_dark_chips_heading', array( 'label' => __( 'فیلترهای فعال (Chips)', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->add_control( 'examhub_sf_dark_chip_bg', array( 'label' => __( 'پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-chip-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_chip_active_bg', array( 'label' => __( 'پس‌زمینه فعال', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-chip-active-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_chip_color', array( 'label' => __( 'رنگ متن', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-chip-color: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_chip_border', array( 'label' => __( 'حاشیه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-chip-border: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_majors_heading', array( 'label' => __( 'رشته‌های پیشنهادی (Suggested Subjects)', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->add_control( 'examhub_sf_dark_major_bg', array( 'label' => __( 'پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-major-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_major_active_bg', array( 'label' => __( 'پس‌زمینه فعال', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-major-active-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_major_color', array( 'label' => __( 'رنگ متن', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-major-color: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_major_hover', array( 'label' => __( 'رنگ هاور', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-major-hover: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_popup_heading', array( 'label' => __( 'پاپ‌آپ', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->add_control( 'examhub_sf_dark_popup_bg', array( 'label' => __( 'پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-popup-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_popup_header_bg', array( 'label' => __( 'پس‌زمینه هدر', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-popup-header-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_popup_footer_bg', array( 'label' => __( 'پس‌زمینه فوتر', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-popup-footer-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_popup_overlay_color', array( 'label' => __( 'رنگ پوشش پس‌زمینه (Overlay)', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-overlay-color: {{VALUE}};' ), ) ); $this->add_responsive_control( 'examhub_sf_dark_popup_overlay_opacity', array( 'label' => __( 'شفافیت پوشش (Overlay Opacity)', 'examhub' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'range' => array( 'px' => array( 'min' => 0, 'max' => 1, 'step' => 0.05 ) ), 'selectors' => array( $dark => '--examhub-sf-dark-overlay-opacity: {{SIZE}};' ), ) ); $this->add_group_control( \Elementor\Group_Control_Box_Shadow::get_type(), array( 'name' => 'examhub_sf_dark_popup_shadow', 'selector' => "body.dark-mode {$wrapper} .examhub-search-filter__panel, [data-examhub-theme=\"dark\"] {$wrapper} .examhub-search-filter__panel", ) ); $this->add_control( 'examhub_sf_dark_close_heading', array( 'label' => __( 'دکمه بستن پاپ‌آپ', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', ) ); $this->start_controls_tabs( 'examhub_sf_dark_close_tabs' ); $this->start_controls_tab( 'examhub_sf_dark_close_tab_normal', array( 'label' => __( 'عادی', 'examhub' ) ) ); $this->add_control( 'examhub_sf_dark_close_color', array( 'label' => __( 'رنگ', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-close-color: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_close_bg', array( 'label' => __( 'پس‌زمینه', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-close-bg: {{VALUE}};' ), ) ); $this->end_controls_tab(); $this->start_controls_tab( 'examhub_sf_dark_close_tab_hover', array( 'label' => __( 'هاور', 'examhub' ) ) ); $this->add_control( 'examhub_sf_dark_close_color_hover', array( 'label' => __( 'رنگ', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-close-color-hover: {{VALUE}};' ), ) ); $this->end_controls_tab(); $this->end_controls_tabs(); $this->add_control( 'examhub_sf_dark_mobile_heading', array( 'label' => __( 'موبایل (پاپ‌آپ/دکمه فیلترها)', 'examhub' ), 'type' => \Elementor\Controls_Manager::HEADING, 'separator' => 'before', 'description' => __( 'این رنگ‌ها فقط در عرض موبایل (زیر ۷۶۸ پیکسل) اعمال می‌شوند و هیچ‌گاه با مقادیر دسکتاپ تداخل ندارند.', 'examhub' ), ) ); $this->add_control( 'examhub_sf_dark_mobile_trigger_bg', array( 'label' => __( 'پس‌زمینه دکمه «فیلترها»', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-mobile-trigger-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_mobile_trigger_color', array( 'label' => __( 'رنگ متن/آیکون دکمه «فیلترها»', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-mobile-trigger-color: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_mobile_trigger_border', array( 'label' => __( 'حاشیه دکمه «فیلترها»', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-mobile-trigger-border: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_mobile_majors_bg', array( 'label' => __( 'پس‌زمینه ردیف رشته‌های پیشنهادی', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-mobile-majors-bg: {{VALUE}};' ), ) ); $this->add_control( 'examhub_sf_dark_mobile_sheet_bg', array( 'label' => __( 'پس‌زمینه ورقه پایین (Bottom Sheet)', 'examhub' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => array( $dark => '--examhub-sf-dark-mobile-sheet-bg: {{VALUE}};' ), ) ); $this->end_controls_section(); } /** * Collect every facet's "مقدار پیش‌فرض" (default selected value) into a * filter-key => value map, ready to merge into Examhub_Query::get_exams() * for the initial server-rendered page — so the editor-configured default * actually narrows the first page of results, not just the dropdown's * pre-selected <option>. * * @since 1.5.0 * @param array $settings Elementor widget settings. * @return array<string,string> */ private function get_default_filter_values( array $settings ) { $defaults = array(); foreach ( self::FIELDS as $key => $field ) { $value = trim( (string) ( $settings[ "examhub_default_{$key}" ] ?? '' ) ); if ( '' !== $value ) { $defaults[ $key ] = $value; } } return $defaults; } /** * Resolve the up-to-4 "رشته پیشنهادی" (Featured Major) quick-filter * buttons configured in the editor into a term_id => name map, skipping * any slot left empty. * * @since 1.2.0 * @param array $settings Elementor widget settings. * @return array<int,string> */ private function get_featured_majors( array $settings ) { $all = Examhub_Query::get_term_choices( 'examhub_field' ); $majors = array(); for ( $i = 1; $i <= 4; $i++ ) { $term_id = (int) ( $settings[ "examhub_featured_major_{$i}" ] ?? 0 ); if ( $term_id && isset( $all[ $term_id ] ) ) { $majors[ $term_id ] = $all[ $term_id ]; } } return $majors; } /** * Output the widget on the front-end: the filter bar (rendered once, * inline on desktop/tablet; repositioned into a mobile popup by CSS + * examhub-frontend.js), an initial page of results (rendered * server-side) that the front-end script replaces on filter change, and * — when more than one page exists — a "نمایش بیشتر" button that appends * the next page in place (see loadSearchFilterPage() in * public/js/examhub-frontend.js). * * @since 1.0.0 */ protected function render() { $settings = $this->get_settings_for_display(); $display = $this->get_examhub_display_atts( $settings ); $count = max( 1, (int) $settings['examhub_count'] ); $layout_mode = in_array( $settings['examhub_layout_mode'] ?? 'hybrid', array( 'hybrid', 'inline_always', 'popup_always' ), true ) ? $settings['examhub_layout_mode'] : 'hybrid'; $popup_enabled = in_array( $layout_mode, array( 'hybrid', 'popup_always' ), true ); $show_majors = ! empty( $settings['examhub_show_featured_majors'] ) && 'yes' === $settings['examhub_show_featured_majors']; $majors = $show_majors ? $this->get_featured_majors( $settings ) : array(); $majors_below = $show_majors && 'below' === ( $settings['examhub_featured_majors_position'] ?? 'above' ); $panel_id = 'examhub-sf-panel-' . $this->get_id(); $default_values = $this->get_default_filter_values( $settings ); $result = Examhub_Query::get_exams( array_merge( $default_values, array( 'posts_per_page' => $count, 'paged' => 1, ) ) ); // Pulled into a closure (not a separate method) since it's only ever // emitted from this one render path, in one of two possible // positions (see $majors_below above). $render_featured_majors = function () use ( $majors ) { ?> <!-- "رشته‌های پیشنهادی" shortcut row — deliberately a sibling of the popup (.examhub-search-filter__panel), NOT nested inside it (Popup Isolation rule). It must stay visible on the main screen at all times; nesting it inside the popup would tie its visibility to .is-popup-open and hide it until the user opens the modal, which defeats the point of a quick shortcut. --> <div class="examhub-search-filter__featured-majors"> <?php foreach ( $majors as $term_id => $name ) : ?> <button type="button" class="examhub-search-filter__featured-major" data-term-id="<?php echo esc_attr( $term_id ); ?>"> <?php echo esc_html( $name ); ?> </button> <?php endforeach; ?> </div> <?php }; ?> <div class="examhub-search-filter" data-per-page="<?php echo esc_attr( $count ); ?>" data-show-image="<?php echo $display['show_image'] ? '1' : '0'; ?>" data-show-stats="<?php echo $display['show_stats'] ? '1' : '0'; ?>" data-paged="1" data-max-pages="<?php echo esc_attr( $result['max_num_pages'] ); ?>" data-popup-enabled="<?php echo $popup_enabled ? '1' : '0'; ?>" data-layout-mode="<?php echo esc_attr( $layout_mode ); ?>" data-animation="<?php echo esc_attr( $settings['examhub_popup_animation'] ); ?>" data-match-type="<?php echo esc_attr( 'OR' === $settings['examhub_match_type'] ? 'OR' : 'AND' ); ?>" > <?php if ( $show_majors && ! empty( $majors ) && ! $majors_below ) : ?> <?php $render_featured_majors(); ?> <?php endif; ?> <?php if ( $popup_enabled ) : ?> <button type="button" class="examhub-search-filter__filters-toggle examhub-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="<?php echo esc_attr( $panel_id ); ?>"> <span class="examhub-search-filter__filters-toggle-icon" aria-hidden="true"> <?php if ( ! empty( $settings['examhub_filters_button_icon']['value'] ) ) : ?> <?php // Wrapped in our own fixed-size <span> (see CSS) so Elementor's // icon — whether an SVG (sized via 1em, tied to font-size) or an // icon-font glyph (sized via font-size directly) — can never // inherit a font-size from this button, an Elementor global icon // setting, or a theme default. The wrapper is the single thing // CSS needs to size; what Elementor renders inside it doesn't // matter. \Elementor\Icons_Manager::render_icon( $settings['examhub_filters_button_icon'], array( 'aria-hidden' => 'true' ) ); ?> <?php else : ?> <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"> <path d="M3 5h18M6 12h12M10 19h4" stroke="currentColor" stroke-width="2" stroke-linecap="round" /> </svg> <?php endif; ?> </span> <span class="examhub-search-filter__filters-toggle-text"><?php echo esc_html( $settings['examhub_filters_button_text'] ); ?></span> </button> <div class="examhub-search-filter__overlay"></div> <?php endif; ?> <?php if ( $show_majors && ! empty( $majors ) && $majors_below ) : ?> <?php $render_featured_majors(); ?> <?php endif; ?> <div class="examhub-search-filter__panel" id="<?php echo esc_attr( $panel_id ); ?>" role="dialog" aria-modal="true" aria-label="<?php echo esc_attr( $settings['examhub_popup_title'] ); ?>" > <?php if ( $popup_enabled ) : ?> <div class="examhub-search-filter__panel-header"> <span class="examhub-search-filter__panel-title"><?php echo esc_html( $settings['examhub_popup_title'] ); ?></span> <button type="button" class="examhub-search-filter__panel-close" aria-label="<?php esc_attr_e( 'بستن', 'examhub' ); ?>">&times;</button> </div> <?php endif; ?> <div class="examhub-search-filter__panel-body"> <?php $is_accordion = $popup_enabled && 'accordion' === ( $settings['examhub_popup_field_style'] ?? 'flat' ); $field_index = 0; ?> <div class="examhub-search-filter__bar<?php echo $is_accordion ? ' examhub-search-filter__bar--accordion' : ''; ?>"> <?php foreach ( self::FIELDS as $key => $field ) : ?> <?php if ( ! empty( $settings[ $field['switch'] ] ) && 'yes' === $settings[ $field['switch'] ] ) : ?> <?php // Flat model: every facet is independent, so each one // always lists its taxonomy's full term set and is // always enabled — there is no parent/child relation to // wait on any more. Structure taxonomies (مقطع/پایه/ // رشته/درس) are still keyed by term_id (matches // Examhub_Query::get_exams()'s tax_query 'field'); the // flat facets (سال/نوبت/نوع‌آزمون) stay slug-keyed. $is_structure_facet = array_key_exists( $field['taxonomy'], Examhub_Query::STRUCTURE_TAXONOMIES ); $is_multiselect = ! empty( $settings[ "examhub_multiselect_{$key}" ] ) && 'yes' === $settings[ "examhub_multiselect_{$key}" ]; $term_options = $is_structure_facet ? Examhub_Query::get_term_choices( $field['taxonomy'] ) : Examhub_Query::get_term_options( $field['taxonomy'] ); $default_value = (string) ( $settings[ "examhub_default_{$key}" ] ?? '' ); $field_label = $this->get_filter_label( $key, $settings ); $is_first_field = 0 === $field_index; ?> <div class="examhub-search-filter__field" data-filter-field="<?php echo esc_attr( $key ); ?>"> <?php if ( $is_accordion ) : ?> <button type="button" class="examhub-search-filter__field-header" aria-expanded="<?php echo $is_first_field ? 'true' : 'false'; ?>"> <span class="examhub-search-filter__field-label"><?php echo esc_html( $field_label ); ?></span> <span class="examhub-search-filter__field-badge" hidden></span> <svg class="examhub-search-filter__field-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"> <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" /> </svg> </button> <?php endif; ?> <?php // پایه/رشته/درس each have a parent facet one step up (see // STRUCTURE_PARENT_META) — only those get a cascade-loading // spinner; مقطع is always the root and never waits on anything. $has_cascade_spinner = array_key_exists( $field['taxonomy'], Examhub_Query::STRUCTURE_PARENT_META ); ?> <div class="examhub-search-filter__field-body" <?php echo ( $is_accordion && ! $is_first_field ) ? 'hidden' : ''; ?>> <span class="examhub-search-filter__select-wrap"> <select class="examhub-search-filter__select" data-filter="<?php echo esc_attr( $key ); ?>" <?php if ( $is_multiselect ) : ?> multiple data-multiselect="1" <?php endif; ?> > <?php if ( ! $is_multiselect ) : ?> <option value=""><?php echo esc_html( $field_label ); ?> (<?php esc_html_e( 'همه', 'examhub' ); ?>)</option> <?php endif; ?> <?php foreach ( $term_options as $value => $name ) : ?> <option value="<?php echo esc_attr( $value ); ?>" <?php selected( $default_value, (string) $value ); ?>><?php echo esc_html( $name ); ?></option> <?php endforeach; ?> </select> <?php if ( $has_cascade_spinner ) : ?> <span class="examhub-search-filter__select-spinner" aria-hidden="true"></span> <?php endif; ?> </span> </div> </div> <?php ++$field_index; ?> <?php endif; ?> <?php endforeach; ?> <?php if ( ! empty( $settings['examhub_show_search'] ) && 'yes' === $settings['examhub_show_search'] ) : ?> <input type="search" class="examhub-search-filter__search" placeholder="<?php echo esc_attr( $settings['examhub_search_placeholder'] ); ?>" /> <?php endif; ?> <div class="examhub-search-filter__actions"> <button type="button" class="examhub-search-filter__reset examhub-btn examhub-btn--outline"> <?php echo esc_html( $settings['examhub_reset_text'] ); ?> </button> <button type="button" class="examhub-search-filter__apply examhub-btn"> <span class="examhub-search-filter__apply-spinner" aria-hidden="true"></span> <span class="examhub-search-filter__apply-label"><?php echo esc_html( $settings['examhub_apply_text'] ); ?></span> </button> </div> </div> <?php if ( ! empty( $settings['examhub_show_chips'] ) && 'yes' === $settings['examhub_show_chips'] ) : ?> <div class="examhub-search-filter__chips" aria-live="polite"></div> <?php endif; ?> </div> </div> <?php if ( ! empty( $settings['examhub_show_result_count'] ) && 'yes' === $settings['examhub_show_result_count'] ) : ?> <p class="examhub-search-filter__result-count"> <?php printf( /* translators: %s: number of matching exams.
+msgid "%s آزمون یافت شد"
+msgstr ""
+
+#: examhub/includes/class-examhub-ajax.php:95
+msgid "Invalid request."
+msgstr ""
+
+#: examhub/includes/class-examhub-ajax.php:151
+msgid "Invalid taxonomy."
+msgstr ""
+
+#: examhub/includes/class-examhub-download-handler.php:78
+msgid "Invalid download request."
+msgstr ""
+
+#: examhub/includes/class-examhub-download-handler.php:84
+msgid "Exam not found."
+msgstr ""
+
+#: examhub/includes/class-examhub-download-handler.php:95
+#: examhub/includes/class-examhub-download-handler.php:101
+#: examhub/includes/class-examhub-download-handler.php:118
+msgid "File not available."
+msgstr ""
+
+#: examhub/includes/class-examhub-migration.php:234
+#. translators: %d: number of migrated exams.
+msgid "ExamHub: %d آزمون به ساختار تحصیلیِ درختیِ جدید منتقل شد. ترم‌های قدیمی حفظ شده‌اند."
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:35
+msgid "Exams"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:36
+msgid "Exam"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:38
+msgid "Add New"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:39
+msgid "Add New Exam"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:40
+msgid "Edit Exam"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:41
+msgid "New Exam"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:42
+msgid "View Exam"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:43
+msgid "Search Exams"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:44
+msgid "No exams found"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:45
+msgid "No exams found in trash"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:46
+msgid "All Exams"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:90
+msgid "Levels"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:91
+msgid "Level"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:96
+msgid "Grades"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:97
+msgid "Grade"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:102
+msgid "Fields"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:103
+msgid "Field"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:108
+msgid "Subjects"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:109
+msgid "Subject"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:114
+msgid "Years"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:115
+msgid "Year"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:116
+msgid "Years (سال)"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:120
+msgid "Terms"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:121
+msgid "Term"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:122
+msgid "Terms (نوبت)"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:126
+msgid "Exam Types"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:127
+msgid "Exam Type"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:139
+msgid "Search %s"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:140
+msgid "All %s"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:141
+msgid "Parent %s"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:142
+msgid "Parent %s:"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:143
+msgid "Edit %s"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:144
+msgid "Update %s"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:145
+msgid "Add New %s"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:146
+msgid "New %s Name"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:184
+#: examhub/includes/class-examhub-post-types.php:207
+msgid "Icon (emoji)"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:186
+#: examhub/includes/class-examhub-post-types.php:210
+msgid "A short emoji shown next to this term in the Category Showcase widget, e.g. 📘"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:295
+#: examhub/includes/class-examhub-post-types.php:326
+msgid "والد (برای فیلتر آبشاری)"
+msgstr ""
+
+#: examhub/includes/class-examhub-post-types.php:302
+#: examhub/includes/class-examhub-post-types.php:334
+msgid "این مورد فقط وقتی والدش انتخاب شده باشد در فیلترهای آبشاری مقطع › پایه › رشته › درس نمایش داده می‌شود."
+msgstr ""
+
+#: examhub/includes/class-examhub-structure-split-migration.php:281
+#. translators: %d: number of migrated exams.
+msgid "ExamHub: %d آزمون به ۴ فیلد مستقل (مقطع/پایه/رشته/درس) منتقل شد. ساختار درختیِ قبلی حفظ شده‌است."
+msgstr ""
+
+#: examhub/includes/examhub-template-functions.php:63
+msgid "آزمونی یافت نشد."
+msgstr ""
+
+#: examhub/public/class-examhub-public.php:180
+msgid "در حال بارگذاری…"
+msgstr ""
+
+#: examhub/public/class-examhub-public.php:181
+msgid "خطایی رخ داد. لطفاً دوباره تلاش کنید."
+msgstr ""
+
+#: examhub/public/class-examhub-public.php:182
+msgid "موردی یافت نشد."
+msgstr ""
+
+#: examhub/public/class-examhub-public.php:183
+msgid "فایل"
+msgstr ""
+
+#: examhub/public/partials/card-exam.php:54
+msgid "دانلود"
+msgstr ""
+
+#: examhub/public/partials/card-exam.php:89
+msgid "نمایش سوالات"
+msgstr ""
+
+#: examhub/public/partials/card-exam.php:94
+msgid "نمایش پاسخنامه"
+msgstr ""
+

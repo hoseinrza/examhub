@@ -23,14 +23,15 @@
 class Examhub_Deactivator {
 
 	/**
-	 * Short Description. (use period)
+	 * Run cleanup on plugin deactivation.
 	 *
-	 * Long Description.
+	 * Deliberately a no-op (mirrors Examhub_Activator::activate()): the post
+	 * type and taxonomies register no rewrite rules, so there is nothing to
+	 * flush on the way out. Data removal is handled separately by uninstall.php.
 	 *
 	 * @since    1.0.0
 	 */
 	public static function deactivate() {
-
 	}
 
 }

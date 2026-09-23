@@ -2,3 +2,145 @@
  * All of the CSS for your admin-specific functionality should be
  * included in this file.
  */
+
+.examhub-metabox .examhub-file-name {
+	display: inline-block;
+	margin-inline-end: 8px;
+	font-style: italic;
+	color: #555;
+}
+
+.examhub-metabox .examhub-file-field .button {
+	margin-inline-end: 4px;
+}
+
+.examhub-exam-thumb {
+	width: 40px;
+	height: 40px;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.examhub-featured-flag {
+	display: inline-block;
+	padding: 2px 8px;
+	border-radius: 10px;
+	font-size: 11px;
+	background: #f0ad4e;
+	color: #fff;
+}
+
+.examhub-taxonomies .examhub-tax-field {
+	margin: 0 0 14px;
+}
+
+.examhub-taxonomies .examhub-tax-field label {
+	display: block;
+	margin-bottom: 4px;
+}
+
+.examhub-taxonomies .examhub-tax-help {
+	margin-top: 16px;
+	padding-top: 12px;
+	border-top: 1px solid #f0f0f1;
+}
+
+/* Resource field with file/URL tabs */
+.examhub-resource-field {
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 12px;
+	background: #fafafa;
+}
+
+.examhub-resource-field.examhub-resource-field--error {
+	border-color: #dc3545;
+	background: #fff5f5;
+}
+
+.examhub-resource-tabs {
+	display: flex;
+	gap: 0;
+	margin-bottom: 12px;
+	border-bottom: 1px solid #ddd;
+}
+
+.examhub-resource-tab {
+	flex: 1;
+	padding: 8px 12px;
+	border: none;
+	background: #f0f0f0;
+	color: #555;
+	cursor: pointer;
+	text-align: center;
+	font-size: 13px;
+	transition: all 0.2s ease;
+}
+
+.examhub-resource-tab:first-child {
+	border-radius: 4px 0 0 0;
+}
+
+.examhub-resource-tab:last-child {
+	border-radius: 0 4px 0 0;
+}
+
+.examhub-resource-tab:hover {
+	background: #e0e0e0;
+}
+
+.examhub-resource-tab.active {
+	background: #fff;
+	color: #0073aa;
+	border-bottom: 2px solid #0073aa;
+	font-weight: 500;
+}
+
+.examhub-resource-content {
+	position: relative;
+}
+
+.examhub-resource-panel {
+	display: none;
+	padding-top: 12px;
+}
+
+.examhub-resource-panel.active {
+	display: block;
+}
+
+.examhub-resource-panel--file {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.examhub-file-name {
+	display: inline-block;
+	padding: 4px 8px;
+	background: #fff;
+	border-radius: 3px;
+	flex: 1;
+	color: #666;
+	font-size: 13px;
+}
+
+.examhub-resource-panel--file .button {
+	white-space: nowrap;
+}
+
+.examhub-resource-panel--url {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.examhub-url-input {
+	max-width: 100%;
+}
+
+.examhub-resource-field .description {
+	margin-top: 8px;
+	font-size: 12px;
+	color: #666;
+}

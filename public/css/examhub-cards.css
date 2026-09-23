@@ -1,0 +1,1488 @@
+/**
+ * Base front-end styles for every ExamHub display surface: the card grid,
+ * category tiles, download-library chips, featured-exam tabs, search/filter
+ * bar, and the mega-library tree.
+ *
+ * Layout and color are driven by CSS custom properties (--examhub-*) so that
+ * Elementor Style Controls only ever need to set a variable on the wrapper —
+ * never duplicate a rule. Every var() call below carries the default that
+ * applies when no widget/theme overrides it.
+ */
+
+/* -------------------------------------------------------------------------
+ * Semantic color tokens — the single source of truth for theming.
+ *
+ * Light values live here. Dark mode (examhub-dark-mode.css) re-declares ONLY
+ * these tokens; it never repeats layout, spacing, radius or typography.
+ * Components consume a token as the middle tier of a three-step fallback:
+ *
+ *     var(--examhub-<component>-<prop>, var(--examhub-c-<token>, <literal>))
+ *      └─ Elementor Style control      └─ theme token (light/dark)   └─ safety net
+ *
+ * so an Elementor control still wins, the token flips the color between
+ * themes, and the literal guarantees a site with neither renders exactly as
+ * it did before this layer existed. Layout/typography are intentionally NOT
+ * tokenized — they are identical in both themes and stay shared literals or
+ * dedicated layout vars (--examhub-radius, --examhub-gap, --examhub-columns).
+ * ---------------------------------------------------------------------- */
+
+:root {
+	--examhub-c-surface: #ffffff;          /* card / panel background      */
+	--examhub-c-surface-muted: #f1f5f9;    /* image placeholder, insets    */
+	--examhub-c-border: rgba(0, 0, 0, 0.07); /* card / panel border        */
+	--examhub-c-accent: #FF7A0D;           /* brand colour, hover border   */
+	--examhub-c-card-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+}
+
+/* -------------------------------------------------------------------------
+ * Utilities
+ * ---------------------------------------------------------------------- */
+
+/*
+ * `!important` deliberately used here — the one justified exception. This is
+ * a universal "force hidden" utility class meant to win over ANY component's
+ * own display rule, including `.examhub-btn { display: inline-flex; }`
+ * below. Without it, `.examhub-toggle-btn.examhub-btn.examhub-hidden` (the
+ * "نمایش بیشتر" button with ≤ one page of results) stays visible: both
+ * classes are single-class selectors (equal specificity), and `.examhub-btn`
+ * is declared AFTER this rule in the file, so source order alone — not
+ * specificity — would let it win and silently undo the hide.
+ */
+.examhub-hidden {
+	display: none !important;
+}
+
+/* -------------------------------------------------------------------------
+ * Buttons (shared by cards, search bar, etc.)
+ * ---------------------------------------------------------------------- */
+
+.examhub-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 6px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	font-size: 14px;
+	line-height: 1.6;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.examhub-btn--questions {
+	background: var(--examhub-questions-btn-bg, #2563eb);
+	color: var(--examhub-questions-btn-color, #ffffff);
+}
+
+.examhub-btn--questions:hover,
+.examhub-btn--questions:focus {
+	background: var(--examhub-questions-btn-bg-hover, #1d4ed8);
+	color: var(--examhub-questions-btn-color-hover, #ffffff);
+}
+
+.examhub-btn--questions:active {
+	background: var(--examhub-questions-btn-bg-active, var(--examhub-questions-btn-bg-hover, #1d4ed8));
+	color: var(--examhub-questions-btn-color-active, var(--examhub-questions-btn-color-hover, #ffffff));
+}
+
+.examhub-btn--answers {
+	background: var(--examhub-answers-btn-bg, #059669);
+	color: var(--examhub-answers-btn-color, #ffffff);
+}
+
+.examhub-btn--answers:hover,
+.examhub-btn--answers:focus {
+	background: var(--examhub-answers-btn-bg-hover, #047857);
+	color: var(--examhub-answers-btn-color-hover, #ffffff);
+}
+
+.examhub-btn--answers:active {
+	background: var(--examhub-answers-btn-bg-active, var(--examhub-answers-btn-bg-hover, #047857));
+	color: var(--examhub-answers-btn-color-active, var(--examhub-answers-btn-color-hover, #ffffff));
+}
+
+.examhub-btn--view {
+	background: transparent;
+	border-color: currentColor;
+	color: inherit;
+	opacity: 0.75;
+}
+
+.examhub-btn--view:hover,
+.examhub-btn--view:focus {
+	opacity: 1;
+}
+
+.examhub-btn--outline {
+	background: transparent;
+	border-color: currentColor;
+	color: inherit;
+}
+
+.examhub-empty {
+	padding: 32px 16px;
+	text-align: center;
+	opacity: 0.7;
+}
+
+/* -------------------------------------------------------------------------
+ * Show More / Show Less toggle button
+ * (Download Library, Search & Filter "load more" footers)
+ * ---------------------------------------------------------------------- */
+
+.examhub-toggle-btn {
+	background: transparent;
+	border: 1px solid currentColor;
+	color: inherit;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+.examhub-toggle-btn__state {
+	display: none;
+	align-items: center;
+	gap: 6px;
+}
+
+.examhub-toggle-btn[data-state="more"] .examhub-toggle-btn__state--more,
+.examhub-toggle-btn[data-state="less"] .examhub-toggle-btn__state--less {
+	display: inline-flex;
+}
+
+.examhub-toggle-btn:disabled {
+	opacity: 0.6;
+	pointer-events: none;
+	transform: none;
+}
+
+.examhub-toggle-btn .examhub-toggle-btn__state i,
+.examhub-toggle-btn .examhub-toggle-btn__state svg {
+	width: 1em;
+	height: 1em;
+}
+
+/* -------------------------------------------------------------------------
+ * Exam card grid
+ * ---------------------------------------------------------------------- */
+
+.examhub-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--examhub-columns, 4), minmax(0, 1fr));
+	gap: var(--examhub-gap, 20px);
+}
+
+.examhub-card {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	background: var(--examhub-c-surface, #ffffff);
+	border: 1px solid var(--examhub-c-border, rgba(0, 0, 0, 0.07));
+	border-radius: var(--examhub-radius, 12px);
+	transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.examhub-card:hover {
+	border-color: var(--examhub-card-hover-border, var(--examhub-c-accent, #FF7A0D));
+	box-shadow: var(--examhub-c-card-hover-shadow, 0 4px 14px rgba(0, 0, 0, 0.06));
+}
+
+.examhub-card__image {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	aspect-ratio: 16 / 10;
+	background: var(--examhub-c-surface-muted, #f1f5f9);
+}
+
+.examhub-card__image img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.3s ease;
+}
+
+.examhub-card__badge,
+.examhub-card__badge--floating {
+	position: absolute;
+	top: 10px;
+	inset-inline-start: 10px;
+	padding: 4px 10px;
+	border-radius: var(--examhub-badge-radius, 999px);
+	font-size: 12px;
+	font-weight: 600;
+	background: var(--examhub-badge-bg, #f59e0b);
+	color: var(--examhub-badge-color, #ffffff);
+	border: 1px solid var(--examhub-badge-border, transparent);
+	z-index: 1;
+}
+
+.examhub-card__badge--floating {
+	position: static;
+	display: inline-block;
+	margin: 12px 12px 0;
+	align-self: flex-start;
+}
+
+.examhub-card__body {
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 16px;
+}
+
+.examhub-card__title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 700;
+	line-height: 1.6;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
+/* Superseded by the year/category chips below; the combined text summary is
+   kept in the markup for data availability but not shown in the redesigned card. */
+.examhub-card__meta {
+	display: none;
+}
+
+.examhub-card__chips {
+	display: flex;
+	gap: 6px;
+	margin: 2px 0 0;
+}
+
+.examhub-card__chip {
+	display: inline-flex;
+	align-items: center;
+	padding: 3px 10px;
+	border-radius: 999px;
+	font-size: 12px;
+	font-weight: 600;
+	background: var(--examhub-year-chip-bg, transparent);
+	color: var(--examhub-year-chip-color, #f25a1b);
+	border: 1px solid var(--examhub-year-chip-border, currentColor);
+}
+
+.examhub-card__chip--type {
+	background: var(--examhub-category-chip-bg, transparent);
+	color: var(--examhub-category-chip-color, #f25a1b);
+	border: 1px solid var(--examhub-category-chip-border, currentColor);
+}
+
+.examhub-card__stats {
+	margin: 4px 0 0;
+	font-size: 13px;
+	opacity: 0.7;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+}
+
+.examhub-card__stats-icon {
+	flex-shrink: 0;
+}
+
+.examhub-card__stats-number {
+	font-weight: 700;
+	opacity: 1;
+}
+
+.examhub-card__actions {
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	flex-wrap: wrap;
+	gap: 8px;
+	padding: 0 16px 16px;
+}
+
+/* The two download buttons share one row, each taking equal width. When only
+   one file exists, that single button simply fills the row. */
+.examhub-card__downloads {
+	display: flex;
+	align-items: stretch;
+	flex: 1;
+	gap: 8px;
+}
+
+.examhub-card__downloads .examhub-btn {
+	flex: 1;
+}
+
+/* "View" buttons sit alongside the download buttons in the same row. */
+.examhub-card__views {
+	display: flex;
+	align-items: stretch;
+	flex: 1;
+	gap: 8px;
+}
+
+.examhub-card__view-link {
+	flex: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 14px;
+	font-weight: 600;
+	padding: 8px 16px;
+	border-radius: 8px;
+	border: 1px solid var(--examhub-view-link-border-color, currentColor);
+	background: var(--examhub-view-link-bg, transparent);
+	color: var(--examhub-view-link-color, inherit);
+	text-decoration: none;
+	transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.examhub-card__view-link:hover,
+.examhub-card__view-link:focus {
+	background: var(--examhub-view-link-bg-hover, var(--examhub-view-link-bg, transparent));
+	color: var(--examhub-view-link-color-hover, var(--examhub-view-link-color, inherit));
+	border-color: var(--examhub-view-link-border-color-hover, var(--examhub-view-link-border-color, currentColor));
+}
+
+.examhub-card__view-link:active {
+	background: var(--examhub-view-link-bg-active, var(--examhub-view-link-bg-hover, transparent));
+	color: var(--examhub-view-link-color-active, var(--examhub-view-link-color-hover, inherit));
+	border-color: var(--examhub-view-link-border-color-active, var(--examhub-view-link-border-color-hover, currentColor));
+}
+
+/* Hover effects, toggled via the widget's "افکت Hover" control (prefix_class). */
+
+.examhub-hover-lift .examhub-card:hover {
+	transform: translateY(-4px);
+}
+
+.examhub-hover-zoom .examhub-card:hover .examhub-card__image img {
+	transform: scale(1.06);
+}
+
+.examhub-hover-shadow .examhub-card:hover {
+	box-shadow: 0 16px 40px rgba(0, 0, 0, 0.14);
+}
+
+/* -------------------------------------------------------------------------
+ * Category showcase tiles
+ * ---------------------------------------------------------------------- */
+
+.examhub-category-grid {
+	/* Force RTL so تایل‌ها always lay out right-to-left in the same order
+	   the PHP renders them, regardless of the page/theme's text direction. */
+	direction: rtl;
+	display: grid;
+	grid-template-columns: repeat(var(--examhub-columns, 4), minmax(0, 1fr));
+	gap: var(--examhub-gap, 16px);
+}
+
+.examhub-category-tile {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	padding: 24px 16px;
+	text-align: center;
+	background: var(--examhub-tile-bg, #f8fafc);
+	color: var(--examhub-tile-color, #0f172a);
+	border-radius: var(--examhub-radius, 12px);
+	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.examhub-category-tile:hover {
+	background: var(--examhub-tile-bg-hover, #e2e8f0);
+	color: var(--examhub-tile-color-hover, #0f172a);
+	transform: translateY(-2px);
+}
+
+.examhub-category-tile__icon {
+	font-size: 28px;
+	line-height: 1;
+}
+
+.examhub-category-tile__name {
+	font-weight: 700;
+}
+
+.examhub-category-tile__count {
+	font-size: 12px;
+	opacity: 0.65;
+}
+
+/* -------------------------------------------------------------------------
+ * Download library — filter sidebar + grid + load more
+ * ---------------------------------------------------------------------- */
+
+.examhub-library {
+	/* Force RTL so the sidebar position and filter order always match the
+	   PHP render order, regardless of the page/theme's text direction. */
+	direction: rtl;
+}
+
+.examhub-library__layout {
+	display: flex;
+	gap: 24px;
+	align-items: flex-start;
+}
+
+/* Move the sidebar to the other side when "محل سایدبار" is set to "انتها". */
+.examhub-sidebar-end .examhub-library__layout {
+	flex-direction: row-reverse;
+}
+
+.examhub-library__sidebar {
+	flex: 0 0 var(--examhub-sidebar-width, 240px);
+	display: flex;
+	flex-direction: column;
+	gap: 14px;
+	padding: 18px;
+	background: var(--examhub-sidebar-bg, #f8fafc);
+	color: var(--examhub-sidebar-color, inherit);
+	border-radius: var(--examhub-sidebar-radius, 12px);
+}
+
+.examhub-library__sidebar-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	margin-bottom: 8px;
+	padding-bottom: 8px;
+	border-bottom: 1px solid var(--examhub-c-border, rgba(0, 0, 0, 0.07));
+}
+
+.examhub-library__sidebar-title {
+	margin: 0;
+	font-size: 14px;
+	font-weight: 600;
+}
+
+.examhub-library__main {
+	flex: 1 1 auto;
+	min-width: 0;
+}
+
+.examhub-library__filter {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.examhub-library__filter-label {
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.examhub-library__select,
+.examhub-library__search {
+	width: 100%;
+	padding: 9px 12px;
+	border: 1px solid rgba(0, 0, 0, 0.12);
+	border-radius: 8px;
+	font-size: 14px;
+	background: #ffffff;
+	color: #0f172a;
+}
+
+.examhub-library__footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 24px;
+}
+
+.examhub-library.is-loading .examhub-library__grid {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Stack the sidebar above the grid on narrow screens. */
+@media (max-width: 782px) {
+
+	.examhub-library__layout,
+	.examhub-sidebar-end .examhub-library__layout {
+		flex-direction: column;
+	}
+
+	.examhub-library__sidebar {
+		flex-basis: auto;
+		width: 100%;
+	}
+}
+
+/* -------------------------------------------------------------------------
+ * Featured exams — tabs
+ * ---------------------------------------------------------------------- */
+
+.examhub-featured__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+	margin-bottom: 20px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.examhub-featured__tab {
+	padding: 10px 20px;
+	border: none;
+	border-bottom: 2px solid transparent;
+	background: transparent;
+	font-size: 15px;
+	font-weight: 600;
+	cursor: pointer;
+	color: var(--examhub-tab-color, #64748b);
+	transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.examhub-featured__tab:hover {
+	color: var(--examhub-tab-color-active, #2563eb);
+}
+
+.examhub-featured__tab.is-active {
+	color: var(--examhub-tab-color-active, #2563eb);
+	border-bottom-color: var(--examhub-tab-border-active, #2563eb);
+}
+
+.examhub-featured__panel[hidden] {
+	display: none;
+}
+
+/* -------------------------------------------------------------------------
+ * Search & filter bar
+ * ---------------------------------------------------------------------- */
+
+.examhub-search-filter {
+	/* Force RTL so the مقطع›پایه›رشته›درس filter row always lays out
+	   right-to-left in render order, regardless of the page/theme's
+	   text direction. */
+	direction: rtl;
+}
+
+.examhub-search-filter__bar {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: var(--examhub-sf-bar-justify, flex-start);
+	gap: var(--examhub-sf-bar-gap, 10px);
+	margin-bottom: 24px;
+}
+
+.examhub-search-filter__select,
+.examhub-search-filter__search {
+	height: 48px;
+	padding: 0 14px;
+	border: 1px solid var(--examhub-sf-field-border, #e5e7eb);
+	border-radius: var(--examhub-sf-field-radius, 12px);
+	font-size: 14px;
+	background: var(--examhub-sf-field-bg, #ffffff);
+	color: var(--examhub-sf-field-color, #111827);
+	transition: border-color 0.2s ease;
+}
+
+/* A native multi-select needs several visible rows to be usable — the
+   48px single-line height above is for normal <select>/<input> only. */
+.examhub-search-filter__select[multiple] {
+	height: auto;
+	min-height: 104px;
+	padding: 8px 10px;
+}
+
+.examhub-search-filter__field {
+	display: contents;
+}
+
+.examhub-search-filter__field-body {
+	display: contents;
+}
+
+.examhub-search-filter__field-header {
+	display: none;
+}
+
+.examhub-search-filter__field-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 20px;
+	height: 20px;
+	padding: 0 6px;
+	border-radius: 999px;
+	background: var(--examhub-sf-active-color-bg, #fdeee6);
+	color: var(--examhub-sf-active-color, #d94e14);
+	font-size: 11px;
+	font-weight: 700;
+	margin-inline-start: auto;
+	margin-inline-end: 8px;
+}
+
+.examhub-search-filter__field-badge[hidden] {
+	display: none;
+}
+
+/*
+ * A dependent facet's <select> (پایه/رشته/درس) is wrapped in this span
+ * specifically so the cascade-loading spinner has a real box to anchor to —
+ * `.examhub-search-filter__field`/`-body` collapse to `display: contents` on
+ * desktop (see above), so positioning anything relative to THEM would have
+ * no box to anchor against. This wrap is what becomes the actual flex/block
+ * item in the bar (in the select's place), and it is always a real box on
+ * every breakpoint.
+ */
+.examhub-search-filter__select-wrap {
+	position: relative;
+	display: inline-flex;
+	align-items: center;
+}
+
+/*
+ * Cascade-loading spinner — active only while the parent→child AJAX call in
+ * examhub-frontend.js is in flight. Sits inside the field, overlapping the
+ * select's own end-padding, rather than taking up extra space next to it.
+ * The select is disabled for the same duration (examhub-frontend.js), so
+ * `:disabled`'s dimmed background below doubles as the "this field isn't
+ * ready yet" cue alongside the spin.
+ */
+.examhub-search-filter__select-spinner {
+	display: none;
+	position: absolute;
+	inset-inline-end: 14px;
+	top: 50%;
+	width: 16px;
+	height: 16px;
+	margin-top: -8px;
+	border-radius: 50%;
+	border: 2px solid var(--examhub-sf-field-border, #e5e7eb);
+	border-top-color: var(--examhub-sf-active-color, #f25a1b);
+	pointer-events: none;
+}
+
+.examhub-search-filter__select-spinner.is-active {
+	display: inline-block;
+	animation: examhub-spin 0.7s linear infinite;
+}
+
+/* Room for the spinner so the select's own text never sits under it. */
+.examhub-search-filter__select-wrap:has( .examhub-search-filter__select-spinner ) .examhub-search-filter__select {
+	padding-inline-end: 34px;
+}
+
+.examhub-search-filter__select:focus,
+.examhub-search-filter__search:focus {
+	border-color: var(--examhub-sf-field-border-focus, var(--examhub-sf-field-border, rgba(0, 0, 0, 0.12)));
+	outline: none;
+}
+
+.examhub-search-filter__search {
+	flex: 1;
+	min-width: 180px;
+}
+
+.examhub-search-filter__select:disabled {
+	background: rgba(0, 0, 0, 0.04);
+	color: var(--examhub-sf-field-color, rgba(0, 0, 0, 0.4));
+	cursor: not-allowed;
+}
+
+.examhub-search-filter__actions {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-inline-start: auto;
+}
+
+.examhub-search-filter__actions .examhub-btn {
+	height: 48px;
+}
+
+.examhub-search-filter__chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 12px;
+}
+
+.examhub-search-filter__chips:empty {
+	display: none;
+}
+
+.examhub-search-filter__chip {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 5px 6px 5px 12px;
+	border-radius: var(--examhub-sf-active-radius, 999px);
+	background: var(--examhub-sf-active-color-bg, #fdeee6);
+	color: var(--examhub-sf-active-text, var(--examhub-sf-active-color, #d94e14));
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.examhub-search-filter__chip-remove {
+	width: 18px;
+	height: 18px;
+	border-radius: 50%;
+	background: rgba(0, 0, 0, 0.08);
+	color: inherit;
+	font-size: 11px;
+	line-height: 1;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.examhub-search-filter__result-count {
+	margin: 12px 0 0;
+	font-size: 13px;
+	color: var(--examhub-sf-field-color, #6b7280);
+}
+
+.examhub-search-filter__apply {
+	background: var(--examhub-sf-apply-bg, #f25a1b);
+	color: var(--examhub-sf-apply-color, #ffffff);
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.examhub-search-filter__apply:hover,
+.examhub-search-filter__apply:focus {
+	background: var(--examhub-sf-apply-bg-hover, #d94e14);
+	color: var(--examhub-sf-apply-color-hover, #ffffff);
+}
+
+.examhub-search-filter__apply:disabled {
+	opacity: 0.7;
+	pointer-events: none;
+}
+
+.examhub-search-filter__apply-spinner {
+	display: none;
+	width: 14px;
+	height: 14px;
+	border-radius: 50%;
+	border: 2px solid rgba(255, 255, 255, 0.4);
+	border-top-color: currentColor;
+}
+
+.examhub-search-filter__apply.is-applying .examhub-search-filter__apply-spinner {
+	display: inline-block;
+	animation: examhub-spin 0.7s linear infinite;
+}
+
+@keyframes examhub-spin {
+	to {
+		transform: rotate(360deg);
+	}
+}
+
+.examhub-search-filter__reset {
+	background: var(--examhub-sf-reset-bg, transparent);
+	color: var(--examhub-sf-reset-color, inherit);
+	border-color: var(--examhub-sf-reset-border-color, var(--examhub-sf-reset-color, var(--examhub-sf-field-border, rgba(0, 0, 0, 0.12))));
+	border-radius: var(--examhub-sf-reset-radius, 8px);
+	min-height: var(--examhub-sf-reset-min-height, auto);
+}
+
+.examhub-search-filter__reset:hover,
+.examhub-search-filter__reset:focus {
+	background: var(--examhub-sf-reset-bg-hover, var(--examhub-sf-reset-bg, transparent));
+	color: var(--examhub-sf-reset-color-hover, var(--examhub-sf-reset-color, inherit));
+	border-color: var(--examhub-sf-reset-border-color-hover, var(--examhub-sf-reset-color-hover, var(--examhub-sf-reset-border-color, rgba(0, 0, 0, 0.12))));
+}
+
+.examhub-search-filter__reset:active {
+	background: var(--examhub-sf-reset-bg-active, var(--examhub-sf-reset-bg-hover, transparent));
+	color: var(--examhub-sf-reset-color-active, var(--examhub-sf-reset-color-hover, inherit));
+	border-color: var(--examhub-sf-reset-border-color-active, var(--examhub-sf-reset-border-color-hover, rgba(0, 0, 0, 0.12)));
+}
+
+.examhub-search-filter__reset:disabled {
+	opacity: 0.6;
+	pointer-events: none;
+}
+
+.examhub-search-filter.is-loading .examhub-search-filter__results {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.examhub-search-filter__footer {
+	display: flex;
+	justify-content: center;
+	margin-top: 28px;
+}
+
+.examhub-search-filter__load-more:hover,
+.examhub-search-filter__load-more:focus-visible {
+	transform: scale(1.02);
+}
+
+.examhub-search-filter__load-more:disabled {
+	opacity: 0.6;
+	pointer-events: none;
+	transform: none;
+}
+
+/* Hidden on desktop/tablet — the bar is always visible there, inline, with
+   none of the popup chrome. The mobile media query below is what turns this
+   into the only visible filter trigger and repositions .examhub-search-filter__panel
+   into a true modal (fixed overlay + sheet), per the "filters are popup-only
+   on mobile" requirement. */
+.examhub-search-filter__filters-toggle {
+	display: none;
+	box-sizing: border-box;
+	width: 100%;
+	height: 48px;
+	flex-shrink: 0;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-bottom: 16px;
+	background: var(--examhub-sf-apply-bg, #f25a1b);
+	color: var(--examhub-sf-apply-color, #ffffff);
+	font-size: 14px;
+	line-height: 1;
+	font-weight: 600;
+	border-radius: var(--examhub-sf-field-radius, 12px);
+	padding: 0 16px;
+}
+
+/*
+ * Filter button icon: a fixed-size box, not a font-size-driven glyph. Elementor
+ * icons render as either an inline <svg> (sized via `width/height: 1em`, so it
+ * inherits whatever font-size is in scope — the button's, a theme default, or
+ * Elementor's own global icon-size control) or an icon-font <i> (sized
+ * directly off font-size). Both paths are neutralized the same way: the
+ * wrapper gets `font-size: 0` so nothing inside can inherit a real value, and
+ * each possible child type gets its OWN explicit sizing rule instead of
+ * relying on inheritance. This is the actual fix for "icon too large on
+ * mobile" — the icon was never bounded to begin with, so it rendered at
+ * whatever size Elementor/the theme happened to cascade in.
+ */
+.examhub-search-filter__filters-toggle-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 18px;
+	height: 18px;
+	flex-shrink: 0;
+	font-size: 0;
+	line-height: 0;
+}
+
+.examhub-search-filter__filters-toggle-icon svg,
+.examhub-search-filter__filters-toggle-icon img {
+	width: 100%;
+	height: 100%;
+	display: block;
+}
+
+/*
+ * Elementor's own icon CSS (e.g. `.e-font-icon-svg { width: 1em; height: 1em; }`)
+ * is a single class, same weight as the rule above — source order alone would
+ * decide the winner, which is fragile against an Elementor core CSS update or
+ * load-order change. This re-states the same sizing through our ancestor
+ * chain (button > icon wrapper > svg) to win on specificity instead of
+ * source order, with no !important needed.
+ */
+.examhub-search-filter__filters-toggle .examhub-search-filter__filters-toggle-icon svg {
+	width: 100%;
+	height: 100%;
+}
+
+.examhub-search-filter__filters-toggle-icon i {
+	font-size: 18px;
+	line-height: 1;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.examhub-search-filter__filters-toggle-text {
+	font-size: 14px;
+	line-height: 1;
+}
+
+.examhub-search-filter__filters-toggle:hover,
+.examhub-search-filter__filters-toggle:focus {
+	background: var(--examhub-sf-apply-bg-hover, #d94e14);
+	color: var(--examhub-sf-apply-color-hover, #ffffff);
+}
+
+/* On desktop/tablet the "panel" IS the inline filter area — no overlay, no
+   header/footer chrome (those are display:none via the rules below), no
+   fixed positioning. The mobile query repositions this same markup into a
+   modal instead of duplicating the filter controls. */
+.examhub-search-filter__overlay {
+	display: none;
+}
+
+.examhub-search-filter__panel-header {
+	display: none;
+}
+
+.examhub-search-filter__featured-majors {
+	display: none;
+}
+
+.examhub-search-filter__select.has-value {
+	border-color: var(--examhub-sf-active-color, #f25a1b);
+	color: var(--examhub-sf-active-text, var(--examhub-sf-active-color, #f25a1b));
+	background: var(--examhub-sf-active-color-bg, transparent);
+}
+
+.examhub-search-filter__featured-major.is-active {
+	border-color: var(--examhub-sf-active-color, #f25a1b);
+	background: var(--examhub-sf-active-color, #f25a1b);
+	color: #ffffff;
+}
+
+body.examhub-no-scroll {
+	overflow: hidden;
+}
+
+/*
+ * Defensive re-assertion of "mobile-only" for the "فیلترها" trigger button.
+ * Dark mode's generic `body.dark-mode button { ... }` rule (examhub-dark-
+ * mode.css) deliberately never sets `display` — but it still carries higher
+ * specificity (class+element vs. this single class) than the bare
+ * `.examhub-search-filter__filters-toggle { display: none; }` rule above for
+ * every OTHER property, and any future dark-mode/theme rule that does touch
+ * `display` would silently win and leak the button onto desktop while dark
+ * mode is active. This min-width rule outranks that by attribute+class, so
+ * desktop always wins regardless of what color-mode CSS does — except when
+ * the admin explicitly chose "همیشه پاپ‌آپ" (popup_always), which needs the
+ * button on desktop on purpose.
+ */
+@media (min-width: 768px) {
+
+	.examhub-search-filter:not([data-layout-mode="popup_always"]) .examhub-search-filter__filters-toggle {
+		display: none;
+	}
+}
+
+/*
+ * "همیشه پاپ‌آپ" (Layout Mode = popup_always): the same popup chrome the
+ * @media (max-width: 767px) block below applies on mobile, but unconditional
+ * — these rules intentionally live OUTSIDE any media query so the popup
+ * stays active at every breakpoint, including desktop, when an admin opts
+ * into this layout mode. Kept as its own selector group rather than folded
+ * into the breakpoint-gated rules so toggling layout mode never depends on
+ * viewport width.
+ */
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__filters-toggle {
+	display: flex;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"][data-popup-enabled="1"] .examhub-search-filter__overlay {
+	display: block;
+	position: fixed;
+	inset: 0;
+	background: var(--examhub-sf-overlay-bg, rgba(15, 23, 42, 0.55));
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.25s ease;
+	z-index: 9998;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"][data-popup-enabled="1"].is-popup-open .examhub-search-filter__overlay {
+	opacity: 1;
+	visibility: visible;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"][data-popup-enabled="1"] .examhub-search-filter__panel {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	max-height: 85vh;
+	overflow-y: auto;
+	background: var(--examhub-sf-panel-bg, #ffffff);
+	border-radius: 16px 16px 0 0;
+	box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.18);
+	transform: translateY(100%);
+	visibility: hidden;
+	transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.3s;
+	z-index: 9999;
+	direction: rtl;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"][data-popup-enabled="1"][data-animation="fade"] .examhub-search-filter__panel {
+	bottom: auto;
+	top: 50%;
+	left: 50%;
+	right: auto;
+	width: 90%;
+	max-width: 420px;
+	border-radius: 16px;
+	transform: translate(-50%, -50%) scale(0.95);
+	opacity: 0;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"][data-popup-enabled="1"].is-popup-open .examhub-search-filter__panel {
+	transform: translateY(0);
+	visibility: visible;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"][data-popup-enabled="1"][data-animation="fade"].is-popup-open .examhub-search-filter__panel {
+	transform: translate(-50%, -50%) scale(1);
+	opacity: 1;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__panel-header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 16px;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	position: sticky;
+	top: 0;
+	background: var(--examhub-sf-panel-bg, #ffffff);
+	z-index: 1;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__panel-body {
+	padding: 16px;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__actions {
+	margin-inline-start: 0;
+	gap: 10px;
+	padding: 16px;
+	margin: 16px -16px -16px;
+	border-top: 1px solid rgba(0, 0, 0, 0.08);
+	position: sticky;
+	bottom: 0;
+	background: var(--examhub-sf-panel-bg, #ffffff);
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__bar {
+	flex-direction: column;
+	align-items: stretch;
+}
+
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__select,
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__select-wrap,
+.examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__search {
+	width: 100%;
+}
+
+@media (max-width: 767px) {
+
+	.examhub-search-filter__filters-toggle {
+		display: flex;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__overlay {
+		display: block;
+		position: fixed;
+		inset: 0;
+		background: var(--examhub-sf-overlay-bg, rgba(15, 23, 42, 0.55));
+		opacity: 0;
+		visibility: hidden;
+		transition: opacity 0.25s ease;
+		z-index: 9998;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"].is-popup-open .examhub-search-filter__overlay {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	/* The panel itself: hidden off-screen until .is-popup-open. Two animation
+	   variants, selected via the widget's [data-animation] attribute — the
+	   slide-up bottom sheet (default) and a centered fade/scale dialog. */
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__panel {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		max-height: 85vh;
+		overflow-y: auto;
+		background: var(--examhub-sf-panel-bg, #ffffff);
+		border-radius: 16px 16px 0 0;
+		box-shadow: 0 -8px 30px rgba(0, 0, 0, 0.18);
+		transform: translateY(100%);
+		visibility: hidden;
+		transition: transform 0.3s ease, opacity 0.25s ease, visibility 0.3s;
+		z-index: 9999;
+		direction: rtl;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"][data-animation="fade"] .examhub-search-filter__panel {
+		bottom: auto;
+		top: 50%;
+		left: 50%;
+		right: auto;
+		width: 90%;
+		max-width: 420px;
+		border-radius: 16px;
+		transform: translate(-50%, -50%) scale(0.95);
+		opacity: 0;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"].is-popup-open .examhub-search-filter__panel {
+		transform: translateY(0);
+		visibility: visible;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"][data-animation="fade"].is-popup-open .examhub-search-filter__panel {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+
+	.examhub-search-filter__panel-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		padding: 16px;
+		border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+		position: sticky;
+		top: 0;
+		background: var(--examhub-sf-panel-bg, #ffffff);
+		z-index: 1;
+	}
+
+	.examhub-search-filter__panel-title {
+		font-weight: 700;
+		font-size: 16px;
+	}
+
+	.examhub-search-filter__panel-close {
+		width: 32px;
+		height: 32px;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		border-radius: 999px;
+		background: rgba(0, 0, 0, 0.06);
+		font-size: 20px;
+		line-height: 1;
+		color: inherit;
+	}
+
+	.examhub-search-filter__panel-body {
+		padding: 16px;
+	}
+
+	/* Task 3's sticky footer: same Reset+Apply markup as desktop (no
+	   duplication), just pinned to the bottom of the scrollable sheet here
+	   instead of sitting inline at the end of the (now-column) bar. */
+	.examhub-search-filter__actions {
+		margin-inline-start: 0;
+		gap: 10px;
+		padding: 16px;
+		margin: 16px -16px -16px;
+		border-top: 1px solid rgba(0, 0, 0, 0.08);
+		position: sticky;
+		bottom: 0;
+		background: var(--examhub-sf-panel-bg, #ffffff);
+	}
+
+	.examhub-search-filter__actions .examhub-btn {
+		flex: 1;
+	}
+
+	.examhub-search-filter__featured-majors {
+		display: flex;
+		flex-wrap: nowrap;
+		overflow-x: auto;
+		-webkit-overflow-scrolling: touch;
+		scrollbar-width: none;
+		gap: 8px;
+		margin-bottom: 16px;
+		padding-bottom: 2px;
+	}
+
+	.examhub-search-filter__featured-majors::-webkit-scrollbar {
+		display: none;
+	}
+
+	.examhub-search-filter__featured-major {
+		flex: 0 0 auto;
+		padding: 8px 14px;
+		border-radius: 999px;
+		border: 1px solid var(--examhub-sf-field-border, #e5e7eb);
+		background: var(--examhub-sf-field-bg, #ffffff);
+		color: var(--examhub-sf-field-color, #111827);
+		font-size: 13px;
+		font-weight: 600;
+		transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+	}
+
+	.examhub-search-filter__bar {
+		flex-direction: column;
+		align-items: stretch;
+		gap: 0;
+	}
+
+	.examhub-search-filter__select,
+	.examhub-search-filter__select-wrap,
+	.examhub-search-filter__search {
+		width: 100%;
+	}
+
+	/* Task 3 (accordion popup field style): each field becomes a real block-
+	   level row again on mobile (overriding the desktop display:contents
+	   neutralizer), with a divider between rows so a long facet list reads as
+	   grouped sections instead of one undifferentiated wall of selects — this
+	   applies whether or not the admin turned on the accordion header, since
+	   the spacing/divider improvement is valid for the flat style too. */
+	.examhub-search-filter__field {
+		display: block;
+		border-bottom: 1px solid var(--examhub-sf-field-border, #e5e7eb);
+	}
+
+	.examhub-search-filter__field:last-of-type {
+		border-bottom: none;
+	}
+
+	.examhub-search-filter__field-body {
+		display: block;
+		padding: 0 0 14px;
+	}
+
+	.examhub-search-filter__bar--accordion .examhub-search-filter__field-header {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		padding: 14px 0;
+		background: transparent;
+		border: none;
+		cursor: pointer;
+		font-family: inherit;
+		font-size: 14px;
+		font-weight: 600;
+		color: var(--examhub-sf-field-color, #111827);
+	}
+
+	.examhub-search-filter__bar--accordion .examhub-search-filter__field-body {
+		padding: 0 0 16px;
+	}
+
+	.examhub-search-filter__bar--accordion .examhub-search-filter__field-body[hidden] {
+		display: none;
+	}
+
+	.examhub-search-filter__field-chevron {
+		flex-shrink: 0;
+		margin-inline-start: auto;
+		color: var(--examhub-sf-field-color, #6b7280);
+		transition: transform 0.2s ease;
+	}
+
+	.examhub-search-filter__field-header[aria-expanded="true"] .examhub-search-filter__field-chevron {
+		transform: rotate(180deg);
+	}
+
+	/* Card layout (meta/chips/stats-icon/actions row) is identical on mobile
+	   to desktop by design — no overrides needed here; see .examhub-card__*
+	   rules earlier in this file, which already apply at every breakpoint. */
+}
+
+/* -------------------------------------------------------------------------
+ * Exam mega library — collapsible tree
+ * ---------------------------------------------------------------------- */
+
+.examhub-mega {
+	/* Force RTL so each branch's icon/name/count/arrow row always lays out
+	   right-to-left, regardless of the page/theme's text direction. */
+	direction: rtl;
+}
+
+.examhub-mega__branch {
+	margin-bottom: 8px;
+	border-radius: var(--examhub-branch-radius, 10px);
+	overflow: hidden;
+}
+
+.examhub-mega__branch-toggle {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	padding: 14px 18px;
+	border: none;
+	cursor: pointer;
+	font-size: 15px;
+	font-weight: 700;
+	text-align: start;
+	background: var(--examhub-branch-bg, #f8fafc);
+	color: var(--examhub-branch-color, #0f172a);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.examhub-mega__branch-toggle[aria-expanded="true"],
+.examhub-mega__branch-toggle:hover {
+	background: var(--examhub-branch-bg-active, #e2e8f0);
+	color: var(--examhub-branch-color-active, #0f172a);
+}
+
+.examhub-mega__branch-icon {
+	font-size: 18px;
+}
+
+.examhub-mega__branch-name {
+	flex: 1;
+}
+
+.examhub-mega__branch-count {
+	font-size: 12px;
+	font-weight: 400;
+	opacity: 0.6;
+}
+
+.examhub-mega__branch-arrow {
+	display: inline-block;
+	transition: transform 0.2s ease;
+}
+
+.examhub-mega__branch-toggle[aria-expanded="true"] .examhub-mega__branch-arrow {
+	transform: rotate(180deg);
+}
+
+.examhub-mega__children {
+	padding: 12px 18px 18px 18px;
+}
+
+.examhub-mega__children[hidden] {
+	display: none;
+}
+
+.examhub-mega__leaf {
+	margin-bottom: 6px;
+	border-radius: 8px;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.02);
+}
+
+.examhub-mega__leaf-toggle {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	width: 100%;
+	padding: 10px 14px;
+	border: none;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	text-align: start;
+	background: transparent;
+	color: inherit;
+}
+
+.examhub-mega__leaf-name {
+	flex: 1;
+}
+
+.examhub-mega__leaf-count {
+	font-size: 12px;
+	font-weight: 400;
+	opacity: 0.6;
+}
+
+.examhub-mega__leaf-exams {
+	padding: 12px 14px 16px;
+}
+
+.examhub-mega__leaf-exams[hidden],
+.examhub-mega__loading[hidden] {
+	display: none;
+}
+
+.examhub-mega__loading {
+	padding: 10px 14px;
+	font-size: 13px;
+	opacity: 0.6;
+}
+
+/* -------------------------------------------------------------------------
+ * Exam Section — tab row (with inline "view all" button) + card grid
+ * ---------------------------------------------------------------------- */
+
+.examhub-section {
+	/* Force RTL so the tab row always lays out right-to-left in render
+	   order, regardless of the page/theme's text direction. */
+	direction: rtl;
+}
+
+.examhub-section__header {
+	display: flex;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 12px 16px;
+	margin-bottom: 20px;
+}
+
+.examhub-section__tabs {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	flex: 1 1 auto;
+	margin: 0;
+}
+
+.examhub-section__tab {
+	padding: 8px 18px;
+	border: none;
+	border-radius: 999px;
+	font-size: 14px;
+	cursor: pointer;
+	background: var(--examhub-tab-bg, #f1f5f9);
+	color: var(--examhub-tab-color, #334155);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.examhub-section__tab.is-active,
+.examhub-section__tab:hover {
+	background: var(--examhub-tab-bg-active, #2563eb);
+	color: var(--examhub-tab-color-active, #ffffff);
+}
+
+/* Pin the "view all" button to the right (inline-start in RTL) on the same row
+ * as the tabs. order:-1 floats it first visually while keeping the tablist
+ * first in the DOM for keyboard/accessibility order. */
+.examhub-section__button {
+	order: -1;
+	flex: 0 0 auto;
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 18px;
+	border-radius: 10px;
+	font-size: 14px;
+	font-weight: 700;
+	white-space: nowrap;
+	text-decoration: none;
+	background: var(--examhub-section-btn-bg, #f97316);
+	color: var(--examhub-section-btn-color, #ffffff);
+	transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.examhub-section__button:hover,
+.examhub-section__button:focus {
+	background: var(--examhub-section-btn-bg-hover, #ea580c);
+	color: var(--examhub-section-btn-color-hover, #ffffff);
+}
+
+.examhub-section.is-loading .examhub-section__grid {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------
+ * Responsive: collapse to a single column on small screens regardless of
+ * the configured column count, so cards never get crushed.
+ * ---------------------------------------------------------------------- */
+
+@media (max-width: 480px) {
+
+	.examhub-grid,
+	.examhub-category-grid {
+		grid-template-columns: 1fr;
+	}
+}

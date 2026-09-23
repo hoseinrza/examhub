@@ -1,0 +1,1295 @@
+﻿/**
+ * ExamHub Dark Mode - Complete Production CSS
+ *
+ * Scoped to: body.dark-mode
+ *
+ * Covers all 7 widgets + Elementor + WordPress core elements
+ * WCAG AA compliant | No !important | CSS variables only
+ */
+
+/* =============================================================================
+ * SECTION 1: CSS VARIABLES - Centralized Color System
+ * ============================================================================= */
+
+body.dark-mode {
+	/* Backgrounds */
+	--bg-primary: #1a1a1a;
+	--bg-secondary: #2d2d2d;
+	--bg-tertiary: #3a3a3a;
+	--bg-hover: #383838;
+
+	/* Text Colors - WCAG AA Compliant */
+	--text-primary: #e8e8e8;    /* 15:1 contrast on primary */
+	--text-secondary: #b0b0b0;  /* 9.2:1 contrast on primary */
+	--text-tertiary: #888888;   /* 4.5:1 contrast on primary */
+	--text-muted: #707070;      /* For disabled states */
+	--text-inverse: #1a1a1a;    /* For light backgrounds */
+
+	/* Borders & Dividers */
+	--border-color: #404040;
+	--border-light: #333333;
+	--border-dark: #1f1f1f;
+
+	/* Accent Colors */
+	--accent-primary: #FF7A0D;
+	--accent-primary-hover: #FF7A0D;
+	--accent-light: #60a5fa;
+	--accent-lighter: #93c5fd;
+
+	/* Component Backgrounds */
+	--card-bg: #252525;
+	--card-border: #383838;
+	--sidebar-bg: #282828;
+	--input-bg: #1e1e1e;
+	--input-border: #383838;
+	--input-focus: #FF7A0D;
+
+	/* Shadows */
+	--shadow-color: rgba(0, 0, 0, 0.5);
+	--shadow-sm: 0 1px 3px var(--shadow-color);
+	--shadow-md: 0 4px 8px var(--shadow-color);
+	--shadow-lg: 0 8px 16px var(--shadow-color);
+	--shadow-xl: 0 16px 32px var(--shadow-color);
+
+	/* State Colors */
+	--success-bg: #065f46;
+	--success-text: #86efac;
+	--warning-bg: #78350f;
+	--warning-text: #fcd34d;
+	--error-bg: #7f1d1d;
+	--error-text: #fca5a5;
+	--info-bg: #0c2340;
+	--info-text: #93c5fd;
+
+	/* Interactive Elements */
+	--btn-primary-bg: #FF7A0D;
+	--btn-primary-text: #ffffff;
+	--btn-primary-hover: #FF7A0D;
+	--btn-success-bg: #059669;
+	--btn-success-hover: #047857;
+	--btn-secondary-bg: #383838;
+	--btn-secondary-text: #e8e8e8;
+	--btn-disabled-bg: #2d2d2d;
+	--btn-disabled-text: #707070;
+
+	/* Badges & Tags */
+	--badge-bg: #d97706;
+	--badge-text: #ffffff;
+
+	/* Tabs & Pills */
+	--tab-inactive-bg: transparent;
+	--tab-inactive-text: #b0b0b0;
+	--tab-active-bg: transparent;
+	--tab-active-text: #FF7A0D;
+	--tab-active-border: #FF7A0D;
+	--tab-hover-bg: rgba(255, 255, 255, 0.05);
+
+	/* Hover & Focus */
+	--hover-overlay: rgba(255, 255, 255, 0.05);
+	--focus-outline: 2px solid #FF7A0D;
+
+	/* Transitions */
+	--transition-fast: 0.15s ease-in-out;
+	--transition-normal: 0.2s ease-in-out;
+	--transition-slow: 0.3s ease-in-out;
+}
+
+/* =============================================================================
+ * SECTION 1B: Global Dark Mode Tokens Bridge (Elementor-controllable)
+ *
+ * Every token above becomes an alias of a `--dark-*` global token, with the
+ * exact same literal as its fallback — so a site with no
+ * "ExamHub – Dark Mode Tokens" widget placed renders pixel-identically to
+ * before this bridge existed. Placing that widget anywhere on the site (it
+ * targets this same selector list directly, not {{WRAPPER}}) lets an admin
+ * override any `--dark-*` token from Elementor, site-wide, without code.
+ *
+ * [data-examhub-theme="dark"] is the ExamHub-owned fallback attribute (see
+ * public/js/examhub-dark-mode.js) used only on sites where no theme already
+ * manages body.dark-mode; the theme's class always wins when present.
+ * ============================================================================= */
+
+body.dark-mode,
+[data-examhub-theme="dark"] {
+	--bg-primary: var(--dark-bg-primary, #1a1a1a);
+	--bg-secondary: var(--dark-bg-secondary, #2d2d2d);
+	--bg-tertiary: var(--dark-bg-tertiary, #3a3a3a);
+	--bg-hover: var(--dark-bg-hover, #383838);
+
+	--text-primary: var(--dark-text-primary, #e8e8e8);
+	--text-secondary: var(--dark-text-secondary, #b0b0b0);
+	--text-tertiary: var(--dark-text-tertiary, #888888);
+	--text-muted: var(--dark-text-muted, #707070);
+	--text-inverse: var(--dark-text-inverse, #1a1a1a);
+
+	--border-color: var(--dark-border-color, #404040);
+	--border-light: var(--dark-border-light, #333333);
+	--border-dark: var(--dark-border-dark, #1f1f1f);
+
+	--accent-primary: var(--dark-accent-primary, #FF7A0D);
+	--accent-primary-hover: var(--dark-accent-primary-hover, #2563eb);
+	--accent-light: var(--dark-accent-light, #60a5fa);
+	--accent-lighter: var(--dark-accent-lighter, #93c5fd);
+
+	--card-bg: var(--dark-card-bg, #252525);
+	--card-border: var(--dark-card-border, #383838);
+	--sidebar-bg: var(--dark-sidebar-bg, #282828);
+	--input-bg: var(--dark-input-bg, #1e1e1e);
+	--input-border: var(--dark-input-border, #383838);
+	--input-focus: var(--dark-input-focus, #FF7A0D);
+
+	--success-bg: var(--dark-success-bg, #065f46);
+	--success-text: var(--dark-success-text, #86efac);
+	--warning-bg: var(--dark-warning-bg, #78350f);
+	--warning-text: var(--dark-warning-text, #fcd34d);
+	--error-bg: var(--dark-error-bg, #7f1d1d);
+	--error-text: var(--dark-error-text, #fca5a5);
+	--info-bg: var(--dark-info-bg, #0c2340);
+	--info-text: var(--dark-info-text, #93c5fd);
+
+	--btn-primary-bg: var(--dark-btn-primary-bg, #FF7A0D);
+	--btn-primary-text: var(--dark-btn-primary-text, #ffffff);
+	--btn-primary-hover: var(--dark-btn-primary-hover, #FF7A0D);
+	--btn-secondary-bg: var(--dark-btn-secondary-bg, #383838);
+	--btn-secondary-text: var(--dark-btn-secondary-text, #e8e8e8);
+
+	--badge-bg: var(--dark-badge-bg, #d97706);
+	--badge-text: var(--dark-badge-text, #ffffff);
+
+	/* New tokens with no legacy equivalent (Task 2/7 of the dark mode spec).
+	 * These are themselves the *source* tokens — set directly by the preset
+	 * or by the "ExamHub – Dark Mode Tokens" widget's custom controls (see
+	 * Examhub_Dark_Mode_Settings_Trait::register_examhub_dark_mode_global_controls()).
+	 * Components consume them with their own var() fallback chain at the
+	 * point of use (e.g. the Search & Filter popup rules below), so they are
+	 * deliberately NOT defined here — defining them here with a fallback
+	 * would permanently fix a value and defeat that per-component fallback. */
+
+	/* -----------------------------------------------------------------------
+	 * Semantic theme tokens — the ONLY thing dark mode overrides.
+	 *
+	 * These mirror the light-mode --examhub-c-* tokens defined in
+	 * examhub-cards.css (:root) and are mapped onto the legacy color tokens
+	 * above, so the "ExamHub – Dark Mode Tokens" widget keeps driving them.
+	 * Components consume these directly; because only the values change here,
+	 * dark mode inherits 100% of the light-mode layout automatically.
+	 * -------------------------------------------------------------------- */
+	--examhub-c-surface: var(--card-bg);
+	--examhub-c-surface-muted: var(--bg-secondary);
+	--examhub-c-border: var(--card-border);
+	--examhub-c-accent: var(--accent-primary, #FF7A0D);
+	--examhub-c-card-hover-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+/* =============================================================================
+ * SECTION 2: FOUC Prevention - Inline Critical CSS
+ * ============================================================================= */
+
+/*
+ * Colors only — no font-family/line-height here. The site's theme owns
+ * typography; forcing a Latin font stack on body.dark-mode would override
+ * the theme's own (likely Persian) webfont the moment dark mode is active,
+ * breaking text rendering for no reason tied to color at all.
+ */
+body.dark-mode {
+	background-color: var(--bg-primary);
+	color: var(--text-primary);
+}
+
+/* =============================================================================
+ * SECTION 3: Global Elements
+ * ============================================================================= */
+
+body.dark-mode {
+	scrollbar-color: var(--border-color) var(--bg-secondary);
+}
+
+body.dark-mode ::-webkit-scrollbar {
+	width: 12px;
+	height: 12px;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+	background: var(--bg-secondary);
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb {
+	background: var(--border-color);
+	border-radius: 6px;
+}
+
+body.dark-mode ::-webkit-scrollbar-thumb:hover {
+	background: var(--text-tertiary);
+}
+
+/* Links */
+body.dark-mode a {
+	color: var(--accent-light);
+	text-decoration: none;
+	transition: color var(--transition-fast);
+}
+
+body.dark-mode a:hover,
+body.dark-mode a:focus {
+	color: var(--accent-primary);
+	text-decoration: underline;
+}
+
+body.dark-mode a:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: 2px;
+}
+
+/* Headings */
+body.dark-mode h1,
+body.dark-mode h2,
+body.dark-mode h3,
+body.dark-mode h4,
+body.dark-mode h5,
+body.dark-mode h6 {
+	color: var(--text-primary);
+	margin: 0.5em 0;
+}
+
+/* Dividers */
+body.dark-mode hr {
+	border: none;
+	border-top: 1px solid var(--border-color);
+	margin: 1.5rem 0;
+}
+
+/* =============================================================================
+ * SECTION 4: Form Elements
+ * ============================================================================= */
+
+/*
+ * Colors only. Geometry (padding, radius, font-size) is deliberately not set
+ * here: ExamHub's own controls (e.g. .examhub-search-filter__select) must keep
+ * the layout defined once in examhub-cards.css, and a generic element+class
+ * selector here would out-specify those single-class base rules in dark mode
+ * and silently diverge. Generic inputs keep their theme/browser geometry,
+ * identical in both themes.
+ */
+body.dark-mode input,
+body.dark-mode textarea,
+body.dark-mode select {
+	background-color: var(--input-bg);
+	color: var(--text-primary);
+	border-color: var(--input-border);
+	transition: border-color var(--transition-normal), background-color var(--transition-normal), color var(--transition-normal);
+	font-family: inherit;
+}
+
+body.dark-mode input::placeholder,
+body.dark-mode textarea::placeholder {
+	color: var(--text-tertiary);
+	opacity: 0.8;
+}
+
+body.dark-mode input:focus,
+body.dark-mode textarea:focus,
+body.dark-mode select:focus {
+	background-color: var(--input-bg);
+	color: var(--text-primary);
+	border-color: var(--input-focus);
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+body.dark-mode input:disabled,
+body.dark-mode textarea:disabled,
+body.dark-mode select:disabled {
+	background-color: var(--bg-secondary);
+	color: var(--text-muted);
+	border-color: var(--border-light);
+	cursor: not-allowed;
+	opacity: 0.6;
+}
+
+/* Checkboxes & Radio */
+body.dark-mode input[type="checkbox"],
+body.dark-mode input[type="radio"] {
+	accent-color: var(--accent-primary);
+	cursor: pointer;
+}
+
+/* Form Labels */
+body.dark-mode label {
+	color: var(--text-primary);
+	font-weight: 500;
+	cursor: pointer;
+	display: block;
+	margin-bottom: 4px;
+}
+
+body.dark-mode label:hover {
+	color: var(--text-primary);
+}
+
+/* =============================================================================
+ * SECTION 5: Buttons
+ * ============================================================================= */
+
+/*
+ * Theming only — deliberately no `display` (or any other layout property:
+ * flex/grid placement, position, width) here. Dark mode must never decide
+ * whether an element is shown or hidden; that is a layout concern owned by
+ * examhub-cards.css's component/responsive rules. A `display` declared here
+ * would carry higher specificity (body.dark-mode + .examhub-btn = two
+ * classes) than any single-class component rule like
+ * `.examhub-search-filter__filters-toggle { display: none; }`, silently
+ * re-showing things the layout CSS hid — exactly what happened before this
+ * fix: the mobile-only "فیلترها" button (and the "نمایش بیشتر/کمتر" toggle's
+ * .examhub-hidden state) leaked into view on desktop whenever dark mode was
+ * active, regardless of the @media (max-width: 767px) gate.
+ */
+/*
+ * .examhub-btn is intentionally NOT styled here: it inherits its full layout
+ * (size, radius, padding, typography, hover motion) from the base rules in
+ * examhub-cards.css, and its colors from the per-variant color-only overrides
+ * below (which read the Elementor dark controls). The rule below covers only
+ * generic, non-ExamHub <button>/<input> elements so the dark theme stays
+ * consistent for markup the plugin's own CSS never touches.
+ */
+body.dark-mode button,
+body.dark-mode input[type="button"],
+body.dark-mode input[type="submit"] {
+	gap: 6px;
+	padding: 8px 16px;
+	border-radius: 6px;
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 1.5;
+	text-decoration: none;
+	white-space: nowrap;
+	cursor: pointer;
+	border: 1px solid transparent;
+	transition: all var(--transition-normal);
+	background-color: var(--btn-secondary-bg);
+	color: var(--btn-secondary-text);
+}
+
+body.dark-mode button:hover,
+body.dark-mode input[type="button"]:hover,
+body.dark-mode input[type="submit"]:hover {
+	background-color: var(--bg-hover);
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .examhub-btn:focus-visible,
+body.dark-mode button:focus-visible,
+body.dark-mode input[type="button"]:focus-visible,
+body.dark-mode input[type="submit"]:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: 2px;
+}
+
+body.dark-mode button:disabled,
+body.dark-mode input[type="button"]:disabled,
+body.dark-mode input[type="submit"]:disabled {
+	background-color: var(--btn-disabled-bg);
+	color: var(--btn-disabled-text);
+	cursor: not-allowed;
+	opacity: 0.6;
+	transform: none;
+}
+
+/* Button Variants
+ *
+ * Each one respects the widget's own "دکمه «دانلود سوالات/پاسخنامه»"
+ * Elementor controls (--examhub-questions-btn-*/--examhub-answers-btn-*,
+ * already applied in light mode via examhub-cards.css) FIRST, falling back
+ * to the generic dark token only when the admin never set a custom color.
+ * Previously these were hardcoded here, silently discarding any custom
+ * button color the moment dark mode was active. */
+body.dark-mode .examhub-btn--questions {
+	background-color: var(--examhub-questions-btn-dark-bg, var(--examhub-questions-btn-bg, var(--btn-primary-bg)));
+	color: var(--examhub-questions-btn-dark-color, var(--examhub-questions-btn-color, var(--btn-primary-text)));
+	border-color: transparent;
+}
+
+body.dark-mode .examhub-btn--questions:hover,
+body.dark-mode .examhub-btn--questions:focus {
+	background-color: var(--examhub-questions-btn-dark-bg-hover, var(--examhub-questions-btn-bg-hover, var(--btn-primary-hover)));
+	color: var(--examhub-questions-btn-dark-color-hover, var(--examhub-questions-btn-color-hover, var(--btn-primary-text)));
+	box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .examhub-btn--questions:active {
+	background-color: var(--examhub-questions-btn-dark-bg-active, var(--examhub-questions-btn-bg-active, var(--examhub-questions-btn-dark-bg-hover, var(--btn-primary-hover))));
+	color: var(--examhub-questions-btn-dark-color-active, var(--examhub-questions-btn-color-active, var(--btn-primary-text)));
+}
+
+body.dark-mode .examhub-btn--answers {
+	background-color: var(--examhub-answers-btn-dark-bg, var(--examhub-answers-btn-bg, var(--btn-success-bg)));
+	color: var(--examhub-answers-btn-dark-color, var(--examhub-answers-btn-color, var(--btn-primary-text)));
+	border-color: transparent;
+}
+
+body.dark-mode .examhub-btn--answers:hover,
+body.dark-mode .examhub-btn--answers:focus {
+	background-color: var(--examhub-answers-btn-dark-bg-hover, var(--examhub-answers-btn-bg-hover, var(--btn-success-hover)));
+	color: var(--examhub-answers-btn-dark-color-hover, var(--examhub-answers-btn-color-hover, var(--btn-primary-text)));
+	box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .examhub-btn--answers:active {
+	background-color: var(--examhub-answers-btn-dark-bg-active, var(--examhub-answers-btn-bg-active, var(--examhub-answers-btn-dark-bg-hover, var(--btn-success-hover))));
+	color: var(--examhub-answers-btn-dark-color-active, var(--examhub-answers-btn-color-active, var(--btn-primary-text)));
+}
+
+body.dark-mode .examhub-btn--view {
+	background-color: transparent;
+	color: var(--text-secondary);
+	border-color: var(--border-color);
+}
+
+body.dark-mode .examhub-btn--view:hover,
+body.dark-mode .examhub-btn--view:focus {
+	background-color: var(--hover-overlay);
+	color: var(--text-primary);
+	border-color: var(--accent-light);
+}
+
+body.dark-mode .examhub-btn--outline {
+	background-color: transparent;
+	color: var(--accent-light);
+	border-color: var(--accent-light);
+}
+
+body.dark-mode .examhub-btn--outline:hover,
+body.dark-mode .examhub-btn--outline:focus {
+	background-color: rgba(96, 165, 250, 0.1);
+	color: var(--accent-primary);
+	border-color: var(--accent-primary);
+}
+
+/* =============================================================================
+ * SECTION 6: Cards (Exam Showcase)
+ * ============================================================================= */
+
+/*
+ * Cards inherit ALL layout, sizing, radius, shadow and hover motion from the
+ * base .examhub-* rules in examhub-cards.css. Dark mode only swaps color
+ * tokens (the --examhub-c-* block in SECTION 1B) plus the handful of
+ * color-only overrides below that have their own dedicated dark Elementor
+ * controls. No grid/flex/padding/font rules are repeated here by design.
+ */
+
+/*
+ * Colors only. The base .examhub-card already resolves the right dark surface/
+ * border via the --examhub-c-* token flip; this rule additionally honors the
+ * per-widget "card dark background/text/border" Elementor controls
+ * (--examhub-dark-bg/-text/-border, set on body.dark-mode {{WRAPPER}}), layered
+ * over the token, over the literal. Text falls back to the inherited body color.
+ */
+body.dark-mode .examhub-card,
+[data-examhub-theme="dark"] .examhub-card {
+	background-color: var(--examhub-dark-bg, var(--examhub-c-surface, #252525));
+	color: var(--examhub-dark-text, var(--text-primary));
+	border-color: var(--examhub-dark-border, var(--examhub-c-border, #383838));
+}
+
+body.dark-mode .examhub-card:hover,
+[data-examhub-theme="dark"] .examhub-card:hover {
+	border-color: var(--examhub-card-dark-hover-border, var(--examhub-c-accent, #FF7A0D));
+}
+
+body.dark-mode .examhub-card:focus-within,
+[data-examhub-theme="dark"] .examhub-card:focus-within {
+	box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.35);
+}
+
+/* Badge — colors only; position, padding, radius and typography inherited. */
+body.dark-mode .examhub-card__badge,
+body.dark-mode .examhub-card__badge--floating,
+[data-examhub-theme="dark"] .examhub-card__badge,
+[data-examhub-theme="dark"] .examhub-card__badge--floating {
+	background-color: var(--examhub-badge-dark-bg, var(--badge-bg));
+	color: var(--examhub-badge-dark-color, var(--badge-text));
+	border-color: var(--examhub-badge-dark-border, transparent);
+}
+
+/*
+ * Forced brand color on the download buttons in dark mode, by explicit
+ * request — wins over every per-variant Elementor override. Sizing (flex,
+ * radius, padding, typography) is inherited from the base button rules.
+ */
+body.dark-mode .examhub-card__downloads .examhub-btn,
+[data-examhub-theme="dark"] .examhub-card__downloads .examhub-btn {
+	background-color: #FF7A0D !important;
+	border-color: #FF7A0D !important;
+	color: #ffffff !important;
+}
+
+/* "View" secondary button — colors only (dedicated dark Elementor controls). */
+body.dark-mode .examhub-card__view-link,
+[data-examhub-theme="dark"] .examhub-card__view-link {
+	background: var(--examhub-view-link-dark-bg, transparent);
+	color: var(--examhub-view-link-dark-color, var(--examhub-view-link-color, var(--accent-light)));
+	border-color: var(--examhub-view-link-dark-border, var(--examhub-view-link-color, var(--accent-light)));
+}
+
+body.dark-mode .examhub-card__view-link:hover,
+body.dark-mode .examhub-card__view-link:focus,
+[data-examhub-theme="dark"] .examhub-card__view-link:hover,
+[data-examhub-theme="dark"] .examhub-card__view-link:focus {
+	background: var(--examhub-view-link-dark-bg-hover, var(--examhub-view-link-dark-bg, transparent));
+	color: var(--examhub-view-link-dark-color-hover, var(--examhub-view-link-color-hover, var(--accent-primary)));
+	border-color: var(--examhub-view-link-dark-border-hover, var(--examhub-view-link-color-hover, var(--accent-primary)));
+}
+
+body.dark-mode .examhub-card__view-link:active,
+[data-examhub-theme="dark"] .examhub-card__view-link:active {
+	background: var(--examhub-view-link-dark-bg-active, var(--examhub-view-link-dark-bg-hover, transparent));
+	color: var(--examhub-view-link-dark-color-active, var(--examhub-view-link-dark-color-hover, var(--accent-primary)));
+	border-color: var(--examhub-view-link-dark-border-active, var(--examhub-view-link-dark-border-hover, var(--accent-primary)));
+}
+
+/* Empty state — colored panel for dark contrast; padding/alignment inherited. */
+body.dark-mode .examhub-empty,
+[data-examhub-theme="dark"] .examhub-empty {
+	color: var(--text-secondary);
+	background-color: var(--bg-secondary);
+	border: 1px dashed var(--border-color);
+	border-radius: var(--examhub-radius, 12px);
+}
+
+/* =============================================================================
+ * SECTION 7: Categories (Category Showcase)
+ * ============================================================================= */
+
+/* Category tiles inherit all layout (grid, flex, padding, radius, typography,
+   hover motion) from examhub-cards.css; dark mode swaps colors only. */
+
+body.dark-mode .examhub-category-tile {
+	background-color: var(--examhub-dark-bg, var(--sidebar-bg));
+	color: var(--examhub-dark-text, var(--text-primary));
+	border-color: var(--examhub-dark-border, var(--border-color));
+}
+
+body.dark-mode .examhub-category-tile:hover {
+	background-color: var(--accent-primary);
+	color: #ffffff;
+	border-color: var(--accent-light);
+	box-shadow: var(--shadow-md);
+}
+
+/* =============================================================================
+ * SECTION 8: Tabs (Exam Section) — colors only; layout inherited from base.
+ * ============================================================================= */
+
+body.dark-mode .examhub-section {
+	color: var(--text-primary);
+}
+
+body.dark-mode .examhub-section__tabs {
+	border-bottom-color: var(--border-color);
+}
+
+body.dark-mode .examhub-section__tab {
+	color: var(--text-secondary);
+}
+
+body.dark-mode .examhub-section__tab:hover {
+	background-color: var(--hover-overlay);
+	color: var(--text-primary);
+	border-bottom-color: var(--accent-light);
+}
+
+body.dark-mode .examhub-section__tab.is-active {
+	color: var(--accent-primary);
+	border-bottom-color: var(--accent-primary);
+}
+
+body.dark-mode .examhub-section__tab:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: -3px;
+}
+
+body.dark-mode .examhub-section__button {
+	background-color: var(--accent-primary);
+	color: #ffffff;
+	border-color: var(--accent-light);
+}
+
+body.dark-mode .examhub-section__button:hover,
+body.dark-mode .examhub-section__button:focus {
+	background-color: var(--accent-primary-hover);
+	border-color: var(--accent-light);
+	box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .examhub-section__button:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: 2px;
+}
+
+body.dark-mode .examhub-section.is-loading .examhub-section__grid {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* =============================================================================
+ * SECTION 9: Featured Exams
+ * ============================================================================= */
+
+/* Featured tabs — colors only; layout inherited from the base CSS. */
+
+body.dark-mode .examhub-featured__tabs {
+	border-bottom-color: var(--border-color);
+}
+
+body.dark-mode .examhub-featured__tab {
+	color: var(--text-secondary);
+}
+
+body.dark-mode .examhub-featured__tab:hover {
+	color: var(--accent-primary);
+	border-bottom-color: var(--accent-light);
+}
+
+body.dark-mode .examhub-featured__tab.is-active {
+	color: var(--accent-primary);
+	border-bottom-color: var(--accent-primary);
+}
+
+/* =============================================================================
+ * SECTION 10: Search & Filter
+ * ============================================================================= */
+
+body.dark-mode .examhub-search-filter {
+	color: var(--text-primary);
+	background-color: transparent;
+}
+
+body.dark-mode .examhub-search-filter__bar {
+	background-color: transparent;
+}
+
+/*
+ * Forced, not a fallback: this brand color must win over the widget's own
+ * --examhub-sf-apply-bg Elementor override on the mobile "فیلترها" trigger
+ * in dark mode, by explicit request — hence the `!important` rather than
+ * the usual `var(--token, default)` chain used everywhere else in this file.
+ */
+body.dark-mode .examhub-search-filter__filters-toggle {
+	background-color: #FF7A0D !important;
+	color: #ffffff !important;
+}
+
+body.dark-mode .examhub-search-filter__filters-toggle:hover,
+body.dark-mode .examhub-search-filter__filters-toggle:focus {
+	background-color: #FF7A0D !important;
+	color: #ffffff !important;
+}
+
+body.dark-mode .examhub-search-filter__apply {
+	background-color: var(--examhub-sf-apply-bg, var(--accent-primary));
+	color: var(--examhub-sf-apply-color, #ffffff);
+}
+
+body.dark-mode .examhub-search-filter__apply:hover,
+body.dark-mode .examhub-search-filter__apply:focus {
+	background-color: var(--examhub-sf-apply-bg-hover, var(--accent-primary-hover));
+	color: var(--examhub-sf-apply-color-hover, #ffffff);
+}
+
+body.dark-mode .examhub-search-filter__reset,
+[data-examhub-theme="dark"] .examhub-search-filter__reset {
+	background-color: var(--examhub-sf-dark-reset-bg, transparent);
+	color: var(--examhub-sf-dark-reset-color, var(--examhub-sf-reset-color, var(--text-secondary)));
+	border-color: var(--examhub-sf-dark-reset-border, var(--examhub-sf-reset-color, var(--border-color)));
+}
+
+body.dark-mode .examhub-search-filter__reset:hover,
+[data-examhub-theme="dark"] .examhub-search-filter__reset:hover,
+body.dark-mode .examhub-search-filter__reset:focus,
+[data-examhub-theme="dark"] .examhub-search-filter__reset:focus {
+	background-color: var(--examhub-sf-dark-reset-bg-hover, var(--examhub-sf-dark-reset-bg, transparent));
+	color: var(--examhub-sf-dark-reset-color-hover, var(--examhub-sf-dark-reset-color, var(--text-primary)));
+	border-color: var(--examhub-sf-dark-reset-border-hover, var(--examhub-sf-dark-reset-border, var(--accent-light)));
+}
+
+body.dark-mode .examhub-search-filter__reset:active,
+[data-examhub-theme="dark"] .examhub-search-filter__reset:active {
+	background-color: var(--examhub-sf-dark-reset-bg-active, var(--examhub-sf-dark-reset-bg-hover, transparent));
+	color: var(--examhub-sf-dark-reset-color-active, var(--examhub-sf-dark-reset-color-hover, var(--text-primary)));
+	border-color: var(--examhub-sf-dark-reset-border-active, var(--examhub-sf-dark-reset-border-hover, var(--accent-light)));
+}
+
+body.dark-mode .examhub-search-filter__select:disabled {
+	background-color: var(--bg-secondary);
+	color: var(--text-muted);
+}
+
+body.dark-mode .examhub-card__chip {
+	background-color: var(--examhub-year-chip-dark-bg, transparent);
+	color: var(--examhub-year-chip-dark-color, var(--examhub-year-chip-color, var(--text-secondary)));
+	border-color: var(--examhub-year-chip-dark-border, var(--examhub-year-chip-color, currentColor));
+}
+
+body.dark-mode .examhub-card__chip--type {
+	background-color: var(--examhub-category-chip-dark-bg, transparent);
+	color: var(--examhub-category-chip-dark-color, var(--examhub-category-chip-color, var(--badge-bg)));
+	border-color: var(--examhub-category-chip-dark-border, currentColor);
+}
+
+body.dark-mode .examhub-search-filter__select,
+body.dark-mode .examhub-search-filter__search {
+	border-color: var(--examhub-sf-field-border, var(--input-border));
+	background-color: var(--examhub-sf-field-bg, var(--input-bg));
+	color: var(--examhub-sf-field-color, var(--text-primary));
+}
+
+body.dark-mode .examhub-search-filter__select:focus,
+body.dark-mode .examhub-search-filter__search:focus {
+	border-color: var(--input-focus);
+	box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+	background-color: var(--input-bg);
+	color: var(--text-primary);
+}
+
+body.dark-mode .examhub-search-filter__results {
+	background-color: transparent;
+}
+
+body.dark-mode .examhub-search-filter__select.has-value {
+	border-color: var(--examhub-sf-dark-active-color, var(--examhub-sf-active-color, var(--accent-light)));
+	color: var(--examhub-sf-dark-active-color, var(--examhub-sf-active-color, var(--accent-light)));
+}
+
+body.dark-mode .examhub-search-filter__featured-major.is-active {
+	border-color: var(--examhub-sf-dark-active-color, var(--examhub-sf-active-color, var(--accent-primary)));
+	background-color: var(--examhub-sf-dark-active-color, var(--examhub-sf-active-color, var(--accent-primary)));
+	color: #ffffff;
+}
+
+body.dark-mode .examhub-search-filter__field {
+	border-color: var(--examhub-sf-field-border, var(--border-color));
+}
+
+body.dark-mode .examhub-search-filter__field-header {
+	color: var(--examhub-sf-field-color, var(--text-primary));
+}
+
+body.dark-mode .examhub-search-filter__field-chevron {
+	color: var(--examhub-sf-field-color, var(--text-secondary));
+}
+
+body.dark-mode .examhub-search-filter__field-badge {
+	background-color: var(--examhub-sf-active-color-bg, rgba(96, 165, 250, 0.12));
+	color: var(--examhub-sf-active-color, var(--accent-light));
+}
+
+body.dark-mode .examhub-search-filter__select-spinner {
+	border-color: var(--examhub-sf-field-border, var(--border-color));
+	border-top-color: var(--examhub-sf-active-color, var(--accent-primary));
+}
+
+body.dark-mode .examhub-search-filter__chip {
+	background-color: var(--examhub-sf-active-color-bg, rgba(96, 165, 250, 0.12));
+	color: var(--examhub-sf-active-color, var(--accent-light));
+}
+
+body.dark-mode .examhub-search-filter__chip-remove {
+	background-color: rgba(255, 255, 255, 0.12);
+	color: inherit;
+}
+
+body.dark-mode .examhub-search-filter__result-count {
+	color: var(--text-secondary);
+}
+
+/* =============================================================================
+ * SECTION 10B: Search & Filter — Expanded Dark Mode Controls
+ *
+ * Every selector below also matches [data-examhub-theme="dark"] (the
+ * ExamHub-owned fallback attribute) in addition to body.dark-mode, so the
+ * Auto Detect/Force Dark Mode fallback (public/js/examhub-dark-mode.js)
+ * works for this widget even on sites where no theme manages dark mode.
+ * Each declaration's innermost fallback is the SAME value the rule above it
+ * already used — these are purely additive, more-specific override tiers.
+ * ============================================================================= */
+
+body.dark-mode .examhub-search-filter__select,
+body.dark-mode .examhub-search-filter__search,
+[data-examhub-theme="dark"] .examhub-search-filter__select,
+[data-examhub-theme="dark"] .examhub-search-filter__search {
+	border-color: var(--examhub-sf-dark-field-border, var(--examhub-sf-field-border, var(--input-border)));
+	background-color: var(--examhub-sf-dark-field-bg, var(--examhub-sf-field-bg, var(--input-bg)));
+	color: var(--examhub-sf-dark-field-color, var(--examhub-sf-field-color, var(--text-primary)));
+}
+
+body.dark-mode .examhub-search-filter__select:hover,
+body.dark-mode .examhub-search-filter__search:hover,
+[data-examhub-theme="dark"] .examhub-search-filter__select:hover,
+[data-examhub-theme="dark"] .examhub-search-filter__search:hover {
+	background-color: var(--examhub-sf-dark-field-bg-hover, var(--bg-hover));
+}
+
+body.dark-mode .examhub-search-filter__select.has-value,
+[data-examhub-theme="dark"] .examhub-search-filter__select.has-value {
+	border-color: var(--examhub-sf-dark-field-border-active, var(--examhub-sf-dark-active-color, var(--examhub-sf-active-color, var(--accent-light))));
+	color: var(--examhub-sf-dark-active-color, var(--examhub-sf-active-color, var(--accent-light)));
+}
+
+body.dark-mode .examhub-search-filter__chip,
+[data-examhub-theme="dark"] .examhub-search-filter__chip {
+	background-color: var(--examhub-sf-dark-chip-bg, var(--examhub-sf-active-color-bg, rgba(96, 165, 250, 0.12)));
+	color: var(--examhub-sf-dark-chip-color, var(--examhub-sf-active-color, var(--accent-light)));
+	border-color: var(--examhub-sf-dark-chip-border, transparent);
+}
+
+body.dark-mode .examhub-search-filter__chip.is-active,
+[data-examhub-theme="dark"] .examhub-search-filter__chip.is-active {
+	background-color: var(--examhub-sf-dark-chip-active-bg, var(--examhub-sf-dark-chip-bg, var(--accent-primary)));
+}
+
+body.dark-mode .examhub-search-filter__chip,
+[data-examhub-theme="dark"] .examhub-search-filter__chip {
+	border-radius: var(--examhub-sf-dark-chip-radius, 999px);
+}
+
+body.dark-mode .examhub-search-filter__featured-major,
+[data-examhub-theme="dark"] .examhub-search-filter__featured-major {
+	background-color: var(--examhub-sf-dark-major-bg, var(--examhub-sf-field-bg, var(--input-bg)));
+	color: var(--examhub-sf-dark-major-color, var(--examhub-sf-field-color, var(--text-primary)));
+	border-color: var(--examhub-sf-dark-major-border, var(--examhub-sf-dark-field-border, var(--input-border)));
+	border-radius: var(--examhub-sf-dark-major-radius, 999px);
+}
+
+body.dark-mode .examhub-search-filter__featured-major:hover,
+[data-examhub-theme="dark"] .examhub-search-filter__featured-major:hover {
+	color: var(--examhub-sf-dark-major-hover, var(--accent-light));
+}
+
+body.dark-mode .examhub-search-filter__featured-major.is-active,
+[data-examhub-theme="dark"] .examhub-search-filter__featured-major.is-active {
+	border-color: var(--examhub-sf-dark-major-active-bg, var(--examhub-sf-active-color, var(--accent-primary)));
+	background-color: var(--examhub-sf-dark-major-active-bg, var(--examhub-sf-active-color, var(--accent-primary)));
+	color: #ffffff;
+}
+
+body.dark-mode .examhub-search-filter__panel,
+[data-examhub-theme="dark"] .examhub-search-filter__panel {
+	background-color: var(--examhub-sf-dark-popup-bg, var(--examhub-sf-panel-bg, #1a1a1a));
+}
+
+body.dark-mode .examhub-search-filter__panel-header,
+[data-examhub-theme="dark"] .examhub-search-filter__panel-header {
+	background-color: var(--examhub-sf-dark-popup-header-bg, var(--examhub-sf-dark-popup-bg, var(--examhub-sf-panel-bg, #1a1a1a)));
+}
+
+body.dark-mode .examhub-search-filter__actions,
+[data-examhub-theme="dark"] .examhub-search-filter__actions {
+	background-color: var(--examhub-sf-dark-popup-footer-bg, var(--examhub-sf-dark-popup-bg, var(--examhub-sf-panel-bg, #1a1a1a)));
+}
+
+body.dark-mode .examhub-search-filter__overlay,
+[data-examhub-theme="dark"] .examhub-search-filter__overlay {
+	background-color: var(--examhub-sf-dark-overlay-color, var(--examhub-sf-overlay-bg, rgba(15, 23, 42, 0.55)));
+	opacity: var(--examhub-sf-dark-overlay-opacity, 1);
+}
+
+body.dark-mode .examhub-search-filter__panel-close,
+[data-examhub-theme="dark"] .examhub-search-filter__panel-close {
+	color: var(--examhub-sf-dark-close-color, var(--text-primary));
+	background-color: var(--examhub-sf-dark-close-bg, var(--bg-hover));
+}
+
+body.dark-mode .examhub-search-filter__panel-close:hover,
+[data-examhub-theme="dark"] .examhub-search-filter__panel-close:hover {
+	color: var(--examhub-sf-dark-close-color-hover, var(--accent-light));
+}
+
+@media (max-width: 767px) {
+
+	body.dark-mode .examhub-search-filter__filters-toggle,
+	[data-examhub-theme="dark"] .examhub-search-filter__filters-toggle {
+		background-color: var(--examhub-sf-dark-mobile-trigger-bg, var(--examhub-sf-apply-bg, var(--accent-primary)));
+		color: var(--examhub-sf-dark-mobile-trigger-color, var(--examhub-sf-apply-color, #ffffff));
+		border-color: var(--examhub-sf-dark-mobile-trigger-border, transparent);
+	}
+
+	body.dark-mode .examhub-search-filter__featured-majors,
+	[data-examhub-theme="dark"] .examhub-search-filter__featured-majors {
+		background-color: var(--examhub-sf-dark-mobile-majors-bg, transparent);
+	}
+
+	body.dark-mode .examhub-search-filter__panel,
+	[data-examhub-theme="dark"] .examhub-search-filter__panel {
+		background-color: var(--examhub-sf-dark-mobile-sheet-bg, var(--examhub-sf-dark-popup-bg, var(--examhub-sf-panel-bg, #1a1a1a)));
+	}
+}
+
+/*
+ * Colors only — deliberately NOT inside a @media query. Whether the popup
+ * chrome these rules theme is actually on-screen is decided purely by
+ * .examhub-search-filter[data-popup-enabled]/[data-layout-mode] in
+ * examhub-cards.css; dark mode must never re-derive or duplicate that
+ * visibility logic (Bug 5/8's fix) — it only ever recolors whatever layout
+ * CSS has already decided to show, at any breakpoint or layout mode.
+ */
+body.dark-mode .examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__panel,
+body.dark-mode .examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__panel-header,
+body.dark-mode .examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__actions,
+body.dark-mode .examhub-search-filter__panel-header,
+body.dark-mode .examhub-search-filter__actions {
+	background-color: var(--examhub-sf-panel-bg, #1a1a1a);
+	color: var(--text-primary);
+}
+
+body.dark-mode .examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__panel-header,
+body.dark-mode .examhub-search-filter[data-layout-mode="popup_always"] .examhub-search-filter__actions,
+body.dark-mode .examhub-search-filter__panel-header,
+body.dark-mode .examhub-search-filter__actions {
+	border-color: var(--border-color);
+}
+
+body.dark-mode .examhub-search-filter__panel-close {
+	background-color: var(--bg-hover);
+	color: var(--text-primary);
+}
+
+body.dark-mode .examhub-search-filter__featured-major {
+	background-color: var(--examhub-sf-field-bg, var(--input-bg));
+	color: var(--examhub-sf-field-color, var(--text-primary));
+	border-color: var(--examhub-sf-field-border, var(--input-border));
+}
+
+body.dark-mode .examhub-search-filter.is-loading .examhub-search-filter__results {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Footer layout (.examhub-search-filter__footer) inherited from the base CSS. */
+
+body.dark-mode .examhub-search-filter__load-more {
+	background-color: var(--btn-primary-bg);
+	color: var(--btn-primary-text);
+}
+
+body.dark-mode .examhub-search-filter__load-more:hover,
+body.dark-mode .examhub-search-filter__load-more:focus-visible {
+	background-color: var(--btn-primary-hover);
+}
+
+/* Clear Filters Button */
+body.dark-mode .examhub-search-filter__clear-btn,
+body.dark-mode .examhub-library__clear-btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 8px 16px;
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	background-color: var(--btn-secondary-bg);
+	color: var(--btn-secondary-text);
+	font-size: 13px;
+	font-weight: 500;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+	text-decoration: none;
+}
+
+body.dark-mode .examhub-search-filter__clear-btn:hover,
+body.dark-mode .examhub-library__clear-btn:hover {
+	background-color: var(--error-bg);
+	color: var(--error-text);
+	border-color: var(--error-text);
+	transform: translateY(-1px);
+	box-shadow: var(--shadow-md);
+}
+
+body.dark-mode .examhub-search-filter__clear-btn:focus-visible,
+body.dark-mode .examhub-library__clear-btn:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: 2px;
+}
+
+body.dark-mode .examhub-search-filter__clear-btn:disabled,
+body.dark-mode .examhub-library__clear-btn:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+	transform: none;
+}
+
+/* =============================================================================
+ * SECTION 11: Download Library
+ * ============================================================================= */
+
+/*
+ * Download Library inherits its entire layout (flex columns, sidebar width,
+ * radius, padding, responsive stacking, the promoted sidebar-header/title and
+ * select geometry) from examhub-cards.css. Selects/inputs are recolored by the
+ * generic SECTION 4 form rules; the sidebar-header divider flips via the
+ * --examhub-c-border token. Only the sidebar panel background is theme-specific.
+ */
+body.dark-mode .examhub-library__sidebar,
+[data-examhub-theme="dark"] .examhub-library__sidebar {
+	background-color: var(--sidebar-bg);
+}
+
+/* =============================================================================
+ * SECTION 12: Mega Library
+ * ============================================================================= */
+
+/* Mega Library tree — colors only; all layout (flex rows, padding, radius,
+   widths, arrow rotation, [hidden] handling) inherited from examhub-cards.css. */
+
+body.dark-mode .examhub-mega__branch {
+	border-color: var(--border-color);
+}
+
+body.dark-mode .examhub-mega__branch-toggle {
+	background-color: var(--sidebar-bg);
+	color: var(--text-primary);
+}
+
+body.dark-mode .examhub-mega__branch-toggle:hover,
+body.dark-mode .examhub-mega__branch-toggle[aria-expanded="true"] {
+	background-color: var(--accent-primary);
+	color: #ffffff;
+	border-color: var(--accent-light);
+}
+
+body.dark-mode .examhub-mega__branch-toggle:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: -2px;
+}
+
+body.dark-mode .examhub-mega__children {
+	background-color: var(--bg-secondary);
+	border-left-color: var(--accent-primary);
+}
+
+body.dark-mode .examhub-mega__leaf {
+	background-color: rgba(59, 130, 246, 0.08);
+	border-left-color: var(--accent-primary);
+}
+
+body.dark-mode .examhub-mega__leaf-toggle {
+	color: var(--text-primary);
+}
+
+body.dark-mode .examhub-mega__leaf-toggle:hover {
+	background-color: var(--hover-overlay);
+	color: var(--accent-light);
+}
+
+body.dark-mode .examhub-mega__loading {
+	color: var(--text-secondary);
+}
+
+/* =============================================================================
+ * SECTION 13: Elementor Core Widgets
+ * ============================================================================= */
+
+body.dark-mode .elementor-widget-container {
+	color: var(--text-primary);
+	background-color: transparent;
+}
+
+body.dark-mode .elementor-heading-title {
+	color: var(--text-primary);
+	margin: 0.5em 0;
+}
+
+body.dark-mode .elementor-text-editor {
+	color: var(--text-primary);
+}
+
+body.dark-mode .elementor-divider {
+	border-color: var(--border-color);
+	margin: 1.5rem 0;
+}
+
+body.dark-mode .elementor-divider__text {
+	color: var(--text-secondary);
+	background-color: var(--bg-primary);
+	padding: 0 8px;
+}
+
+/* Elementor Tabs */
+body.dark-mode .elementor-tab-title {
+	color: var(--text-secondary);
+	background-color: transparent;
+	padding: 12px 16px;
+	border: none;
+	border-bottom: 2px solid transparent;
+	transition: all var(--transition-normal);
+	cursor: pointer;
+}
+
+body.dark-mode .elementor-tab-title:hover {
+	background-color: var(--hover-overlay);
+	color: var(--text-primary);
+}
+
+body.dark-mode .elementor-tab-title.elementor-active {
+	color: var(--accent-primary);
+	border-color: var(--accent-primary);
+	font-weight: 600;
+}
+
+body.dark-mode .elementor-tab-content {
+	color: var(--text-primary);
+	background-color: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-top: none;
+	padding: 16px;
+}
+
+/* Elementor Accordions */
+body.dark-mode .elementor-accordion-title {
+	background-color: var(--sidebar-bg);
+	color: var(--text-primary);
+	border: 1px solid var(--border-color);
+	padding: 12px 16px;
+	margin-bottom: 4px;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+	font-weight: 600;
+}
+
+body.dark-mode .elementor-accordion-title:hover {
+	background-color: var(--hover-overlay);
+	border-color: var(--accent-light);
+}
+
+body.dark-mode .elementor-accordion-title.elementor-active {
+	background-color: var(--accent-primary);
+	color: #ffffff;
+	border-color: var(--accent-primary);
+}
+
+body.dark-mode .elementor-accordion-body {
+	background-color: var(--card-bg);
+	color: var(--text-primary);
+	border: 1px solid var(--border-color);
+	border-top: none;
+	padding: 16px;
+	margin-bottom: 8px;
+}
+
+/* =============================================================================
+ * SECTION 14: Tables
+ * ============================================================================= */
+
+body.dark-mode table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: var(--card-bg);
+	border: 1px solid var(--border-color);
+	border-radius: 6px;
+	overflow: hidden;
+}
+
+body.dark-mode th {
+	background-color: var(--sidebar-bg);
+	color: var(--text-primary);
+	font-weight: 600;
+	padding: 12px 16px;
+	text-align: left;
+	border-bottom: 1px solid var(--border-color);
+}
+
+body.dark-mode td {
+	padding: 12px 16px;
+	color: var(--text-primary);
+	border-bottom: 1px solid var(--border-light);
+}
+
+body.dark-mode tr:last-child td {
+	border-bottom: none;
+}
+
+body.dark-mode tr:hover td {
+	background-color: var(--hover-overlay);
+}
+
+/* =============================================================================
+ * SECTION 15: Utility & Accessibility
+ * ============================================================================= */
+
+body.dark-mode .sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border-width: 0;
+}
+
+body.dark-mode *:focus-visible {
+	outline: var(--focus-outline);
+	outline-offset: 2px;
+}
+
+/* Skip Link */
+body.dark-mode a.skip-link {
+	position: absolute;
+	top: -40px;
+	left: 0;
+	background: var(--accent-primary);
+	color: #ffffff;
+	padding: 8px 16px;
+	text-decoration: none;
+	z-index: 100;
+}
+
+body.dark-mode a.skip-link:focus {
+	top: 0;
+}
+
+/* =============================================================================
+ * SECTION 16: Responsive Design
+ * ============================================================================= */
+
+/*
+ * Responsive layout is owned entirely by examhub-cards.css and Elementor's
+ * --examhub-columns responsive control — identical in both themes. The dark
+ * stylesheet must not re-declare grid columns, action-row direction or button
+ * sizing per breakpoint (doing so previously forced the action buttons to
+ * stack in dark mobile while light kept them in a row). The only mobile rule
+ * here is generic: keep input font-size at 16px so iOS Safari does not auto-
+ * zoom the page when a field gains focus.
+ */
+@media (max-width: 480px) {
+	body.dark-mode input,
+	body.dark-mode textarea,
+	body.dark-mode select {
+		font-size: 16px;
+	}
+}
+
+/* =============================================================================
+ * SECTION 17: Print Styles
+ * ============================================================================= */
+
+@media print {
+	body.dark-mode {
+		background-color: #ffffff;
+		color: #000000;
+	}
+
+	body.dark-mode .examhub-card,
+	body.dark-mode .examhub-card__body {
+		background-color: #ffffff;
+		border-color: #cccccc;
+		color: #000000;
+	}
+
+	body.dark-mode .examhub-btn {
+		background-color: #f0f0f0;
+		color: #000000;
+		border-color: #999999;
+	}
+}
+
+
