@@ -182,6 +182,7 @@ class Examhub_Public {
 				'i18n'     => array(
 					'loading'      => __( 'در حال بارگذاری…', 'examhub' ),
 					'error'        => __( 'خطایی رخ داد. لطفاً دوباره تلاش کنید.', 'examhub' ),
+					'retry'        => __( 'تلاش مجدد', 'examhub' ),
 					'empty_branch' => __( 'موردی یافت نشد.', 'examhub' ),
 					'files_suffix' => __( 'فایل', 'examhub' ),
 				),

@@ -16,7 +16,7 @@
  * Plugin Name:       ExamHub
  * Plugin URI:        https://github.com/hoseinrza/final-exam-bank
  * Description:       A complete WordPress solution for managing and displaying final exam papers and answer sheets. Organize exams by grade, subject, year, and term, with PDF downloads, advanced filters, search, download statistics, and Elementor integration.
- * Version:           1.0.10
+ * Version:           1.1.0
  * Author:            Tamland Dev
  * Author URI:        https://github.com/hoseinrza/final-exam-bank/
  * License:           GPL-2.0+
@@ -31,9 +31,8 @@ if ( ! defined( 'WPINC' ) ) {
 }
 
 /**
- * Currently plugin version.
- * Start at version 1.0.0 and use SemVer - https://semver.org
- * Rename this for your plugin and update it as you release new versions.
+ * Plugin version used for runtime metadata and asset cache versions.
+ * Keep in sync with the plugin header, README stable tag, and POT metadata.
  */
 define( 'EXAMHUB_VERSION', '1.1.0' );
 

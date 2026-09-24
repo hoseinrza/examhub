@@ -441,7 +441,43 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 	}
 
 	/**
-	 * Resolve the list of tab terms (slug => plain name) for the chosen taxonomy.
+	 * Resolve saved IDs or legacy slugs to IDs in the selected taxonomy.
+	 * Numeric values prefer an existing ID; otherwise try the legacy slug.
+	 * This reads old settings without rewriting Elementor documents.
+	 *
+	 * @param array  $values   Saved control values.
+	 * @param string $taxonomy Selected taxonomy.
+	 * @return int[]
+	 */
+	private function resolve_tab_term_ids( array $values, $taxonomy ) {
+		$ids = array();
+
+		foreach ( $values as $value ) {
+			if ( ! is_string( $value ) && ! is_int( $value ) ) {
+				continue;
+			}
+			$value = trim( (string) $value );
+			if ( '' === $value ) {
+				continue;
+			}
+
+			$term = null;
+			if ( ctype_digit( $value ) && (int) $value > 0 ) {
+				$term = get_term( (int) $value, $taxonomy );
+			}
+			if ( ! $term || is_wp_error( $term ) ) {
+				$term = get_term_by( 'slug', $value, $taxonomy );
+			}
+			if ( $term && ! is_wp_error( $term ) ) {
+				$ids[] = (int) $term->term_id;
+			}
+		}
+
+		return array_values( array_unique( $ids ) );
+	}
+
+	/**
+	 * Resolve the list of tab terms (term ID => plain name) for the chosen taxonomy.
 	 *
 	 * When a "محدود به والد" parent scope is set, the candidate terms are
 	 * first pruned to that parent's dependents — the exact same
@@ -452,7 +488,7 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 	 * @since 1.0.0
 	 * @param  array  $settings Elementor widget settings.
 	 * @param  string $taxonomy The chosen tab taxonomy.
-	 * @return array<string,string> slug => name
+	 * @return array<int,string> term ID => name
 	 */
 	private function get_tab_terms( array $settings, $taxonomy ) {
 
@@ -478,7 +514,15 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 		}
 
 		if ( ! empty( $selected ) ) {
-			$args['slug'] = $selected;
+			$selected_ids = $this->resolve_tab_term_ids( $selected, $taxonomy );
+			if ( isset( $args['include'] ) ) {
+				$selected_ids = array_values( array_intersect( $selected_ids, $args['include'] ) );
+			}
+			// An empty include would remove the restriction and return every term.
+			if ( empty( $selected_ids ) ) {
+				return array();
+			}
+			$args['include'] = $selected_ids;
 		}
 
 		$terms     = get_terms( $args );
@@ -486,7 +530,7 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 
 		if ( is_array( $terms ) ) {
 			foreach ( $terms as $term ) {
-				$tab_terms[ $term->slug ] = $term->name;
+				$tab_terms[ (int) $term->term_id ] = $term->name;
 			}
 		}
 
@@ -510,13 +554,18 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 		$tab_terms = $this->get_tab_terms( $settings, $taxonomy );
 		$show_all  = ! empty( $settings['examhub_show_all_tab'] ) && 'yes' === $settings['examhub_show_all_tab'];
 
+		if ( ! $show_all && empty( $tab_terms ) ) {
+			echo '<p class="examhub-empty">' . esc_html__( 'آزمونی یافت نشد.', 'examhub' ) . '</p>';
+			return;
+		}
+
 		$parent_taxonomy   = Examhub_Query::get_parent_taxonomy( $taxonomy );
 		$parent_term_id    = $this->get_tab_parent_term_id( $settings, $taxonomy );
 
 		// When the "all" tab is hidden, the first curated term is the default view.
-		$default_term = '';
+		$default_term = 0;
 		if ( ! $show_all && ! empty( $tab_terms ) ) {
-			$default_term = (string) array_key_first( $tab_terms );
+			$default_term = (int) array_key_first( $tab_terms );
 		}
 
 		$query_args = array(
@@ -524,7 +573,7 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 			'posts_per_page' => $count,
 		);
 
-		if ( '' !== $default_term ) {
+		if ( $default_term > 0 ) {
 			$filter_key                = str_replace( 'examhub_', '', $taxonomy );
 			$query_args[ $filter_key ] = $default_term;
 		}
@@ -575,10 +624,10 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 
 					<?php
 					$first = true;
-					foreach ( $tab_terms as $slug => $name ) :
+					foreach ( $tab_terms as $term_id => $name ) :
 						$is_active = ! $show_all && $first;
 						?>
-						<button type="button" class="examhub-section__tab<?php echo $is_active ? ' is-active' : ''; ?>" data-term="<?php echo esc_attr( $slug ); ?>" role="tab" aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>">
+						<button type="button" class="examhub-section__tab<?php echo $is_active ? ' is-active' : ''; ?>" data-term="<?php echo esc_attr( $term_id ); ?>" role="tab" aria-selected="<?php echo $is_active ? 'true' : 'false'; ?>">
 							<?php echo esc_html( $name ); ?>
 						</button>
 						<?php

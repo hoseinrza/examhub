@@ -183,6 +183,31 @@
 
 		var $grid     = $library.find( '.examhub-library__grid' );
 		var $loadMore = $library.find( '.examhub-library__load-more' );
+		var filters   = collectLibraryFilters( $library );
+		var appliedFilters = $library.data( 'applied-filters' ) || {};
+		var requestId = ( $library.data( 'request-id' ) || 0 ) + 1;
+
+		if ( append && JSON.stringify( filters ) !== JSON.stringify( appliedFilters ) ) {
+			paged = 1;
+			append = false;
+		}
+
+		$library.data( 'request-id', requestId );
+		$library.find( '.examhub-request-error' ).remove();
+
+		function showError() {
+			if ( requestId !== $library.data( 'request-id' ) ) {
+				return;
+			}
+			var $error = $( '<div class="examhub-request-error" role="alert"></div>' );
+			$error.append( $( '<p></p>' ).text( i18n.error || 'خطایی رخ داد. لطفاً دوباره تلاش کنید.' ) );
+			$( '<button type="button" class="examhub-btn"></button>' )
+				.text( i18n.retry || 'تلاش مجدد' )
+				.on( 'click', function () {
+					loadLibraryPage( $library, paged, append );
+				} ).appendTo( $error );
+			$error.insertBefore( $grid );
+		}
 
 		var args = $.extend(
 			{
@@ -192,7 +217,7 @@
 				show_stats: $library.data( 'show-stats' ),
 				orderby:    'latest'
 			},
-			collectLibraryFilters( $library )
+			filters
 		);
 
 		$library.addClass( 'is-loading' );
@@ -201,22 +226,32 @@
 		examhubRequest( 'examhub_query_exams', args )
 			.done( function ( response ) {
 
-				if ( ! response || ! response.success ) {
+				if ( requestId !== $library.data( 'request-id' ) ) {
+					return;
+				}
+				if ( ! response || ! response.success || ! response.data || 'string' !== typeof response.data.html ) {
+					showError();
 					return;
 				}
 
 				if ( append ) {
-					$grid.append( $( response.data.html ).children() );
+					// Keep every page's cards inside the same CSS grid.
+					$grid.children( '.examhub-grid' ).append( $( response.data.html ).children( '.examhub-card' ) );
 				} else {
 					$grid.html( response.data.html );
 				}
 
 				$library.data( 'paged', response.data.paged );
+				$library.data( 'applied-filters', filters );
 				$library.data( 'max-pages', response.data.max_pages );
 
 				updateToggleButtonState( $loadMore, response.data.paged, response.data.max_pages );
 			} )
+			.fail( showError )
 			.always( function () {
+				if ( requestId !== $library.data( 'request-id' ) ) {
+					return;
+				}
 				$library.removeClass( 'is-loading' );
 				$loadMore.prop( 'disabled', false );
 			} );
@@ -224,7 +259,6 @@
 
 	function reloadLibrary( $library ) {
 
-		$library.data( 'paged', 1 );
 		loadLibraryPage( $library, 1, false );
 	}
 
@@ -254,7 +288,7 @@
 		var $library = $btn.closest( '.examhub-library' );
 
 		if ( 'less' === $btn.attr( 'data-state' ) ) {
-			collapseToggleGrid( $btn, $library.find( '.examhub-library__grid' ).children(), parseInt( $library.data( 'per-page' ), 10 ) || 0 );
+			collapseToggleGrid( $btn, $library.find( '.examhub-library__grid' ).children( '.examhub-grid' ).children( '.examhub-card' ), parseInt( $library.data( 'per-page' ), 10 ) || 0 );
 			$library.data( 'paged', 1 );
 			return;
 		}
@@ -823,8 +857,8 @@
 
 		$.each( [ 'level', 'grade', 'field', 'subject', 'year', 'term', 'exam_type', 'search' ], function ( i, key ) {
 
-			if ( controller.state[ key ] ) {
-				url.searchParams.set( key, controller.state[ key ] );
+			if ( controller.appliedState[ key ] ) {
+				url.searchParams.set( key, controller.appliedState[ key ] );
 			} else {
 				url.searchParams.delete( key );
 			}
@@ -850,7 +884,17 @@
 		var $results     = $widget.find( '.examhub-search-filter__results' );
 		var $loadMore    = $widget.find( '.examhub-search-filter__load-more' );
 		var $resultCount = $widget.find( '.examhub-search-filter__result-count' );
-		var paged        = controller.state.paged || 1;
+		var paged        = append ? ( parseInt( controller.state.paged, 10 ) || 1 ) + 1 : 1;
+		var requestedFilters = $.extend( true, {}, controller.state );
+		delete requestedFilters.paged;
+
+		$widget.find( '.examhub-request-error' ).remove();
+
+		function showError() {
+			$( '<p class="examhub-request-error" role="alert"></p>' )
+				.text( i18n.error || 'خطایی رخ داد. لطفاً دوباره تلاش کنید.' )
+				.insertBefore( $results );
+		}
 
 		lockFilterUI( controller );
 		$loadMore.prop( 'disabled', true );
@@ -858,7 +902,8 @@
 		examhubRequest( 'examhub_query_exams', buildQueryArgs( controller, paged ) )
 			.done( function ( response ) {
 
-				if ( ! response || ! response.success ) {
+				if ( ! response || ! response.success || ! response.data || 'string' !== typeof response.data.html ) {
+					showError();
 					return;
 				}
 
@@ -874,6 +919,7 @@
 				}
 
 				controller.state.paged = response.data.paged;
+				controller.appliedState = requestedFilters;
 				$widget.data( 'max-pages', response.data.max_pages );
 
 				if ( $resultCount.length && undefined !== response.data.found_posts ) {
@@ -883,6 +929,7 @@
 				updateToggleButtonState( $loadMore, response.data.paged, response.data.max_pages );
 				syncFilterStateToUrl( controller );
 			} )
+			.fail( showError )
 			.always( function () {
 				unlockFilterUI( controller );
 				$loadMore.prop( 'disabled', false );
@@ -926,12 +973,6 @@
 			controller.needsApply = true;
 			return;
 		}
-
-		controller.state.paged = 1;
-
-		// Save current filters as applied
-		controller.appliedState = $.extend( {}, controller.state );
-		delete controller.appliedState.paged;
 
 		fetchExams( controller, false );
 	}
@@ -980,7 +1021,8 @@
 		var $widget    = $( this ).closest( '.examhub-search-filter' );
 		var controller = getController( $widget );
 
-		controller.state = { paged: 1 };
+		// Keep the last successful page until the reset request succeeds.
+		controller.state = { paged: controller.state.paged || 1 };
 		renderActiveFilterChips( controller );
 
 		$widget.find( '.examhub-search-filter__search' ).val( '' );
@@ -1149,9 +1191,7 @@
 			return;
 		}
 
-		// Otherwise, load the next page
-		controller.state.paged = ( parseInt( controller.state.paged, 10 ) || 1 ) + 1;
-
+		// The next page is committed only after its request succeeds.
 		fetchExams( controller, true );
 	} );
 
@@ -1190,7 +1230,26 @@
 		return path;
 	}
 
-	function megaLoadExams( $mega, filters, $target ) {
+	function finishMegaLoad( $node, success ) {
+		$node.data( 'loading', false ).data( 'loaded', success ? '1' : '0' );
+	}
+
+	function showMegaError( $node, $target ) {
+		finishMegaLoad( $node, false );
+		$target.empty().append(
+			$( '<p class="examhub-mega__loading" role="alert"></p>' )
+				.text( i18n.error || 'خطایی رخ داد. لطفاً دوباره تلاش کنید.' )
+		);
+		$( '<button type="button" class="examhub-btn"></button>' )
+			.text( i18n.retry || 'تلاش مجدد' )
+			.on( 'click', function () {
+				$node.children( '.examhub-mega__branch-toggle, .examhub-mega__leaf-toggle' )
+					.attr( 'aria-expanded', 'false' ).trigger( 'click' );
+			} )
+			.appendTo( $target );
+	}
+
+	function megaLoadExams( $mega, filters, $target, $node ) {
 
 		$target.html( '<p class="examhub-mega__loading">' + ( i18n.loading || '…' ) + '</p>' );
 
@@ -1203,14 +1262,15 @@
 		}, filters ) )
 			.done( function ( response ) {
 
-				if ( response && response.success ) {
+				if ( response && response.success && response.data && 'string' === typeof response.data.html ) {
 					$target.html( response.data.html );
+					finishMegaLoad( $node, true );
 				} else {
-					$target.html( '<p class="examhub-mega__loading">' + ( i18n.error || 'خطایی رخ داد.' ) + '</p>' );
+					showMegaError( $node, $target );
 				}
 			} )
 			.fail( function () {
-				$target.html( '<p class="examhub-mega__loading">' + ( i18n.error || 'خطایی رخ داد.' ) + '</p>' );
+				showMegaError( $node, $target );
 			} );
 	}
 
@@ -1250,11 +1310,11 @@
 		$toggle.attr( 'aria-expanded', expanded ? 'false' : 'true' );
 		$children.attr( 'hidden', expanded ? 'hidden' : null );
 
-		if ( expanded || '1' === $branch.data( 'loaded' ) ) {
+		if ( expanded || $branch.data( 'loading' ) || '1' === String( $branch.data( 'loaded' ) ) ) {
 			return;
 		}
 
-		$branch.data( 'loaded', '1' );
+		$branch.data( 'loading', true );
 
 		$children.html( '<p class="examhub-mega__loading">' + ( i18n.loading || '…' ) + '</p>' );
 
@@ -1263,8 +1323,8 @@
 		} )
 			.done( function ( response ) {
 
-				if ( ! response || ! response.success ) {
-					$children.html( '<p class="examhub-mega__loading">' + ( i18n.error || 'خطایی رخ داد.' ) + '</p>' );
+				if ( ! response || ! response.success || ! response.data || ! $.isArray( response.data.branches ) ) {
+					showMegaError( $branch, $children );
 					return;
 				}
 
@@ -1272,7 +1332,7 @@
 
 				// A branch with no deeper facet terms shows its own exams directly.
 				if ( ! branches.length ) {
-					megaLoadExams( $mega, filters, $children );
+					megaLoadExams( $mega, filters, $children, $branch );
 					return;
 				}
 
@@ -1281,10 +1341,11 @@
 				$.each( branches, function ( i, branch ) {
 					$children.append( buildLeafMarkup( branch, filters ) );
 				} );
+				finishMegaLoad( $branch, true );
 			} )
 			.fail( function () {
 
-				$children.html( '<p class="examhub-mega__loading">' + ( i18n.error || 'خطایی رخ داد.' ) + '</p>' );
+				showMegaError( $branch, $children );
 			} );
 	} );
 
@@ -1300,13 +1361,13 @@
 		$toggle.attr( 'aria-expanded', expanded ? 'false' : 'true' );
 		$exams.attr( 'hidden', expanded ? 'hidden' : null );
 
-		if ( expanded || '1' === $leaf.data( 'loaded' ) ) {
+		if ( expanded || $leaf.data( 'loading' ) || '1' === String( $leaf.data( 'loaded' ) ) ) {
 			return;
 		}
 
-		$leaf.data( 'loaded', '1' );
+		$leaf.data( 'loading', true );
 
-		megaLoadExams( $mega, filters, $exams );
+		megaLoadExams( $mega, filters, $exams, $leaf );
 	} );
 
 }( jQuery ) );

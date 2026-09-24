@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: ExamHub 1.0.10\n"
+"Project-Id-Version: ExamHub 1.1.0\n"
 "Report-Msgid-Bugs-To: https://github.com/hoseinrza/final-exam-bank\n"
 "POT-Creation-Date: 2026-06-21T00:00:00+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
@@ -1642,5 +1642,9 @@ msgstr ""
 
 #: examhub/public/partials/card-exam.php:94
 msgid "نمایش پاسخنامه"
+msgstr ""
+
+#: examhub/public/class-examhub-public.php:185
+msgid "تلاش مجدد"
 msgstr ""
 
