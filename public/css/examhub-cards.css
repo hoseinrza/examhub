@@ -1793,3 +1793,299 @@ body.examhub-no-scroll {
 		display: none;
 	}
 }
+
+/* -------------------------------------------------------------------------
+ * Search & Filter — Mobile reference card + full-screen filter
+ *
+ * Mobile only: match the supplied reference more closely. Desktop rules above
+ * remain untouched.
+ * ---------------------------------------------------------------------- */
+@media (max-width: 767px) {
+
+	/* Full-screen mobile filter: one viewport, not a partial bottom sheet. */
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__panel,
+	.examhub-search-filter[data-popup-enabled="1"][data-animation="fade"] .examhub-search-filter__panel {
+		position: fixed;
+		inset: 0;
+		width: 100%;
+		max-width: none;
+		max-height: none;
+		height: 100dvh;
+		min-height: 100vh;
+		border-radius: 0;
+		box-shadow: none;
+		background: var(--examhub-sf-panel-bg, #ffffff);
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		overscroll-behavior: contain;
+		transform: translateY(100%);
+		opacity: 1;
+		visibility: hidden;
+		transition: transform 0.28s ease, visibility 0.28s ease;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"][data-animation="fade"] .examhub-search-filter__panel {
+		transform: translateY(100%);
+		opacity: 1;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"].is-popup-open .examhub-search-filter__panel,
+	.examhub-search-filter[data-popup-enabled="1"][data-animation="fade"].is-popup-open .examhub-search-filter__panel {
+		transform: translateY(0);
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__panel-header {
+		position: sticky;
+		top: 0;
+		min-height: 58px;
+		padding: 14px 16px;
+		background: rgba(255, 255, 255, 0.96);
+		border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		z-index: 3;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__panel-body {
+		padding: 18px 16px calc(22px + env(safe-area-inset-bottom));
+		min-height: calc(100dvh - 58px);
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__panel-close {
+		width: 36px;
+		height: 36px;
+		font-size: 24px;
+		background: rgba(15, 23, 42, 0.06);
+	}
+
+	/* Reference-style red filter trigger. */
+	.examhub-search-filter__filters-toggle {
+		height: 40px;
+		margin: 0 8px 18px;
+		width: calc(100% - 16px);
+		border: 0;
+		border-radius: 12px;
+		background: #d71920;
+		color: #ffffff;
+		font-size: 12px;
+		font-weight: 700;
+		box-shadow: 0 7px 16px rgba(215, 25, 32, 0.18);
+	}
+
+	.examhub-search-filter__filters-toggle:hover,
+	.examhub-search-filter__filters-toggle:focus {
+		background: #c9151c;
+		color: #ffffff;
+	}
+
+	/* The reference cards are compact, white, rounded and single-column. */
+	.examhub-search-filter__results .examhub-grid {
+		grid-template-columns: 1fr;
+		gap: 12px;
+	}
+
+	.examhub-search-filter__results .examhub-card {
+		position: relative;
+		min-height: 144px;
+		padding: 0;
+		border: 1px solid rgba(31, 41, 55, 0.18);
+		border-radius: 16px;
+		background: #ffffff;
+		box-shadow: 0 4px 16px rgba(15, 23, 42, 0.12);
+		transform: none;
+	}
+
+	.examhub-search-filter__results .examhub-card:hover {
+		border-color: rgba(31, 41, 55, 0.24);
+		box-shadow: 0 6px 18px rgba(15, 23, 42, 0.14);
+		transform: translateY(-1px);
+	}
+
+	/* Icon sits in the upper-right corner of the card like the reference. */
+	.examhub-search-filter__results .examhub-card__icon {
+		display: inline-flex;
+		position: absolute;
+		top: 12px;
+		inset-inline-end: 10px;
+		width: 38px;
+		height: 38px;
+		align-items: center;
+		justify-content: center;
+		border-radius: 9px;
+		background: rgba(104, 201, 74, 0.16);
+		color: #60bd42;
+		z-index: 1;
+	}
+
+	/* Reference color order: green, green, blue, teal. */
+	.examhub-search-filter__results .examhub-card:nth-child(2) .examhub-card__icon {
+		background: rgba(104, 201, 74, 0.16);
+		color: #60bd42;
+	}
+
+	.examhub-search-filter__results .examhub-card:nth-child(3) .examhub-card__icon {
+		background: rgba(104, 137, 255, 0.14);
+		color: #6c86ff;
+	}
+
+	.examhub-search-filter__results .examhub-card:nth-child(4) .examhub-card__icon {
+		background: rgba(74, 201, 197, 0.14);
+		color: #54c9c5;
+	}
+
+	.examhub-search-filter__results .examhub-card__image,
+	.examhub-search-filter__results .examhub-card__badge,
+	.examhub-search-filter__results .examhub-card__chips,
+	.examhub-search-filter__results .examhub-card__stats {
+		display: none;
+	}
+
+	.examhub-search-filter__results .examhub-card__body {
+		flex: 1 1 auto;
+		min-width: 0;
+		padding: 16px 18px 6px;
+		gap: 6px;
+		justify-content: flex-start;
+		align-items: stretch;
+	}
+
+	.examhub-search-filter__results .examhub-card__title {
+		margin: 4px 50px 0 0;
+		font-size: 15px;
+		font-weight: 800;
+		line-height: 1.55;
+		text-align: right;
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		-webkit-line-clamp: 1;
+	}
+
+	.examhub-search-filter__results .examhub-card__meta {
+		display: block;
+		margin: 0 50px 0 0;
+		font-size: 11px;
+		font-weight: 500;
+		line-height: 1.7;
+		color: #8b8f98;
+		text-align: right;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	}
+
+	/* Reference has one compact primary download action. Keep the existing
+	 * questions URL as the action target and hide the secondary answer action
+	 * only on mobile; no download endpoint/behavior is changed. */
+	.examhub-search-filter__results .examhub-card__actions {
+		padding: 0 18px 12px;
+		align-items: flex-start;
+		justify-content: flex-start;
+	}
+
+	.examhub-search-filter__results .examhub-card__downloads {
+		flex: 0 0 172px;
+		width: 172px;
+		gap: 0;
+	}
+
+	.examhub-search-filter__results .examhub-card__downloads .examhub-btn {
+		width: 172px;
+		min-height: 38px;
+		padding: 7px 10px;
+		border-radius: 12px;
+		font-size: 11px;
+		font-weight: 700;
+		line-height: 1.5;
+		white-space: nowrap;
+	}
+
+	.examhub-search-filter__results .examhub-card__downloads .examhub-btn--answers {
+		display: none;
+	}
+
+	.examhub-search-filter__results .examhub-card__downloads .examhub-btn--questions {
+		border: 1px solid rgba(148, 163, 184, 0.55);
+		background: rgba(255, 255, 255, 0.9);
+		color: #5f5140;
+		box-shadow: none;
+		font-size: 0;
+	}
+
+	.examhub-search-filter__results .examhub-card__downloads .examhub-btn--questions::after {
+		content: "دریافت دفترچه کامل بودجه‌بندی";
+		font-size: 11px;
+	}
+
+	.examhub-search-filter__results .examhub-card__views {
+		display: none;
+	}
+
+	/* Result count is intentionally omitted from the compact mobile reference. */
+	.examhub-search-filter__result-count {
+		display: none;
+	}
+
+	/* Reference-style show-more footer: quiet text between two lines. */
+	.examhub-search-filter__footer {
+		position: relative;
+		margin: 24px 8px 4px;
+		padding: 0 64px;
+		min-height: 28px;
+	}
+
+	.examhub-search-filter__footer::before,
+	.examhub-search-filter__footer::after {
+		content: "";
+		position: absolute;
+		top: 50%;
+		width: 54px;
+		height: 1px;
+		background: rgba(0, 0, 0, 0.25);
+		transform: translateY(-50%);
+	}
+
+	.examhub-search-filter__footer::before {
+		inset-inline-start: 0;
+	}
+
+	.examhub-search-filter__footer::after {
+		inset-inline-end: 0;
+	}
+
+	.examhub-search-filter__load-more {
+		border: 0;
+		padding: 4px 10px;
+		background: transparent;
+		color: inherit;
+		font-size: 12px;
+		font-weight: 600;
+		box-shadow: none;
+	}
+
+	.examhub-search-filter__load-more:hover,
+	.examhub-search-filter__load-more:focus {
+		background: transparent;
+		color: inherit;
+		box-shadow: none;
+	}
+
+	/* Keep the filter actions visible while the full-screen filter itself
+	 * scrolls. Add safe-area padding for notched phones. */
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__actions {
+		margin: 18px -16px -18px;
+		padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+		border-top: 1px solid rgba(15, 23, 42, 0.08);
+		background: rgba(255, 255, 255, 0.96);
+		backdrop-filter: blur(14px);
+		-webkit-backdrop-filter: blur(14px);
+		z-index: 2;
+	}
+
+	.examhub-search-filter[data-popup-enabled="1"] .examhub-search-filter__actions .examhub-btn {
+		min-height: 46px;
+		border-radius: 12px;
+	}
+}
