@@ -144,3 +144,337 @@
 	font-size: 12px;
 	color: #666;
 }
+
+/* -------------------------------------------------------------------------
+ * ExamHub Persian admin workspace — version 1.2.1
+ * ------------------------------------------------------------------------- */
+.examhub-dashboard-wrap,
+.examhub-dashboard-wrap * {
+	box-sizing: border-box;
+}
+
+.examhub-dashboard-wrap {
+	max-width: 1480px;
+	margin-inline-end: 20px;
+	direction: rtl;
+	font-family: inherit;
+}
+
+.examhub-dashboard-hero {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+	margin: 20px 0;
+	padding: 28px 30px;
+	border: 1px solid #e2e8f0;
+	border-radius: 20px;
+	background: linear-gradient(135deg, #ffffff 0%, #f7f9fc 100%);
+	box-shadow: 0 10px 35px rgba(15, 23, 42, .06);
+}
+
+.examhub-dashboard-kicker {
+	display: inline-block;
+	margin-bottom: 7px;
+	font-size: 12px;
+	font-weight: 700;
+	letter-spacing: .02em;
+	color: #64748b;
+}
+
+.examhub-dashboard-hero h1 {
+	margin: 0 0 6px;
+	font-size: 28px;
+	line-height: 1.25;
+	font-weight: 800;
+	color: #0f172a;
+}
+
+.examhub-dashboard-hero p {
+	margin: 0;
+	font-size: 14px;
+	color: #64748b;
+}
+
+.examhub-dashboard-actions {
+	display: flex;
+	gap: 8px;
+	flex-shrink: 0;
+}
+
+.examhub-dashboard-actions .button {
+	min-height: 40px;
+	padding: 0 16px;
+	border-radius: 10px;
+	line-height: 38px;
+}
+
+.examhub-dashboard-stats {
+	display: grid;
+	grid-template-columns: repeat(5, minmax(0, 1fr));
+	gap: 14px;
+	margin: 0 0 18px;
+}
+
+.examhub-stat-card {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	min-height: 100px;
+	padding: 18px;
+	border: 1px solid #e5e7eb;
+	border-radius: 16px;
+	background: #fff;
+	box-shadow: 0 6px 22px rgba(15, 23, 42, .045);
+}
+
+.examhub-stat-icon {
+	display: grid;
+	place-items: center;
+	width: 44px;
+	height: 44px;
+	border-radius: 13px;
+	background: #f1f5f9;
+	color: #0f172a;
+	font-size: 16px;
+	font-weight: 800;
+}
+
+.examhub-stat-card strong {
+	display: block;
+	margin-bottom: 4px;
+	font-size: 23px;
+	line-height: 1;
+	color: #111827;
+}
+
+.examhub-stat-card > div > span {
+	font-size: 12px;
+	color: #64748b;
+}
+
+.examhub-dashboard-grid {
+	display: grid;
+	grid-template-columns: minmax(0, 1.55fr) minmax(360px, .95fr);
+	gap: 18px;
+}
+
+.examhub-panel {
+	min-width: 0;
+	padding: 22px;
+	border: 1px solid #e5e7eb;
+	border-radius: 18px;
+	background: #fff;
+	box-shadow: 0 6px 22px rgba(15, 23, 42, .045);
+}
+
+.examhub-panel-head {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	gap: 16px;
+	margin-bottom: 16px;
+}
+
+.examhub-panel-head h2 {
+	margin: 0 0 5px;
+	font-size: 17px;
+	color: #111827;
+}
+
+.examhub-panel-head p {
+	margin: 0;
+	font-size: 12px;
+	color: #64748b;
+}
+
+.examhub-panel-head > a {
+	white-space: nowrap;
+	font-size: 12px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.examhub-table-wrap {
+	overflow: auto;
+	border: 1px solid #edf0f4;
+	border-radius: 12px;
+}
+
+.examhub-dashboard-table {
+	margin: 0;
+	border: 0;
+}
+
+.examhub-dashboard-table thead th {
+	font-size: 12px;
+	font-weight: 700;
+	color: #475569;
+	background: #f8fafc;
+}
+
+.examhub-dashboard-table td,
+.examhub-dashboard-table th {
+	padding: 11px 12px;
+	vertical-align: middle;
+}
+
+.examhub-dashboard-table td {
+	font-size: 12px;
+}
+
+.examhub-dashboard-table td:first-child {
+	min-width: 220px;
+}
+
+.examhub-status {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 8px;
+	border-radius: 999px;
+	font-size: 11px;
+	font-weight: 700;
+	background: #f1f5f9;
+	color: #475569;
+}
+
+.examhub-status--publish { background: #ecfdf5; color: #047857; }
+.examhub-status--draft { background: #f8fafc; color: #64748b; }
+.examhub-status--pending { background: #fffbeb; color: #a16207; }
+.examhub-star { color: #d97706; font-size: 15px; }
+
+.examhub-taxonomy-grid {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 10px;
+}
+
+.examhub-taxonomy-card {
+	display: grid;
+	grid-template-columns: 1fr auto;
+	gap: 5px 12px;
+	padding: 13px 14px;
+	border: 1px solid #edf0f4;
+	border-radius: 12px;
+	background: #fafbfc;
+	color: inherit;
+	text-decoration: none;
+	transition: .18s ease;
+}
+
+.examhub-taxonomy-card:hover {
+	border-color: #cbd5e1;
+	background: #fff;
+	transform: translateY(-1px);
+}
+
+.examhub-taxonomy-card span {
+	font-size: 12px;
+	font-weight: 700;
+	color: #334155;
+}
+
+.examhub-taxonomy-card strong {
+	font-size: 15px;
+	color: #0f172a;
+}
+
+.examhub-taxonomy-card small {
+	grid-column: 1 / -1;
+	font-size: 10px;
+	color: #94a3b8;
+}
+
+.examhub-quick-links {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 10px;
+	margin-top: 14px;
+	padding-top: 14px;
+	border-top: 1px solid #edf0f4;
+}
+
+.examhub-quick-links a {
+	padding: 11px 12px;
+	border: 1px solid #e2e8f0;
+	border-radius: 11px;
+	background: #fff;
+	font-size: 12px;
+	font-weight: 700;
+	text-decoration: none;
+	text-align: center;
+}
+
+.examhub-empty-state {
+	display: grid;
+	place-items: center;
+	gap: 12px;
+	min-height: 210px;
+	padding: 24px;
+	border: 1px dashed #dbe2ea;
+	border-radius: 12px;
+	background: #fafbfc;
+	color: #64748b;
+	font-size: 13px;
+}
+
+.examhub-dashboard-footer {
+	display: flex;
+	justify-content: space-between;
+	gap: 12px;
+	margin: 14px 2px 0;
+	font-size: 11px;
+	color: #94a3b8;
+}
+
+/* Make every ExamHub editor screen visually coherent and RTL-friendly. */
+body.post-type-examhub_exam #wpcontent,
+body.post-type-examhub_exam .wrap {
+	direction: rtl;
+}
+
+body.post-type-examhub_exam .widefat th,
+body.post-type-examhub_exam .widefat td,
+.examhub-taxonomies,
+.examhub-metabox {
+	direction: rtl;
+}
+
+body.post-type-examhub_exam .page-title-action {
+	border-radius: 9px;
+}
+
+.examhub-metabox .form-table th {
+	width: 150px;
+	font-weight: 700;
+	color: #1e293b;
+}
+
+.examhub-resource-field {
+	border-color: #e2e8f0;
+	border-radius: 12px;
+	background: #f8fafc;
+}
+
+.examhub-taxonomies .widefat,
+.examhub-metabox input[type="url"],
+.examhub-metabox input[type="text"],
+.examhub-metabox select {
+	border-radius: 9px;
+}
+
+@media (max-width: 1200px) {
+	.examhub-dashboard-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+	.examhub-dashboard-grid { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 782px) {
+	.examhub-dashboard-wrap { margin-inline-end: 10px; }
+	.examhub-dashboard-hero { align-items: stretch; flex-direction: column; padding: 22px; }
+	.examhub-dashboard-actions { flex-direction: column; }
+	.examhub-dashboard-actions .button { width: 100%; text-align: center; }
+	.examhub-dashboard-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+	.examhub-taxonomy-grid,
+	.examhub-quick-links { grid-template-columns: 1fr; }
+	.examhub-dashboard-footer { flex-direction: column; }
+}

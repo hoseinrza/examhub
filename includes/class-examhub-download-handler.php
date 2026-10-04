@@ -75,13 +75,13 @@ class Examhub_Download_Handler {
 		$type    = isset( $_GET['type'] ) ? sanitize_key( wp_unslash( $_GET['type'] ) ) : '';
 
 		if ( ! $exam_id || ! isset( self::TYPE_META_MAP[ $type ] ) ) {
-			wp_die( esc_html__( 'Invalid download request.', 'examhub' ), '', array( 'response' => 400 ) );
+			wp_die( esc_html__( 'درخواست دانلود نامعتبر است.', 'examhub' ), '', array( 'response' => 400 ) );
 		}
 
 		check_ajax_referer( 'examhub_download_' . $exam_id . '_' . $type, '_wpnonce' );
 
 		if ( 'examhub_exam' !== get_post_type( $exam_id ) || 'publish' !== get_post_status( $exam_id ) ) {
-			wp_die( esc_html__( 'Exam not found.', 'examhub' ), '', array( 'response' => 404 ) );
+			wp_die( esc_html__( 'آزمون پیدا نشد.', 'examhub' ), '', array( 'response' => 404 ) );
 		}
 
 		$meta = self::TYPE_META_MAP[ $type ];
@@ -92,13 +92,13 @@ class Examhub_Download_Handler {
 		if ( $attachment_id ) {
 			// Make sure the attachment is genuinely the file attached to this exam.
 			if ( (int) get_post_field( 'post_parent', $attachment_id ) !== (int) $exam_id ) {
-				wp_die( esc_html__( 'File not available.', 'examhub' ), '', array( 'response' => 404 ) );
+				wp_die( esc_html__( 'فایل در دسترس نیست.', 'examhub' ), '', array( 'response' => 404 ) );
 			}
 
 			$file_path = get_attached_file( $attachment_id );
 
 			if ( ! $file_path || ! file_exists( $file_path ) ) {
-				wp_die( esc_html__( 'File not available.', 'examhub' ), '', array( 'response' => 404 ) );
+				wp_die( esc_html__( 'فایل در دسترس نیست.', 'examhub' ), '', array( 'response' => 404 ) );
 			}
 
 			self::increment_counter( $exam_id, $meta['counter'] );
@@ -115,7 +115,7 @@ class Examhub_Download_Handler {
 			return;
 		}
 
-		wp_die( esc_html__( 'File not available.', 'examhub' ), '', array( 'response' => 404 ) );
+		wp_die( esc_html__( 'فایل در دسترس نیست.', 'examhub' ), '', array( 'response' => 404 ) );
 	}
 
 	/**

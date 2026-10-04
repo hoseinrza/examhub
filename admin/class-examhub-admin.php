@@ -52,6 +52,191 @@ class Examhub_Admin {
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
 
+		// صفحه مدیریت سفارشی در اولین اجرای افزونه زیر منوی آزمون‌ها ثبت می‌شود.
+
+	}
+
+	/**
+	 * Register the ExamHub administration dashboard beneath the exams menu.
+	 *
+	 * @since 1.2.0
+	 */
+	public function register_admin_menu() {
+
+		add_submenu_page(
+			'edit.php?post_type=examhub_exam',
+			__( 'داشبورد آزمون‌ها', 'examhub' ),
+			__( 'داشبورد', 'examhub' ),
+			'edit_posts',
+			'examhub-dashboard',
+			array( $this, 'render_dashboard' )
+		);
+
+		// در منوی مدیریت فقط «پایه» و «رشته» به‌عنوان ساختار قابل مدیریت
+		// نمایش داده شوند. سایر taxonomyها همچنان برای داده‌های داخلی و
+		// فیلترهای افزونه ثبت می‌مانند و حذف نمی‌شوند.
+		$hidden_taxonomies = array(
+			'examhub_level',
+			'examhub_subject',
+			'examhub_year',
+			'examhub_term',
+			'examhub_exam_type',
+		);
+
+		foreach ( $hidden_taxonomies as $taxonomy ) {
+			remove_submenu_page(
+				'edit.php?post_type=examhub_exam',
+				'edit-tags.php?taxonomy=' . $taxonomy . '&post_type=examhub_exam'
+			);
+		}
+	}
+
+	/**
+	 * Render the ExamHub administration dashboard.
+	 *
+	 * @since 1.2.0
+	 */
+	public function render_dashboard() {
+
+		if ( ! current_user_can( 'edit_posts' ) ) {
+			wp_die( esc_html__( 'شما اجازه دسترسی به این صفحه را ندارید.', 'examhub' ) );
+		}
+
+		$counts           = wp_count_posts( 'examhub_exam' );
+		$total            = isset( $counts->publish ) ? (int) $counts->publish : 0;
+		$drafts           = isset( $counts->draft ) ? (int) $counts->draft : 0;
+		$pending          = isset( $counts->pending ) ? (int) $counts->pending : 0;
+		$featured         = $this->get_featured_count();
+		$total_downloads  = $this->get_total_downloads();
+		$recent_exams     = get_posts(
+			array(
+				'post_type'      => 'examhub_exam',
+				'post_status'    => array( 'publish', 'draft', 'pending' ),
+				'posts_per_page' => 7,
+				'orderby'        => 'date',
+				'order'          => 'DESC',
+			)
+		);
+
+		$taxonomy_items = array(
+			'examhub_grade' => 'پایه',
+			'examhub_field' => 'رشته',
+		);
+		?>
+		<div class="wrap examhub-dashboard-wrap">
+			<div class="examhub-dashboard-hero">
+				<div>
+					<span class="examhub-dashboard-kicker"><?php esc_html_e( 'مرکز مدیریت بانک آزمون', 'examhub' ); ?></span>
+					<h1><?php esc_html_e( 'داشبورد آزمون‌ها', 'examhub' ); ?></h1>
+					<p><?php esc_html_e( 'مدیریت سریع آزمون‌ها، دسته‌بندی‌ها و فایل‌های سوالات و پاسخنامه از یک صفحه.', 'examhub' ); ?></p>
+				</div>
+				<div class="examhub-dashboard-actions">
+					<a class="button button-primary" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=examhub_exam' ) ); ?>"><?php esc_html_e( 'افزودن آزمون جدید', 'examhub' ); ?></a>
+					<a class="button" href="<?php echo esc_url( admin_url( 'edit.php?post_type=examhub_exam' ) ); ?>"><?php esc_html_e( 'مدیریت آزمون‌ها', 'examhub' ); ?></a>
+				</div>
+			</div>
+
+			<div class="examhub-dashboard-stats">
+				<div class="examhub-stat-card"><span class="examhub-stat-icon">آ</span><div><strong><?php echo esc_html( number_format_i18n( $total ) ); ?></strong><span><?php esc_html_e( 'آزمون منتشرشده', 'examhub' ); ?></span></div></div>
+				<div class="examhub-stat-card"><span class="examhub-stat-icon">ن</span><div><strong><?php echo esc_html( number_format_i18n( $drafts ) ); ?></strong><span><?php esc_html_e( 'پیش‌نویس', 'examhub' ); ?></span></div></div>
+				<div class="examhub-stat-card"><span class="examhub-stat-icon">ر</span><div><strong><?php echo esc_html( number_format_i18n( $pending ) ); ?></strong><span><?php esc_html_e( 'در انتظار بررسی', 'examhub' ); ?></span></div></div>
+				<div class="examhub-stat-card"><span class="examhub-stat-icon">★</span><div><strong><?php echo esc_html( number_format_i18n( $featured ) ); ?></strong><span><?php esc_html_e( 'آزمون ویژه', 'examhub' ); ?></span></div></div>
+				<div class="examhub-stat-card"><span class="examhub-stat-icon">↓</span><div><strong><?php echo esc_html( number_format_i18n( $total_downloads ) ); ?></strong><span><?php esc_html_e( 'مجموع دانلود', 'examhub' ); ?></span></div></div>
+			</div>
+
+			<div class="examhub-dashboard-grid">
+				<section class="examhub-panel">
+					<div class="examhub-panel-head">
+						<div><h2><?php esc_html_e( 'آخرین آزمون‌ها', 'examhub' ); ?></h2><p><?php esc_html_e( 'آخرین موارد ثبت یا ویرایش‌شده در بانک آزمون.', 'examhub' ); ?></p></div>
+						<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=examhub_exam' ) ); ?>"><?php esc_html_e( 'مشاهده همه', 'examhub' ); ?></a>
+					</div>
+					<?php if ( empty( $recent_exams ) ) : ?>
+						<div class="examhub-empty-state"><strong><?php esc_html_e( 'هنوز آزمونی ثبت نشده است.', 'examhub' ); ?></strong><a class="button button-primary" href="<?php echo esc_url( admin_url( 'post-new.php?post_type=examhub_exam' ) ); ?>"><?php esc_html_e( 'اولین آزمون را اضافه کنید', 'examhub' ); ?></a></div>
+					<?php else : ?>
+						<div class="examhub-table-wrap">
+							<table class="widefat fixed striped examhub-dashboard-table">
+								<thead><tr><th><?php esc_html_e( 'عنوان آزمون', 'examhub' ); ?></th><th><?php esc_html_e( 'وضعیت', 'examhub' ); ?></th><th><?php esc_html_e( 'ویژه', 'examhub' ); ?></th><th><?php esc_html_e( 'دانلود', 'examhub' ); ?></th><th><?php esc_html_e( 'ویرایش', 'examhub' ); ?></th></tr></thead>
+								<tbody>
+								<?php foreach ( $recent_exams as $exam ) : ?>
+									<?php
+									$status_labels = array( 'publish' => 'منتشرشده', 'draft' => 'پیش‌نویس', 'pending' => 'در انتظار بررسی' );
+									$q_downloads = (int) get_post_meta( $exam->ID, '_examhub_questions_downloads', true );
+									$a_downloads = (int) get_post_meta( $exam->ID, '_examhub_answers_downloads', true );
+									?>
+									<tr>
+										<td><strong><?php echo esc_html( get_the_title( $exam ) ?: __( '(بدون عنوان)', 'examhub' ) ); ?></strong></td>
+										<td><span class="examhub-status examhub-status--<?php echo esc_attr( $exam->post_status ); ?>"><?php echo esc_html( $status_labels[ $exam->post_status ] ?? $exam->post_status ); ?></span></td>
+										<td><?php echo get_post_meta( $exam->ID, '_examhub_featured', true ) ? '<span class="examhub-star">★</span>' : '—'; ?></td>
+										<td><?php echo esc_html( number_format_i18n( $q_downloads + $a_downloads ) ); ?></td>
+										<td><a class="button button-small" href="<?php echo esc_url( get_edit_post_link( $exam->ID, '' ) ); ?>"><?php esc_html_e( 'ویرایش', 'examhub' ); ?></a></td>
+									</tr>
+								<?php endforeach; ?>
+								</tbody>
+							</table>
+						</div>
+					<?php endif; ?>
+				</section>
+
+				<section class="examhub-panel">
+					<div class="examhub-panel-head"><div><h2><?php esc_html_e( 'مدیریت دسته‌بندی‌ها', 'examhub' ); ?></h2><p><?php esc_html_e( 'دسترسی سریع به فیلترهای ساختاری و دسته‌بندی آزمون‌ها.', 'examhub' ); ?></p></div></div>
+					<div class="examhub-taxonomy-grid">
+						<?php foreach ( $taxonomy_items as $taxonomy => $label ) : ?>
+							<?php
+							$count = wp_count_terms( array( 'taxonomy' => $taxonomy, 'hide_empty' => false ) );
+							$url   = add_query_arg( array( 'taxonomy' => $taxonomy, 'post_type' => 'examhub_exam' ), admin_url( 'edit-tags.php' ) );
+							?>
+							<a class="examhub-taxonomy-card" href="<?php echo esc_url( $url ); ?>"><span><?php echo esc_html( $label ); ?></span><strong><?php echo esc_html( number_format_i18n( (int) $count ) ); ?></strong><small><?php esc_html_e( 'مدیریت', 'examhub' ); ?> ←</small></a>
+						<?php endforeach; ?>
+					</div>
+					<div class="examhub-quick-links">
+						<a href="<?php echo esc_url( admin_url( 'post-new.php?post_type=examhub_exam' ) ); ?>">＋ <?php esc_html_e( 'ثبت آزمون', 'examhub' ); ?></a>
+						<a href="<?php echo esc_url( admin_url( 'edit.php?post_type=examhub_exam' ) ); ?>">☷ <?php esc_html_e( 'فهرست آزمون‌ها', 'examhub' ); ?></a>
+					</div>
+				</section>
+			</div>
+
+			<div class="examhub-dashboard-footer">
+				<span><?php printf( esc_html__( 'ExamHub نسخه %s', 'examhub' ), esc_html( $this->version ) ); ?></span>
+				<span><?php esc_html_e( 'مدیریت بانک آزمون برای تیم محتوا', 'examhub' ); ?></span>
+			</div>
+		</div>
+		<?php
+	}
+
+	/**
+	 * Count featured exams.
+	 *
+	 * @return int
+	 */
+	private function get_featured_count() {
+		return (int) ( new WP_Query( array(
+			'post_type'      => 'examhub_exam',
+			'post_status'    => 'any',
+			'posts_per_page' => 1,
+			'fields'         => 'ids',
+			'no_found_rows'  => false,
+			'meta_query'     => array(
+				array(
+					'key'   => '_examhub_featured',
+					'value' => '1',
+				),
+			),
+		) ) )->found_posts;
+	}
+
+	/**
+	 * Sum question and answer downloads.
+	 *
+	 * @return int
+	 */
+	private function get_total_downloads() {
+		global $wpdb;
+
+		$value = $wpdb->get_var(
+			"SELECT COALESCE(SUM(CAST(meta_value AS UNSIGNED)), 0) FROM {$wpdb->postmeta} pm INNER JOIN {$wpdb->posts} p ON p.ID = pm.post_id WHERE p.post_type = 'examhub_exam' AND pm.meta_key IN ('_examhub_questions_downloads','_examhub_answers_downloads')"
+		);
+
+		return (int) $value;
 	}
 
 	/**
@@ -66,8 +251,10 @@ class Examhub_Admin {
 	public function enqueue_styles() {
 
 		$screen = get_current_screen();
+		$is_dashboard = isset( $_GET['page'] ) && 'examhub-dashboard' === sanitize_key( wp_unslash( $_GET['page'] ) );
+		$is_taxonomy  = $screen && ! empty( $screen->taxonomy ) && in_array( $screen->taxonomy, array_keys( Examhub_Query::TAXONOMY_MAP ), true );
 
-		if ( ! $screen || 'examhub_exam' !== $screen->post_type ) {
+		if ( ! $screen || ( 'examhub_exam' !== $screen->post_type && ! $is_dashboard && ! $is_taxonomy ) ) {
 			return;
 		}
 

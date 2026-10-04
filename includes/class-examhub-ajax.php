@@ -95,7 +95,7 @@ class Examhub_Ajax {
 		$step       = count( $path );
 
 		if ( $step < 1 || $step >= count( $taxonomies ) ) {
-			wp_send_json_error( array( 'message' => __( 'Invalid request.', 'examhub' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'درخواست نامعتبر است.', 'examhub' ) ), 400 );
 		}
 
 		$next_taxonomy = $taxonomies[ $step ];
@@ -151,7 +151,7 @@ class Examhub_Ajax {
 		$taxonomy = isset( $_POST['taxonomy'] ) ? sanitize_key( wp_unslash( $_POST['taxonomy'] ) ) : '';
 
 		if ( ! array_key_exists( $taxonomy, Examhub_Query::STRUCTURE_PARENT_META ) ) {
-			wp_send_json_error( array( 'message' => __( 'Invalid taxonomy.', 'examhub' ) ), 400 );
+			wp_send_json_error( array( 'message' => __( 'دسته‌بندی نامعتبر است.', 'examhub' ) ), 400 );
 		}
 
 		$parent_term_id = isset( $_POST['parent_term_id'] ) ? absint( $_POST['parent_term_id'] ) : 0;

@@ -32,18 +32,18 @@ class Examhub_Post_Types {
 	public function register_post_type() {
 
 		$labels = array(
-			'name'               => __( 'Exams', 'examhub' ),
-			'singular_name'      => __( 'Exam', 'examhub' ),
-			'menu_name'          => __( 'ExamHub', 'examhub' ),
-			'add_new'            => __( 'Add New', 'examhub' ),
-			'add_new_item'       => __( 'Add New Exam', 'examhub' ),
-			'edit_item'          => __( 'Edit Exam', 'examhub' ),
-			'new_item'           => __( 'New Exam', 'examhub' ),
-			'view_item'          => __( 'View Exam', 'examhub' ),
-			'search_items'       => __( 'Search Exams', 'examhub' ),
-			'not_found'          => __( 'No exams found', 'examhub' ),
-			'not_found_in_trash' => __( 'No exams found in trash', 'examhub' ),
-			'all_items'          => __( 'All Exams', 'examhub' ),
+			'name'               => __( 'آزمون‌ها', 'examhub' ),
+			'singular_name'      => __( 'آزمون', 'examhub' ),
+			'menu_name'          => __( 'آزمون‌ها', 'examhub' ),
+			'add_new'            => __( 'افزودن', 'examhub' ),
+			'add_new_item'       => __( 'افزودن آزمون', 'examhub' ),
+			'edit_item'          => __( 'ویرایش آزمون', 'examhub' ),
+			'new_item'           => __( 'آزمون جدید', 'examhub' ),
+			'view_item'          => __( 'مشاهده آزمون', 'examhub' ),
+			'search_items'       => __( 'جستجوی آزمون‌ها', 'examhub' ),
+			'not_found'          => __( 'آزمونی پیدا نشد', 'examhub' ),
+			'not_found_in_trash' => __( 'آزمونی در زباله‌دان پیدا نشد', 'examhub' ),
+			'all_items'          => __( 'همه آزمون‌ها', 'examhub' ),
 		);
 
 		$args = array(
@@ -87,44 +87,44 @@ class Examhub_Post_Types {
 
 		$taxonomies = array(
 			'examhub_level'     => array(
-				'name'          => __( 'Levels', 'examhub' ),
-				'singular_name' => __( 'Level', 'examhub' ),
+				'name'          => __( 'مقطع‌ها', 'examhub' ),
+				'singular_name' => __( 'مقطع', 'examhub' ),
 				'menu_name'     => __( 'مقطع', 'examhub' ),
 				'hierarchical'  => false,
 			),
 			'examhub_grade'     => array(
-				'name'          => __( 'Grades', 'examhub' ),
-				'singular_name' => __( 'Grade', 'examhub' ),
+				'name'          => __( 'پایه‌ها', 'examhub' ),
+				'singular_name' => __( 'پایه', 'examhub' ),
 				'menu_name'     => __( 'پایه', 'examhub' ),
 				'hierarchical'  => false,
 			),
 			'examhub_field'     => array(
-				'name'          => __( 'Fields', 'examhub' ),
-				'singular_name' => __( 'Field', 'examhub' ),
+				'name'          => __( 'رشته‌ها', 'examhub' ),
+				'singular_name' => __( 'رشته', 'examhub' ),
 				'menu_name'     => __( 'رشته', 'examhub' ),
 				'hierarchical'  => false,
 			),
 			'examhub_subject'   => array(
-				'name'          => __( 'Subjects', 'examhub' ),
-				'singular_name' => __( 'Subject', 'examhub' ),
+				'name'          => __( 'درس‌ها', 'examhub' ),
+				'singular_name' => __( 'درس', 'examhub' ),
 				'menu_name'     => __( 'درس', 'examhub' ),
 				'hierarchical'  => false,
 			),
 			'examhub_year'      => array(
-				'name'          => __( 'Years', 'examhub' ),
-				'singular_name' => __( 'Year', 'examhub' ),
-				'menu_name'     => __( 'Years (سال)', 'examhub' ),
+				'name'          => __( 'سال‌ها', 'examhub' ),
+				'singular_name' => __( 'سال', 'examhub' ),
+				'menu_name'     => __( 'سال', 'examhub' ),
 				'hierarchical'  => false,
 			),
 			'examhub_term'      => array(
-				'name'          => __( 'Terms', 'examhub' ),
-				'singular_name' => __( 'Term', 'examhub' ),
-				'menu_name'     => __( 'Terms (نوبت)', 'examhub' ),
+				'name'          => __( 'نوبت‌ها', 'examhub' ),
+				'singular_name' => __( 'نوبت', 'examhub' ),
+				'menu_name'     => __( 'نوبت', 'examhub' ),
 				'hierarchical'  => false,
 			),
 			'examhub_exam_type' => array(
-				'name'          => __( 'Exam Types', 'examhub' ),
-				'singular_name' => __( 'Exam Type', 'examhub' ),
+				'name'          => __( 'انواع آزمون', 'examhub' ),
+				'singular_name' => __( 'نوع آزمون', 'examhub' ),
 				'menu_name'     => __( 'نوع آزمون', 'examhub' ),
 				'hierarchical'  => false,
 			),
@@ -136,14 +136,14 @@ class Examhub_Post_Types {
 				'name'              => $names['name'],
 				'singular_name'     => $names['singular_name'],
 				'menu_name'         => $names['menu_name'],
-				'search_items'      => sprintf( __( 'Search %s', 'examhub' ), $names['name'] ),
-				'all_items'         => sprintf( __( 'All %s', 'examhub' ), $names['name'] ),
-				'parent_item'       => sprintf( __( 'Parent %s', 'examhub' ), $names['singular_name'] ),
-				'parent_item_colon' => sprintf( __( 'Parent %s:', 'examhub' ), $names['singular_name'] ),
-				'edit_item'         => sprintf( __( 'Edit %s', 'examhub' ), $names['singular_name'] ),
-				'update_item'       => sprintf( __( 'Update %s', 'examhub' ), $names['singular_name'] ),
-				'add_new_item'      => sprintf( __( 'Add New %s', 'examhub' ), $names['singular_name'] ),
-				'new_item_name'     => sprintf( __( 'New %s Name', 'examhub' ), $names['singular_name'] ),
+				'search_items'      => sprintf( __( 'جستجوی %s', 'examhub' ), $names['name'] ),
+				'all_items'         => sprintf( __( 'همه %s', 'examhub' ), $names['name'] ),
+				'parent_item'       => sprintf( __( 'والد %s', 'examhub' ), $names['singular_name'] ),
+				'parent_item_colon' => sprintf( __( 'والد %s:', 'examhub' ), $names['singular_name'] ),
+				'edit_item'         => sprintf( __( 'ویرایش %s', 'examhub' ), $names['singular_name'] ),
+				'update_item'       => sprintf( __( 'به‌روزرسانی %s', 'examhub' ), $names['singular_name'] ),
+				'add_new_item'      => sprintf( __( 'افزودن %s', 'examhub' ), $names['singular_name'] ),
+				'new_item_name'     => sprintf( __( 'نام %s جدید', 'examhub' ), $names['singular_name'] ),
 			);
 
 			register_taxonomy(
@@ -181,9 +181,9 @@ class Examhub_Post_Types {
 		}
 		?>
 		<div class="form-field term-examhub-icon-wrap">
-			<label for="examhub-icon"><?php esc_html_e( 'Icon (emoji)', 'examhub' ); ?></label>
+			<label for="examhub-icon"><?php esc_html_e( 'آیکن (ایموجی)', 'examhub' ); ?></label>
 			<input type="text" name="examhub_icon" id="examhub-icon" value="" maxlength="10" />
-			<p><?php esc_html_e( 'A short emoji shown next to this term in the Category Showcase widget, e.g. 📘', 'examhub' ); ?></p>
+			<p><?php esc_html_e( 'یک ایموجی کوتاه که در ویجت «ویترین دسته‌بندی‌ها» کنار این مورد نمایش داده می‌شود؛ برای نمونه 📘', 'examhub' ); ?></p>
 		</div>
 		<?php
 	}
@@ -204,10 +204,10 @@ class Examhub_Post_Types {
 		$icon = get_term_meta( $term->term_id, 'examhub_icon', true );
 		?>
 		<tr class="form-field term-examhub-icon-wrap">
-			<th scope="row"><label for="examhub-icon"><?php esc_html_e( 'Icon (emoji)', 'examhub' ); ?></label></th>
+			<th scope="row"><label for="examhub-icon"><?php esc_html_e( 'آیکن (ایموجی)', 'examhub' ); ?></label></th>
 			<td>
 				<input type="text" name="examhub_icon" id="examhub-icon" value="<?php echo esc_attr( $icon ); ?>" maxlength="10" />
-				<p class="description"><?php esc_html_e( 'A short emoji shown next to this term in the Category Showcase widget, e.g. 📘', 'examhub' ); ?></p>
+				<p class="description"><?php esc_html_e( 'یک ایموجی کوتاه که در ویجت «ویترین دسته‌بندی‌ها» کنار این مورد نمایش داده می‌شود؛ برای نمونه 📘', 'examhub' ); ?></p>
 			</td>
 		</tr>
 		<?php
