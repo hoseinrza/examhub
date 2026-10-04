@@ -80,17 +80,6 @@ class Examhub_Widget_Exam_Showcase extends \Elementor\Widget_Base {
 		);
 
 		$this->add_control(
-			'examhub_level',
-			array(
-				'label'       => __( 'مقطع', 'examhub' ),
-				'type'        => \Elementor\Controls_Manager::SELECT2,
-				'options'     => array( '' => __( 'همه', 'examhub' ) ) + Examhub_Query::get_term_choices( 'examhub_level' ),
-				'default'     => '',
-				'description' => __( 'انتخاب مقطع گزینه‌های پایه را در پنل ادیتور محدود می‌کند و به همین ترتیب تا درس.', 'examhub' ),
-			)
-		);
-
-		$this->add_control(
 			'examhub_grade',
 			array(
 				'label'   => __( 'پایه', 'examhub' ),
@@ -106,46 +95,6 @@ class Examhub_Widget_Exam_Showcase extends \Elementor\Widget_Base {
 				'label'   => __( 'رشته', 'examhub' ),
 				'type'    => \Elementor\Controls_Manager::SELECT2,
 				'options' => array( '' => __( 'همه', 'examhub' ) ) + Examhub_Query::get_term_choices( 'examhub_field' ),
-				'default' => '',
-			)
-		);
-
-		$this->add_control(
-			'examhub_subject',
-			array(
-				'label'   => __( 'درس', 'examhub' ),
-				'type'    => \Elementor\Controls_Manager::SELECT2,
-				'options' => array( '' => __( 'همه', 'examhub' ) ) + Examhub_Query::get_term_choices( 'examhub_subject' ),
-				'default' => '',
-			)
-		);
-
-		$this->add_control(
-			'examhub_year',
-			array(
-				'label'   => __( 'سال', 'examhub' ),
-				'type'    => \Elementor\Controls_Manager::SELECT2,
-				'options' => array( '' => __( 'همه', 'examhub' ) ) + Examhub_Query::get_term_options( 'examhub_year' ),
-				'default' => '',
-			)
-		);
-
-		$this->add_control(
-			'examhub_term',
-			array(
-				'label'   => __( 'نوبت', 'examhub' ),
-				'type'    => \Elementor\Controls_Manager::SELECT2,
-				'options' => array( '' => __( 'همه', 'examhub' ) ) + Examhub_Query::get_term_options( 'examhub_term' ),
-				'default' => '',
-			)
-		);
-
-		$this->add_control(
-			'examhub_type',
-			array(
-				'label'   => __( 'نوع آزمون', 'examhub' ),
-				'type'    => \Elementor\Controls_Manager::SELECT2,
-				'options' => array( '' => __( 'همه', 'examhub' ) ) + Examhub_Query::get_term_options( 'examhub_exam_type' ),
 				'default' => '',
 			)
 		);
@@ -226,13 +175,8 @@ class Examhub_Widget_Exam_Showcase extends \Elementor\Widget_Base {
 
 		$result = Examhub_Query::get_exams(
 			array(
-				'level'          => $settings['examhub_level'],
 				'grade'          => $settings['examhub_grade'],
 				'field'          => $settings['examhub_field'],
-				'subject'        => $settings['examhub_subject'],
-				'year'           => $settings['examhub_year'],
-				'term'           => $settings['examhub_term'],
-				'exam_type'      => $settings['examhub_type'],
 				'orderby'        => $settings['examhub_orderby'],
 				'posts_per_page' => (int) $settings['examhub_count'],
 			)

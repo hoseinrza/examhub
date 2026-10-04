@@ -1,16 +1,12 @@
 /**
- * Cascading مقطع › پایه › رشته › درس controls for the Exam Showcase widget's
- * Elementor editor panel. Each control is registered (PHP-side) with every
- * term in its taxonomy — Elementor controls can't lazily fetch remote
- * options — so this script prunes the next control's option list the moment
- * its parent control changes, using the same examhub_dependent_terms AJAX
- * action the post-edit metabox's cascading selects use.
+ * Cascading پایه › رشته controls for the v2 ExamHub filter set. Each control
+ * is registered (PHP-side) with every term in its taxonomy — Elementor
+ * controls can't lazily fetch remote options — so this script prunes the next
+ * control's option list the moment its parent changes.
  *
  * Progressive enhancement only: if a future Elementor version changes the
- * internal panel APIs this relies on (getControlViewByName, the settings
- * model's change events), the four controls simply keep working as plain,
- * independent SELECT2s — nothing here is required for the widget to render
- * or save correctly.
+ * internal panel APIs this relies on, the controls simply fall back to plain
+ * independent SELECT2s.
  */
 
 ( function ( $ ) {
@@ -22,9 +18,7 @@
 
 	// Child control name => [ taxonomy slug, parent control name ].
 	var CASCADE = {
-		examhub_grade:   [ 'examhub_grade', 'examhub_level' ],
-		examhub_field:   [ 'examhub_field', 'examhub_grade' ],
-		examhub_subject: [ 'examhub_subject', 'examhub_field' ]
+		examhub_field: [ 'examhub_field', 'examhub_grade' ]
 	};
 
 	/**

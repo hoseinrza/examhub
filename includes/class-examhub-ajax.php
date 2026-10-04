@@ -44,8 +44,8 @@ class Examhub_Ajax {
 			'match_type'     => isset( $_POST['match_type'] ) && 'OR' === strtoupper( sanitize_key( wp_unslash( $_POST['match_type'] ) ) ) ? 'OR' : 'AND',
 		);
 
-		// Read each taxonomy filter (level, grade, field, subject, year, term, exam_type) by its key.
-		foreach ( array_keys( Examhub_Query::TAXONOMY_MAP ) as $filter_key ) {
+		// Read only the active product filters in this version: grade + field.
+		foreach ( Examhub_Query::FILTER_SEQUENCE as $filter_key ) {
 			$args[ $filter_key ] = self::sanitize_term_param( $filter_key );
 		}
 
@@ -171,6 +171,10 @@ class Examhub_Ajax {
 	 * @return string|array<int,string>
 	 */
 	private static function sanitize_term_param( $key ) {
+
+		if ( ! in_array( $key, Examhub_Query::FILTER_SEQUENCE, true ) ) {
+			return '';
+		}
 
 		if ( empty( $_POST[ $key ] ) ) {
 			return '';

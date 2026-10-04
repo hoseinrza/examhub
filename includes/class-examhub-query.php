@@ -41,18 +41,15 @@ class Examhub_Query {
 	 * @var   array<string,string>
 	 */
 	const STRUCTURE_TAXONOMIES = array(
-		'examhub_level'   => 'level',
-		'examhub_grade'   => 'grade',
-		'examhub_field'   => 'field',
-		'examhub_subject' => 'subject',
-		'examhub_year'    => 'year',
-		'examhub_term'    => 'term',
+		'examhub_grade' => 'grade',
+		'examhub_field' => 'field',
 	);
 
 	/**
 	 * Maps each dependent structure taxonomy to the term-meta key (on its own
 	 * terms) that stores the term_id of its valid parent in the taxonomy one
-	 * step up. examhub_level has no entry — it's the root, always unfiltered.
+	 * step up. The root facet (grade) has no parent meta and is always shown
+	 * unfiltered in the v2 product version.
 	 *
 	 * Meta is added non-unique (Examhub_Query::set_structure_parent()): a term
 	 * can have more than one valid parent (e.g. a field shared by two grades),
@@ -63,11 +60,7 @@ class Examhub_Query {
 	 * @var   array<string,string>
 	 */
 	const STRUCTURE_PARENT_META = array(
-		'examhub_grade'   => 'examhub_parent_level',
-		'examhub_field'   => 'examhub_parent_grade',
-		'examhub_subject' => 'examhub_parent_field',
-		'examhub_year'    => 'examhub_parent_subject',
-		'examhub_term'    => 'examhub_parent_year',
+		'examhub_field' => 'examhub_parent_grade',
 	);
 
 	/**
@@ -88,7 +81,7 @@ class Examhub_Query {
 	 * @since 1.0.0
 	 * @var   array<string>
 	 */
-	const FILTER_SEQUENCE = array( 'level', 'grade', 'field', 'subject', 'year', 'term', 'exam_type' );
+	const FILTER_SEQUENCE = array( 'grade', 'field' );
 
 	/**
 	 * Initialize AJAX hooks.
@@ -320,8 +313,9 @@ class Examhub_Query {
 
 		// Add independent (non-structure) taxonomies: exam_type (year and term are now part of structure).
 		$structure_taxonomies = array_keys( self::STRUCTURE_TAXONOMIES );
-		foreach ( self::TAXONOMY_MAP as $filter_key => $taxonomy ) {
-			if ( in_array( $taxonomy, $structure_taxonomies, true ) ) {
+		foreach ( self::FILTER_SEQUENCE as $filter_key ) {
+			$taxonomy = self::TAXONOMY_MAP[ $filter_key ] ?? '';
+			if ( ! $taxonomy || in_array( $taxonomy, $structure_taxonomies, true ) ) {
 				continue; // Already handled by the structure query.
 			}
 			$value = $args[ $filter_key ];
@@ -813,7 +807,8 @@ class Examhub_Query {
 			return array();
 		}
 
-		if ( 'examhub_level' === $taxonomy ) {
+		$root_taxonomy = array_key_first( self::STRUCTURE_TAXONOMIES );
+		if ( $root_taxonomy === $taxonomy ) {
 			return self::get_term_choices( $taxonomy );
 		}
 

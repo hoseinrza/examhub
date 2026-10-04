@@ -30,40 +30,15 @@ class Examhub_Widget_Download_Library extends \Elementor\Widget_Base {
 	 * @var   array<string,array>
 	 */
 	const FILTERS = array(
-		'level'     => array(
-			'switch'   => 'examhub_show_level',
-			'terms'    => 'examhub_terms_level',
-			'taxonomy' => 'examhub_level',
-		),
-		'grade'     => array(
+		'grade' => array(
 			'switch'   => 'examhub_show_grade',
 			'terms'    => 'examhub_terms_grade',
 			'taxonomy' => 'examhub_grade',
 		),
-		'field'     => array(
+		'field' => array(
 			'switch'   => 'examhub_show_field',
 			'terms'    => 'examhub_terms_field',
 			'taxonomy' => 'examhub_field',
-		),
-		'subject'   => array(
-			'switch'   => 'examhub_show_subject',
-			'terms'    => 'examhub_terms_subject',
-			'taxonomy' => 'examhub_subject',
-		),
-		'year'      => array(
-			'switch'   => 'examhub_show_year',
-			'terms'    => 'examhub_terms_year',
-			'taxonomy' => 'examhub_year',
-		),
-		'term'      => array(
-			'switch'   => 'examhub_show_term',
-			'terms'    => 'examhub_terms_term',
-			'taxonomy' => 'examhub_term',
-		),
-		'exam_type' => array(
-			'switch'   => 'examhub_show_type',
-			'terms'    => 'examhub_terms_type',
-			'taxonomy' => 'examhub_exam_type',
 		),
 	);
 
@@ -129,20 +104,10 @@ class Examhub_Widget_Download_Library extends \Elementor\Widget_Base {
 	private function get_filter_label( $key ) {
 
 		switch ( $key ) {
-			case 'level':
-				return __( 'مقطع', 'examhub' );
 			case 'grade':
 				return __( 'پایه', 'examhub' );
 			case 'field':
 				return __( 'رشته', 'examhub' );
-			case 'subject':
-				return __( 'درس', 'examhub' );
-			case 'year':
-				return __( 'سال', 'examhub' );
-			case 'term':
-				return __( 'نوبت', 'examhub' );
-			case 'exam_type':
-				return __( 'نوع آزمون', 'examhub' );
 			default:
 				return '';
 		}

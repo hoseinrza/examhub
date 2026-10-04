@@ -39,33 +39,13 @@ class Examhub_Widget_Search_Filter extends \Elementor\Widget_Base {
 	 * @var   array<string,array>
 	 */
 	const FIELDS = array(
-		'level'     => array(
-			'switch'   => 'examhub_show_level',
-			'taxonomy' => 'examhub_level',
-		),
-		'grade'     => array(
+		'grade' => array(
 			'switch'   => 'examhub_show_grade',
 			'taxonomy' => 'examhub_grade',
 		),
-		'field'     => array(
+		'field' => array(
 			'switch'   => 'examhub_show_field',
 			'taxonomy' => 'examhub_field',
-		),
-		'subject'   => array(
-			'switch'   => 'examhub_show_subject',
-			'taxonomy' => 'examhub_subject',
-		),
-		'year'      => array(
-			'switch'   => 'examhub_show_year',
-			'taxonomy' => 'examhub_year',
-		),
-		'term'      => array(
-			'switch'   => 'examhub_show_term',
-			'taxonomy' => 'examhub_term',
-		),
-		'exam_type' => array(
-			'switch'   => 'examhub_show_type',
-			'taxonomy' => 'examhub_exam_type',
 		),
 	);
 
@@ -128,20 +108,10 @@ class Examhub_Widget_Search_Filter extends \Elementor\Widget_Base {
 	private function get_field_label( $key ) {
 
 		switch ( $key ) {
-			case 'level':
-				return __( 'مقطع', 'examhub' );
 			case 'grade':
 				return __( 'پایه', 'examhub' );
 			case 'field':
 				return __( 'رشته', 'examhub' );
-			case 'subject':
-				return __( 'درس', 'examhub' );
-			case 'year':
-				return __( 'سال', 'examhub' );
-			case 'term':
-				return __( 'نوبت', 'examhub' );
-			case 'exam_type':
-				return __( 'نوع آزمون', 'examhub' );
 			default:
 				return '';
 		}
