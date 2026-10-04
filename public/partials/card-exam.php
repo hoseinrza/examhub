@@ -19,6 +19,14 @@ $show_stats = ! empty( $atts['show_stats'] );
 ?>
 <div class="examhub-card<?php echo $exam['featured'] ? ' examhub-card--featured' : ''; ?>">
 
+	<div class="examhub-card__icon" aria-hidden="true">
+		<svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+			<circle cx="12" cy="9" r="5.5" stroke="currentColor" stroke-width="1.8"/>
+			<path d="M8.7 13.4 7.2 21l4.8-2.4 4.8 2.4-1.5-7.6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+			<path d="M10 9.2 12 7.8l2 1.4-.8 2.4h-2.4L10 9.2Z" fill="currentColor" stroke="none"/>
+		</svg>
+	</div>
+
 	<?php if ( $show_image && $exam['thumbnail'] ) : ?>
 		<div class="examhub-card__image">
 			<img src="<?php echo esc_url( $exam['thumbnail'] ); ?>" alt="<?php echo esc_attr( $exam['title'] ); ?>" loading="lazy" />

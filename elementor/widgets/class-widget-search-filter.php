@@ -1542,6 +1542,8 @@ class Examhub_Widget_Search_Filter extends \Elementor\Widget_Base {
 
 		$settings      = $this->get_settings_for_display();
 		$display       = $this->get_examhub_display_atts( $settings );
+		// The Search & Filter card skin intentionally does not show download-count data.
+		$display['show_stats'] = false;
 		$count         = max( 1, (int) $settings['examhub_count'] );
 		$layout_mode   = in_array( $settings['examhub_layout_mode'] ?? 'hybrid', array( 'hybrid', 'inline_always', 'popup_always' ), true )
 			? $settings['examhub_layout_mode']
