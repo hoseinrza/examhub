@@ -597,7 +597,7 @@ class Examhub_Widget_Exam_Section extends \Elementor\Widget_Base {
 			</div>
 
 			<div class="examhub-section__grid">
-				<?php echo wp_kses_post( examhub_render_exam_grid( $result['items'], $display ) ); ?>
+				<?php echo examhub_render_exam_grid( $result['items'], $display ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every value is escaped inside card-exam.php. ?>
 			</div>
 		</div>
 		<?php

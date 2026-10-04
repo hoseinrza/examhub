@@ -1541,6 +1541,7 @@ class Examhub_Widget_Search_Filter extends \Elementor\Widget_Base {
 	protected function render() {
 
 		$settings      = $this->get_settings_for_display();
+		$is_editor_preview = Examhub_Elementor_Loader::is_editor_context();
 		$display       = $this->get_examhub_display_atts( $settings );
 		// The Search & Filter card skin intentionally does not show download-count data.
 		$display['show_stats'] = false;
@@ -1588,7 +1589,8 @@ class Examhub_Widget_Search_Filter extends \Elementor\Widget_Base {
 			<?php
 		};
 		?>
-		<div class="examhub-search-filter"
+		<div class="examhub-search-filter<?php echo $is_editor_preview ? ' examhub-search-filter--editor-preview' : ''; ?>"
+			data-editor-preview="<?php echo $is_editor_preview ? '1' : '0'; ?>"
 			data-per-page="<?php echo esc_attr( $count ); ?>"
 			data-show-image="<?php echo $display['show_image'] ? '1' : '0'; ?>"
 			data-show-stats="<?php echo $display['show_stats'] ? '1' : '0'; ?>"
@@ -1755,7 +1757,30 @@ class Examhub_Widget_Search_Filter extends \Elementor\Widget_Base {
 			<?php endif; ?>
 
 			<div class="examhub-search-filter__results">
-				<?php echo wp_kses_post( examhub_render_exam_grid( $result['items'], $display ) ); ?>
+				<?php if ( $is_editor_preview && empty( $result['items'] ) ) : ?>
+					<div class="examhub-search-filter__editor-demo" aria-hidden="true">
+						<?php
+						$demo_titles = array(
+							__( 'پایه دوازدهم - رشته ریاضی', 'examhub' ),
+							__( 'پایه دوازدهم - رشته تجربی', 'examhub' ),
+							__( 'پایه یازدهم - رشته تجربی', 'examhub' ),
+							__( 'پایه دهم - رشته انسانی', 'examhub' ),
+						);
+						foreach ( $demo_titles as $demo_title ) :
+							?>
+							<article class="examhub-search-filter__editor-demo-card">
+								<span class="examhub-search-filter__editor-demo-icon" aria-hidden="true">✓</span>
+								<div class="examhub-search-filter__editor-demo-copy">
+									<strong><?php echo esc_html( $demo_title ); ?></strong>
+									<span><?php esc_html_e( 'مرحله بعدی آزمون · آبان', 'examhub' ); ?></span>
+								</div>
+								<span class="examhub-search-filter__editor-demo-button"><?php esc_html_e( 'دریافت دفترچه', 'examhub' ); ?></span>
+							</article>
+						<?php endforeach; ?>
+					</div>
+				<?php else : ?>
+					<?php echo examhub_render_exam_grid( $result['items'], $display ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every value is escaped inside card-exam.php. ?>
+				<?php endif; ?>
 			</div>
 
 			<div class="examhub-search-filter__footer">

@@ -317,18 +317,20 @@ class Examhub {
 
 		add_action( 'elementor/elements/categories_registered', array( $elementor_loader, 'register_category' ) );
 
-		/*
-		 * Elementor renamed this hook in 3.5 (elementor/widgets/widgets_registered
-		 * -> elementor/widgets/register), both passing $widgets_manager to the same
-		 * callback signature. Hooking both keeps registration working whichever
-		 * major version is active; only one of the two will ever actually fire.
-		 */
-		add_action( 'elementor/widgets/register', array( $elementor_loader, 'register_widgets' ) );
-		add_action( 'elementor/widgets/widgets_registered', array( $elementor_loader, 'register_widgets' ) );
+		// Elementor >= 3.5 fires 'elementor/widgets/register'; the legacy
+		// 'widgets_registered' event is still fired (deprecated) alongside it,
+		// so hooking both would register every widget twice. Hook only one.
+		if ( did_action( 'elementor/widgets/register' ) || version_compare( defined( 'ELEMENTOR_VERSION' ) ? ELEMENTOR_VERSION : '0', '3.5.0', '>=' ) ) {
+			add_action( 'elementor/widgets/register', array( $elementor_loader, 'register_widgets' ) );
+		} else {
+			add_action( 'elementor/widgets/widgets_registered', array( $elementor_loader, 'register_widgets' ) );
+		}
 
 		add_action( 'elementor/dynamic_tags/register', array( $elementor_loader, 'register_dynamic_tags' ) );
 
 		add_action( 'elementor/editor/after_enqueue_scripts', array( $elementor_loader, 'enqueue_editor_scripts' ) );
+		add_action( 'elementor/preview/enqueue_styles', array( $elementor_loader, 'enqueue_preview_styles' ) );
+		add_action( 'elementor/preview/enqueue_scripts', array( $elementor_loader, 'enqueue_preview_scripts' ) );
 
 	}
 

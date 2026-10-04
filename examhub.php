@@ -16,7 +16,7 @@
  * Plugin Name:       ExamHub
  * Plugin URI:        https://github.com/hoseinrza/final-exam-bank
  * Description:       سامانه مدیریت بانک آزمون‌های نهایی؛ مدیریت آزمون‌ها، دسته‌بندی‌ها، فایل سوالات و پاسخنامه، جستجو و فیلتر پیشرفته و اتصال به المنتور.
- * Version:           1.2.1
+ * Version:           1.2.5
  * Author:            Tamland Dev
  * Author URI:        https://github.com/hoseinrza/final-exam-bank/
  * License:           GPL-2.0+
@@ -35,7 +35,7 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'EXAMHUB_VERSION', '1.2.1' );
+define( 'EXAMHUB_VERSION', '1.2.5' );
 
 /**
  * The code that runs during plugin activation.

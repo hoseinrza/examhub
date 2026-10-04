@@ -1,12 +1,9 @@
 /**
- * Cascading پایه › رشته controls for the v2 ExamHub filter set. Each control
- * is registered (PHP-side) with every term in its taxonomy — Elementor
- * controls can't lazily fetch remote options — so this script prunes the next
- * control's option list the moment its parent changes.
+ * Cascading پایه › رشته controls for the ExamHub Exam Showcase widget.
  *
- * Progressive enhancement only: if a future Elementor version changes the
- * internal panel APIs this relies on, the controls simply fall back to plain
- * independent SELECT2s.
+ * Every term is registered PHP-side, so this script prunes the child control's
+ * option list when its parent changes. Progressive enhancement only: if the
+ * Elementor panel API differs, the controls stay plain independent SELECT2s.
  */
 
 ( function ( $ ) {
@@ -22,15 +19,25 @@
 	};
 
 	/**
-	 * Rebuild a control's SELECT2 option list and re-render it.
-	 *
-	 * @param {Backbone.View} view        The widget's controls-stack view.
-	 * @param {string}        controlName Control name to refresh.
-	 * @param {Object}        options     New term_id => name map.
+	 * The controls-stack view that owns the control views. The third hook
+	 * argument is the element (widget) view, which has no getControlViewByName(),
+	 * so resolve the panel's current page view instead.
 	 */
+	function getControlsView( fallback ) {
+
+		var panelView = ( elementor.getPanelView && elementor.getPanelView() ) || null;
+		var page      = panelView && panelView.getCurrentPageView ? panelView.getCurrentPageView() : null;
+
+		if ( page && 'function' === typeof page.getControlViewByName ) {
+			return page;
+		}
+
+		return fallback && 'function' === typeof fallback.getControlViewByName ? fallback : null;
+	}
+
 	function setControlOptions( view, controlName, options ) {
 
-		if ( ! view || 'function' !== typeof view.getControlViewByName ) {
+		if ( ! view ) {
 			return;
 		}
 
@@ -40,26 +47,14 @@
 			return;
 		}
 
-		var withPlaceholder = $.extend( { '': examhubElementorEditor.i18n.all }, options );
-
-		controlView.model.set( 'options', withPlaceholder );
+		controlView.model.set( 'options', $.extend( { '': examhubElementorEditor.i18n.all }, options ) );
 		controlView.render();
 	}
 
-	/**
-	 * Fetch the dependent terms for one cascading control and apply them,
-	 * clearing the control's current value if it's no longer valid.
-	 *
-	 * @param {Backbone.View} view           The widget's controls-stack view.
-	 * @param {Backbone.Model} settingsModel The widget's settings model.
-	 * @param {string} controlName           Control to refresh (e.g. "examhub_grade").
-	 * @param {string} taxonomy              Its taxonomy slug.
-	 * @param {string|number} parentValue    The parent control's current term ID.
-	 */
-	function refreshDependentControl( view, settingsModel, controlName, taxonomy, parentValue ) {
+	function refreshDependentControl( fallbackView, settingsModel, controlName, taxonomy, parentValue ) {
 
 		if ( ! parentValue ) {
-			setControlOptions( view, controlName, {} );
+			setControlOptions( getControlsView( fallbackView ), controlName, {} );
 			settingsModel.set( controlName, '' );
 			return;
 		}
@@ -75,11 +70,11 @@
 				return;
 			}
 
-			var options       = response.data.options || {};
-			var currentValue  = settingsModel.get( controlName );
-			var stillValid    = currentValue && options.hasOwnProperty( String( currentValue ) );
+			var options      = response.data.options || {};
+			var currentValue = settingsModel.get( controlName );
+			var stillValid   = currentValue && Object.prototype.hasOwnProperty.call( options, String( currentValue ) );
 
-			setControlOptions( view, controlName, options );
+			setControlOptions( getControlsView( fallbackView ), controlName, options );
 
 			if ( ! stillValid ) {
 				settingsModel.set( controlName, '' );
@@ -100,9 +95,19 @@
 			var taxonomy      = config[ 0 ];
 			var parentControl = config[ 1 ];
 
-			settingsModel.on( 'change:' + parentControl, function () {
+			// Re-opening the panel must not stack listeners (one AJAX per
+			// listener): drop the handler registered on the previous open.
+			settingsModel._examhubCascade = settingsModel._examhubCascade || {};
+
+			if ( settingsModel._examhubCascade[ controlName ] ) {
+				settingsModel.off( 'change:' + parentControl, settingsModel._examhubCascade[ controlName ] );
+			}
+
+			settingsModel._examhubCascade[ controlName ] = function () {
 				refreshDependentControl( view, settingsModel, controlName, taxonomy, settingsModel.get( parentControl ) );
-			} );
+			};
+
+			settingsModel.on( 'change:' + parentControl, settingsModel._examhubCascade[ controlName ] );
 		} );
 	} );
 

@@ -34,7 +34,8 @@ class Examhub_Ajax {
 	 */
 	public function query_exams() {
 
-		check_ajax_referer( self::NONCE_ACTION, 'nonce' );
+		// Read-only public endpoint: no nonce on purpose. A nonce baked into page-cached HTML
+		// expires after 12-24h and silently breaks filtering for every visitor.
 
 		$args = array(
 			'search'         => isset( $_POST['search'] ) ? sanitize_text_field( wp_unslash( $_POST['search'] ) ) : '',
@@ -66,9 +67,6 @@ class Examhub_Ajax {
 				'found_posts'  => $result['found_posts'],
 				'max_pages'    => $result['max_num_pages'],
 				'paged'        => $args['paged'],
-				'_debug_tax'   => $result['_debug_tax'] ?? null,
-				'_debug_sql'   => $result['_debug_sql'] ?? null,
-				'_debug_args'  => $args,
 			)
 		);
 	}
@@ -86,7 +84,8 @@ class Examhub_Ajax {
 	 */
 	public function mega_branch() {
 
-		check_ajax_referer( self::NONCE_ACTION, 'nonce' );
+		// Read-only public endpoint: no nonce on purpose. A nonce baked into page-cached HTML
+		// expires after 12-24h and silently breaks filtering for every visitor.
 
 		$path = isset( $_POST['path'] ) ? array_map( 'absint', (array) wp_unslash( $_POST['path'] ) ) : array();
 		$path = array_values( array_filter( $path ) );
@@ -146,7 +145,8 @@ class Examhub_Ajax {
 	 */
 	public function dependent_terms() {
 
-		check_ajax_referer( self::NONCE_ACTION, 'nonce' );
+		// Read-only public endpoint: no nonce on purpose. A nonce baked into page-cached HTML
+		// expires after 12-24h and silently breaks filtering for every visitor.
 
 		$taxonomy = isset( $_POST['taxonomy'] ) ? sanitize_key( wp_unslash( $_POST['taxonomy'] ) ) : '';
 

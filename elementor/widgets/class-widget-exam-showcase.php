@@ -182,9 +182,7 @@ class Examhub_Widget_Exam_Showcase extends \Elementor\Widget_Base {
 			)
 		);
 
-		echo wp_kses_post(
-			examhub_render_exam_grid( $result['items'], $this->get_examhub_display_atts( $settings ) )
-		);
+		echo examhub_render_exam_grid( $result['items'], $this->get_examhub_display_atts( $settings ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- escaped inside card-exam.php.
 	}
 
 }

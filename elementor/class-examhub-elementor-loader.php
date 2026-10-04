@@ -43,6 +43,43 @@ class Examhub_Elementor_Loader {
 	}
 
 	/**
+	 * Whether the current request is rendering inside the Elementor editor or
+	 * its live-preview iframe (or the editor's AJAX widget re-render).
+	 *
+	 * editor->is_edit_mode() alone is not reliable: depending on the Elementor
+	 * version it is false inside the preview iframe, which made the Search &
+	 * Filter widget render its normal (hidden popup) markup instead of the
+	 * inline editor preview.
+	 *
+	 * @since 1.2.5
+	 * @return bool
+	 */
+	public static function is_editor_context() {
+
+		if ( ! class_exists( '\\Elementor\\Plugin' ) || ! isset( \Elementor\Plugin::$instance ) ) {
+			return false;
+		}
+
+		$plugin = \Elementor\Plugin::$instance;
+
+		if ( isset( $plugin->editor ) && method_exists( $plugin->editor, 'is_edit_mode' ) && $plugin->editor->is_edit_mode() ) {
+			return true;
+		}
+
+		if ( isset( $plugin->preview ) && method_exists( $plugin->preview, 'is_preview_mode' ) && $plugin->preview->is_preview_mode() ) {
+			return true;
+		}
+
+		// phpcs:disable WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+		if ( isset( $_GET['elementor-preview'] ) ) {
+			return true;
+		}
+
+		return isset( $_REQUEST['action'] ) && 'elementor_ajax' === $_REQUEST['action'];
+		// phpcs:enable
+	}
+
+	/**
 	 * Register the "ExamHub" widget category in the Elementor panel.
 	 *
 	 * @since 1.0.0
@@ -150,7 +187,7 @@ class Examhub_Elementor_Loader {
 			'examhub-elementor-editor',
 			plugin_dir_url( __FILE__ ) . 'js/examhub-elementor-editor.js',
 			array( 'jquery', 'elementor-editor' ),
-			false,
+			filemtime( plugin_dir_path( __FILE__ ) . 'js/examhub-elementor-editor.js' ),
 			true
 		);
 
@@ -165,6 +202,55 @@ class Examhub_Elementor_Loader {
 				),
 			)
 		);
+	}
+
+	/**
+	 * Load ExamHub front-end CSS inside Elementor's live preview iframe.
+	 *
+	 * Elementor normally pulls widget dependencies when a widget renders, but
+	 * preview/editor versions can temporarily show the widget shell before
+	 * those dependencies are attached. Loading the shared styles here keeps the
+	 * Search & Filter preview visually identical to the published widget.
+	 *
+	 * @since 1.2.4
+	 */
+	public function enqueue_preview_styles() {
+
+		$css = plugin_dir_url( __FILE__ ) . '../public/css/examhub-cards.css';
+		$path = plugin_dir_path( __FILE__ ) . '../public/css/examhub-cards.css';
+		$version = file_exists( $path ) ? filemtime( $path ) : EXAMHUB_VERSION;
+
+		wp_enqueue_style( 'examhub-cards', $css, array(), $version, 'all' );
+
+		$dark_css = plugin_dir_url( __FILE__ ) . '../public/css/examhub-dark-mode.css';
+		$dark_path = plugin_dir_path( __FILE__ ) . '../public/css/examhub-dark-mode.css';
+		$dark_version = file_exists( $dark_path ) ? filemtime( $dark_path ) : EXAMHUB_VERSION;
+
+		wp_enqueue_style( 'examhub-dark-mode', $dark_css, array( 'examhub-cards' ), $dark_version, 'all' );
+	}
+
+	/**
+	 * Load the shared front-end script inside the live-preview iframe so the
+	 * Search & Filter widget (accordion, chips, apply/reset) is interactive
+	 * while editing, not only on the published page.
+	 *
+	 * @since 1.2.5
+	 */
+	public function enqueue_preview_scripts() {
+
+		$path = plugin_dir_path( __FILE__ ) . '../public/js/examhub-frontend.js';
+
+		if ( ! wp_script_is( 'examhub-frontend', 'registered' ) ) {
+			wp_register_script(
+				'examhub-frontend',
+				plugin_dir_url( __FILE__ ) . '../public/js/examhub-frontend.js',
+				array( 'jquery' ),
+				file_exists( $path ) ? filemtime( $path ) : EXAMHUB_VERSION,
+				true
+			);
+		}
+
+		wp_enqueue_script( 'examhub-frontend' );
 	}
 
 }

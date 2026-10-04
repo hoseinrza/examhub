@@ -286,7 +286,7 @@ class Examhub_Widget_Featured_Exams extends \Elementor\Widget_Base {
 					data-panel="<?php echo esc_attr( $key ); ?>"
 					<?php echo $key === $first ? '' : 'hidden'; ?>
 				>
-					<?php echo wp_kses_post( examhub_render_exam_grid( $result['items'], $display ) ); ?>
+					<?php echo examhub_render_exam_grid( $result['items'], $display ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every value is escaped inside card-exam.php. ?>
 				</div>
 			<?php endforeach; ?>
 		</div>

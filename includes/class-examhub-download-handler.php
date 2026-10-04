@@ -55,7 +55,6 @@ class Examhub_Download_Handler {
 				'action'  => 'examhub_download',
 				'exam_id' => (int) $exam_id,
 				'type'    => $type,
-				'_wpnonce' => wp_create_nonce( 'examhub_download_' . $exam_id . '_' . $type ),
 			),
 			admin_url( 'admin-ajax.php' )
 		);
@@ -77,8 +76,6 @@ class Examhub_Download_Handler {
 		if ( ! $exam_id || ! isset( self::TYPE_META_MAP[ $type ] ) ) {
 			wp_die( esc_html__( 'درخواست دانلود نامعتبر است.', 'examhub' ), '', array( 'response' => 400 ) );
 		}
-
-		check_ajax_referer( 'examhub_download_' . $exam_id . '_' . $type, '_wpnonce' );
 
 		if ( 'examhub_exam' !== get_post_type( $exam_id ) || 'publish' !== get_post_status( $exam_id ) ) {
 			wp_die( esc_html__( 'آزمون پیدا نشد.', 'examhub' ), '', array( 'response' => 404 ) );
@@ -194,7 +191,7 @@ class Examhub_Download_Handler {
 
 		$tmp_file = wp_tempnam( $url );
 
-		$response = wp_remote_get(
+		$response = wp_safe_remote_get(
 			$url,
 			array(
 				'timeout'  => 30,

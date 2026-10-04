@@ -146,7 +146,7 @@
 }
 
 /* -------------------------------------------------------------------------
- * ExamHub Persian admin workspace — version 1.2.1
+ * ExamHub Persian admin workspace — version 1.2.4
  * ------------------------------------------------------------------------- */
 .examhub-dashboard-wrap,
 .examhub-dashboard-wrap * {
@@ -477,4 +477,673 @@ body.post-type-examhub_exam .page-title-action {
 	.examhub-taxonomy-grid,
 	.examhub-quick-links { grid-template-columns: 1fr; }
 	.examhub-dashboard-footer { flex-direction: column; }
+}
+
+/* -------------------------------------------------------------------------
+ * ExamHub premium admin skin — version 1.2.4
+ * Red / Persian / RTL visual refresh.
+ * Scoped to ExamHub screens to avoid changing unrelated WordPress pages.
+ * ------------------------------------------------------------------------- */
+:root {
+	--examhub-red: #d71920;
+	--examhub-red-dark: #b51218;
+	--examhub-red-soft: #fff1f2;
+	--examhub-red-border: #fecdd3;
+	--examhub-ink: #171717;
+	--examhub-muted: #737373;
+	--examhub-line: #ececec;
+	--examhub-bg: #f6f6f7;
+}
+
+body.post-type-examhub_exam,
+body.examhub_page_examhub-dashboard {
+	background: var(--examhub-bg);
+}
+
+body.post-type-examhub_exam #wpcontent,
+body.examhub_page_examhub-dashboard #wpcontent {
+	background: var(--examhub-bg);
+}
+
+body.post-type-examhub_exam #wpbody-content,
+body.examhub_page_examhub-dashboard #wpbody-content {
+	font-family: Vazirmatn, IRANSansX, Tahoma, Arial, sans-serif;
+}
+
+/* WordPress sidebar: give the ExamHub section a red brand treatment. */
+body.post-type-examhub_exam #adminmenu #menu-posts-examhub_exam > a,
+body.post-type-examhub_exam #adminmenu #menu-posts-examhub_exam.opensub > a,
+body.examhub_page_examhub-dashboard #adminmenu #menu-posts-examhub_exam > a,
+body.examhub_page_examhub-dashboard #adminmenu #menu-posts-examhub_exam.opensub > a {
+	background: var(--examhub-red);
+	color: #fff;
+	box-shadow: inset 3px 0 0 rgba(255,255,255,.65);
+}
+
+body.post-type-examhub_exam #adminmenu #menu-posts-examhub_exam > a:hover,
+body.examhub_page_examhub-dashboard #adminmenu #menu-posts-examhub_exam > a:hover {
+	background: var(--examhub-red-dark);
+}
+
+body.post-type-examhub_exam #adminmenu #menu-posts-examhub_exam .wp-submenu,
+body.examhub_page_examhub-dashboard #adminmenu #menu-posts-examhub_exam .wp-submenu {
+	border-color: rgba(215,25,32,.18);
+}
+
+body.post-type-examhub_exam #adminmenu #menu-posts-examhub_exam .wp-submenu a:hover,
+body.post-type-examhub_exam #adminmenu #menu-posts-examhub_exam .wp-submenu .current a,
+body.examhub_page_examhub-dashboard #adminmenu #menu-posts-examhub_exam .wp-submenu a:hover,
+body.examhub_page_examhub-dashboard #adminmenu #menu-posts-examhub_exam .wp-submenu .current a {
+	color: var(--examhub-red);
+}
+
+/* Dashboard shell */
+.examhub-dashboard-wrap {
+	max-width: 1500px;
+	margin: 0 18px 30px 0;
+}
+
+.examhub-dashboard-hero {
+	position: relative;
+	overflow: hidden;
+	margin-top: 18px;
+	padding: 32px 34px;
+	border: 1px solid var(--examhub-red-border);
+	border-radius: 24px;
+	background:
+		radial-gradient(circle at 12% 20%, rgba(215,25,32,.12), transparent 30%),
+		linear-gradient(135deg, #ffffff 0%, #fff8f8 100%);
+	box-shadow: 0 18px 50px rgba(215,25,32,.08);
+}
+
+.examhub-dashboard-hero::after {
+	content: "";
+	position: absolute;
+	inset: auto -80px -90px auto;
+	width: 250px;
+	height: 250px;
+	border-radius: 50%;
+	background: rgba(215,25,32,.06);
+	pointer-events: none;
+}
+
+.examhub-dashboard-kicker {
+	padding: 6px 10px;
+	border: 1px solid var(--examhub-red-border);
+	border-radius: 999px;
+	background: rgba(255,255,255,.85);
+	color: var(--examhub-red);
+	font-size: 11px;
+	font-weight: 800;
+}
+
+.examhub-dashboard-hero h1 {
+	margin-top: 14px;
+	font-size: 30px;
+	color: var(--examhub-ink);
+}
+
+.examhub-dashboard-hero p {
+	color: var(--examhub-muted);
+}
+
+.examhub-dashboard-actions .button {
+	border-radius: 12px;
+	min-height: 42px;
+	padding: 0 17px;
+	font-weight: 700;
+	box-shadow: 0 5px 14px rgba(23,23,23,.06);
+}
+
+.examhub-dashboard-actions .button-primary,
+.examhub-dashboard-actions .button-primary:focus {
+	border-color: var(--examhub-red);
+	background: var(--examhub-red);
+	box-shadow: 0 10px 24px rgba(215,25,32,.18);
+	color: #fff;
+}
+
+.examhub-dashboard-actions .button-primary:hover {
+	border-color: var(--examhub-red-dark);
+	background: var(--examhub-red-dark);
+}
+
+.examhub-dashboard-actions .button:not(.button-primary) {
+	border-color: var(--examhub-red-border);
+	background: #fff;
+	color: var(--examhub-red);
+}
+
+.examhub-dashboard-actions .button:not(.button-primary):hover {
+	border-color: var(--examhub-red);
+	background: var(--examhub-red-soft);
+}
+
+/* Stats become a crisp red-accented control center. */
+.examhub-stat-card {
+	position: relative;
+	min-height: 112px;
+	border: 1px solid #ededed;
+	border-radius: 18px;
+	background: rgba(255,255,255,.96);
+	box-shadow: 0 9px 28px rgba(23,23,23,.05);
+	transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.examhub-stat-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	right: 16px;
+	left: 16px;
+	height: 3px;
+	border-radius: 0 0 8px 8px;
+	background: var(--examhub-red);
+	opacity: .9;
+}
+
+.examhub-stat-card:hover {
+	transform: translateY(-2px);
+	border-color: var(--examhub-red-border);
+	box-shadow: 0 16px 34px rgba(215,25,32,.08);
+}
+
+.examhub-stat-icon {
+	width: 48px;
+	height: 48px;
+	border: 1px solid var(--examhub-red-border);
+	border-radius: 14px;
+	background: var(--examhub-red-soft);
+	color: var(--examhub-red);
+}
+
+.examhub-stat-card strong {
+	color: var(--examhub-ink);
+}
+
+/* Panels and tables */
+.examhub-panel {
+	border-color: #ebebeb;
+	border-radius: 20px;
+	background: #fff;
+	box-shadow: 0 10px 30px rgba(23,23,23,.045);
+}
+
+.examhub-panel-head {
+	padding-bottom: 14px;
+	border-bottom: 1px solid #f0f0f0;
+}
+
+.examhub-panel-head h2 {
+	color: var(--examhub-ink);
+}
+
+.examhub-panel-head > a {
+	color: var(--examhub-red);
+}
+
+.examhub-table-wrap {
+	border-color: #efefef;
+	border-radius: 14px;
+}
+
+.examhub-dashboard-table thead th {
+	background: #fff7f7;
+	color: #4a4a4a;
+}
+
+.examhub-dashboard-table tbody tr:hover td {
+	background: #fffafa;
+}
+
+.examhub-dashboard-table td,
+.examhub-dashboard-table th {
+	border-color: #f1f1f1;
+}
+
+.examhub-status--publish {
+	background: #f0fdf4;
+	color: #15803d;
+}
+
+.examhub-status--draft {
+	background: #f5f5f5;
+	color: #737373;
+}
+
+.examhub-status--pending {
+	background: #fff7ed;
+	color: #c2410c;
+}
+
+.examhub-star {
+	color: var(--examhub-red);
+}
+
+.examhub-taxonomy-card {
+	border-color: #ededed;
+	background: #fff;
+	border-radius: 14px;
+}
+
+.examhub-taxonomy-card:hover {
+	border-color: var(--examhub-red-border);
+	background: var(--examhub-red-soft);
+}
+
+.examhub-taxonomy-card span {
+	color: #525252;
+}
+
+.examhub-taxonomy-card strong {
+	color: var(--examhub-ink);
+}
+
+.examhub-quick-links a {
+	border-color: #ececec;
+	border-radius: 12px;
+	color: var(--examhub-red);
+	transition: .18s ease;
+}
+
+.examhub-quick-links a:hover {
+	border-color: var(--examhub-red-border);
+	background: var(--examhub-red-soft);
+	color: var(--examhub-red-dark);
+}
+
+/* Exam list / editor screens */
+body.post-type-examhub_exam .wrap > h1,
+body.post-type-examhub_exam .wrap > h2 {
+	font-weight: 800;
+	color: var(--examhub-ink);
+}
+
+body.post-type-examhub_exam .page-title-action {
+	border-color: var(--examhub-red);
+	border-radius: 10px;
+	background: var(--examhub-red);
+	color: #fff;
+	box-shadow: 0 7px 18px rgba(215,25,32,.14);
+}
+
+body.post-type-examhub_exam .page-title-action:hover,
+body.post-type-examhub_exam .page-title-action:focus {
+	border-color: var(--examhub-red-dark);
+	background: var(--examhub-red-dark);
+	color: #fff;
+}
+
+body.post-type-examhub_exam .postbox,
+body.post-type-examhub_exam .stuffbox {
+	border: 1px solid #e9e9e9;
+	border-radius: 16px;
+	box-shadow: 0 8px 24px rgba(23,23,23,.04);
+}
+
+body.post-type-examhub_exam .postbox .hndle,
+body.post-type-examhub_exam .stuffbox .hndle {
+	padding: 13px 16px;
+	border-bottom: 1px solid #f0f0f0;
+	font-weight: 800;
+	color: var(--examhub-ink);
+}
+
+body.post-type-examhub_exam input[type="text"],
+body.post-type-examhub_exam input[type="url"],
+body.post-type-examhub_exam input[type="number"],
+body.post-type-examhub_exam select,
+body.post-type-examhub_exam textarea {
+	border-color: #dfdfdf;
+	border-radius: 10px;
+	box-shadow: none;
+}
+
+body.post-type-examhub_exam input:focus,
+body.post-type-examhub_exam select:focus,
+body.post-type-examhub_exam textarea:focus {
+	border-color: var(--examhub-red);
+	box-shadow: 0 0 0 2px rgba(215,25,32,.10);
+}
+
+body.post-type-examhub_exam .button-primary {
+	border-color: var(--examhub-red);
+	background: var(--examhub-red);
+	box-shadow: 0 7px 18px rgba(215,25,32,.14);
+}
+
+body.post-type-examhub_exam .button-primary:hover,
+body.post-type-examhub_exam .button-primary:focus {
+	border-color: var(--examhub-red-dark);
+	background: var(--examhub-red-dark);
+}
+
+/* Keep WordPress notices readable while matching the dashboard. */
+body.post-type-examhub_exam .notice,
+body.examhub_page_examhub-dashboard .notice {
+	border-radius: 12px;
+}
+
+@media (max-width: 782px) {
+	.examhub-dashboard-wrap {
+		margin: 0 10px 20px 0;
+	}
+
+	.examhub-dashboard-hero {
+		padding: 24px 20px;
+		border-radius: 18px;
+	}
+
+	.examhub-dashboard-hero h1 {
+		font-size: 24px;
+	}
+}
+
+
+/* -------------------------------------------------------------------------
+ * ExamHub taxonomy management — polished Persian red admin UI
+ * Applies to the remaining «پایه» and «رشته» taxonomy screens.
+ * ------------------------------------------------------------------------- */
+body.taxonomy-examhub_grade,
+body.taxonomy-examhub_field {
+	background: var(--examhub-bg);
+}
+
+body.taxonomy-examhub_grade #wpcontent,
+body.taxonomy-examhub_field #wpcontent,
+body.taxonomy-examhub_grade #wpbody-content,
+body.taxonomy-examhub_field #wpbody-content {
+	background: var(--examhub-bg);
+	direction: rtl;
+	font-family: Vazirmatn, IRANSansX, Tahoma, Arial, sans-serif;
+}
+
+body.taxonomy-examhub_grade .wrap,
+body.taxonomy-examhub_field .wrap {
+	max-width: 1500px;
+	margin: 0 18px 30px 0;
+	direction: rtl;
+}
+
+body.taxonomy-examhub_grade .wrap > h1,
+body.taxonomy-examhub_field .wrap > h1 {
+	margin: 22px 0 18px;
+	font-size: 27px;
+	font-weight: 800;
+	color: var(--examhub-ink);
+}
+
+body.taxonomy-examhub_grade .page-title-action,
+body.taxonomy-examhub_field .page-title-action {
+	border-color: var(--examhub-red);
+	border-radius: 10px;
+	background: var(--examhub-red);
+	color: #fff;
+	font-weight: 700;
+	box-shadow: 0 8px 18px rgba(215,25,32,.14);
+}
+
+body.taxonomy-examhub_grade .page-title-action:hover,
+body.taxonomy-examhub_grade .page-title-action:focus,
+body.taxonomy-examhub_field .page-title-action:hover,
+body.taxonomy-examhub_field .page-title-action:focus {
+	border-color: var(--examhub-red-dark);
+	background: var(--examhub-red-dark);
+	color: #fff;
+}
+
+body.taxonomy-examhub_grade .col-wrap,
+body.taxonomy-examhub_field .col-wrap {
+	display: grid;
+	grid-template-columns: minmax(0, 1.55fr) minmax(320px, .78fr);
+	gap: 18px;
+	align-items: start;
+	margin-top: 8px;
+	padding: 0;
+}
+
+/* In RTL the term table stays on the right and the add-term form sits left. */
+body.taxonomy-examhub_grade #col-right,
+body.taxonomy-examhub_field #col-right {
+	grid-column: 1;
+	grid-row: 1;
+	float: none;
+	width: auto;
+	margin: 0;
+}
+
+body.taxonomy-examhub_grade #col-left,
+body.taxonomy-examhub_field #col-left {
+	grid-column: 2;
+	grid-row: 1;
+	float: none;
+	width: auto;
+	margin: 0;
+}
+
+body.taxonomy-examhub_grade .form-wrap,
+body.taxonomy-examhub_field .form-wrap {
+	margin: 0;
+	padding: 22px;
+	border: 1px solid #ededed;
+	border-radius: 20px;
+	background: #fff;
+	box-shadow: 0 10px 30px rgba(23,23,23,.045);
+}
+
+body.taxonomy-examhub_grade .form-wrap > h2,
+body.taxonomy-examhub_field .form-wrap > h2 {
+	margin: 0 0 15px;
+	padding: 0 0 14px;
+	border-bottom: 1px solid #f0f0f0;
+	font-size: 17px;
+	font-weight: 800;
+	color: var(--examhub-ink);
+}
+
+body.taxonomy-examhub_grade .form-wrap .form-field,
+body.taxonomy-examhub_field .form-wrap .form-field {
+	margin: 0 0 16px;
+	padding: 0;
+}
+
+body.taxonomy-examhub_grade .form-wrap .form-field > label,
+body.taxonomy-examhub_field .form-wrap .form-field > label {
+	display: block;
+	margin: 0 0 7px;
+	font-size: 12px;
+	font-weight: 700;
+	color: #404040;
+}
+
+body.taxonomy-examhub_grade .form-wrap input[type="text"],
+body.taxonomy-examhub_field .form-wrap input[type="text"],
+body.taxonomy-examhub_grade .form-wrap textarea,
+body.taxonomy-examhub_field .form-wrap textarea {
+	width: 100%;
+	min-height: 42px;
+	border: 1px solid #dfdfdf;
+	border-radius: 10px;
+	background: #fff;
+	box-shadow: none;
+}
+
+body.taxonomy-examhub_grade .form-wrap textarea,
+body.taxonomy-examhub_field .form-wrap textarea {
+	min-height: 92px;
+	padding: 10px 12px;
+	resize: vertical;
+}
+
+body.taxonomy-examhub_grade .form-wrap input[type="text"]:focus,
+body.taxonomy-examhub_field .form-wrap input[type="text"]:focus,
+body.taxonomy-examhub_grade .form-wrap textarea:focus,
+body.taxonomy-examhub_field .form-wrap textarea:focus {
+	border-color: var(--examhub-red);
+	box-shadow: 0 0 0 3px rgba(215,25,32,.09);
+	outline: none;
+}
+
+body.taxonomy-examhub_grade .form-wrap .submit,
+body.taxonomy-examhub_field .form-wrap .submit {
+	margin: 4px 0 0;
+	padding: 0;
+}
+
+body.taxonomy-examhub_grade .form-wrap .submit .button-primary,
+body.taxonomy-examhub_field .form-wrap .submit .button-primary {
+	width: 100%;
+	min-height: 42px;
+	border-color: var(--examhub-red);
+	border-radius: 10px;
+	background: var(--examhub-red);
+	font-weight: 800;
+	box-shadow: 0 8px 18px rgba(215,25,32,.14);
+}
+
+body.taxonomy-examhub_grade .form-wrap .submit .button-primary:hover,
+body.taxonomy-examhub_grade .form-wrap .submit .button-primary:focus,
+body.taxonomy-examhub_field .form-wrap .submit .button-primary:hover,
+body.taxonomy-examhub_field .form-wrap .submit .button-primary:focus {
+	border-color: var(--examhub-red-dark);
+	background: var(--examhub-red-dark);
+}
+
+body.taxonomy-examhub_grade .tablenav,
+body.taxonomy-examhub_field .tablenav {
+	min-height: 0;
+	margin: 0 0 12px;
+	padding: 0;
+}
+
+body.taxonomy-examhub_grade .tablenav-pages,
+body.taxonomy-examhub_field .tablenav-pages {
+	float: none;
+	text-align: right;
+	font-size: 12px;
+	font-weight: 700;
+	color: #777;
+}
+
+body.taxonomy-examhub_grade .wp-list-table,
+body.taxonomy-examhub_field .wp-list-table {
+	margin: 0;
+	border: 1px solid #ebebeb;
+	border-radius: 18px;
+	background: #fff;
+	box-shadow: 0 10px 30px rgba(23,23,23,.045);
+	overflow: hidden;
+	border-spacing: 0;
+}
+
+body.taxonomy-examhub_grade .wp-list-table thead th,
+body.taxonomy-examhub_field .wp-list-table thead th,
+body.taxonomy-examhub_grade .wp-list-table tfoot th,
+body.taxonomy-examhub_field .wp-list-table tfoot th {
+	padding: 14px 13px;
+	border-bottom: 1px solid #f0f0f0;
+	background: #fff7f7;
+	font-size: 12px;
+	font-weight: 800;
+	color: #4a4a4a;
+}
+
+body.taxonomy-examhub_grade .wp-list-table tfoot th,
+body.taxonomy-examhub_field .wp-list-table tfoot th {
+	border-top: 1px solid #f0f0f0;
+	border-bottom: 0;
+}
+
+body.taxonomy-examhub_grade .wp-list-table td,
+body.taxonomy-examhub_field .wp-list-table td {
+	padding: 14px 13px;
+	border-bottom-color: #f3f3f3;
+	font-size: 12px;
+	color: #4b4b4b;
+	vertical-align: middle;
+}
+
+body.taxonomy-examhub_grade .wp-list-table tbody tr:last-child td,
+body.taxonomy-examhub_field .wp-list-table tbody tr:last-child td {
+	border-bottom: 0;
+}
+
+body.taxonomy-examhub_grade .wp-list-table tbody tr:hover td,
+body.taxonomy-examhub_field .wp-list-table tbody tr:hover td {
+	background: #fffafa;
+}
+
+body.taxonomy-examhub_grade .wp-list-table .column-name,
+body.taxonomy-examhub_field .wp-list-table .column-name {
+	font-weight: 800;
+}
+
+body.taxonomy-examhub_grade .wp-list-table .column-name a,
+body.taxonomy-examhub_field .wp-list-table .column-name a {
+	color: #202020;
+	text-decoration: none;
+}
+
+body.taxonomy-examhub_grade .wp-list-table .column-name a:hover,
+body.taxonomy-examhub_field .wp-list-table .column-name a:hover {
+	color: var(--examhub-red);
+}
+
+body.taxonomy-examhub_grade .wp-list-table .column-posts,
+body.taxonomy-examhub_field .wp-list-table .column-posts {
+	font-weight: 800;
+	color: var(--examhub-red);
+	text-align: center;
+}
+
+body.taxonomy-examhub_grade .wp-list-table .no-items td,
+body.taxonomy-examhub_field .wp-list-table .no-items td {
+	padding: 44px 20px;
+	background: #fff;
+	color: #8a8a8a;
+	text-align: center;
+	font-size: 13px;
+}
+
+body.taxonomy-examhub_grade .screen-reader-text,
+body.taxonomy-examhub_field .screen-reader-text {
+	font-family: inherit;
+}
+
+body.taxonomy-examhub_grade .notice,
+body.taxonomy-examhub_field .notice {
+	border-radius: 12px;
+}
+
+@media (max-width: 1100px) {
+	body.taxonomy-examhub_grade .col-wrap,
+	body.taxonomy-examhub_field .col-wrap {
+		grid-template-columns: 1fr;
+	}
+
+	body.taxonomy-examhub_grade #col-right,
+	body.taxonomy-examhub_field #col-right,
+	body.taxonomy-examhub_grade #col-left,
+	body.taxonomy-examhub_field #col-left {
+		grid-column: 1;
+		grid-row: auto;
+	}
+}
+
+@media (max-width: 782px) {
+	body.taxonomy-examhub_grade .wrap,
+	body.taxonomy-examhub_field .wrap {
+		margin: 0 10px 20px 0;
+	}
+
+	body.taxonomy-examhub_grade .form-wrap,
+	body.taxonomy-examhub_field .form-wrap {
+		padding: 18px;
+		border-radius: 16px;
+	}
+
+	body.taxonomy-examhub_grade .wp-list-table,
+	body.taxonomy-examhub_field .wp-list-table {
+		border-radius: 14px;
+	}
 }
